@@ -39,7 +39,12 @@ export default {
       icon: 'icon-credit-card',
       children: [
         {
-          name: 'Breadcrumbs',
+          name: 'Recommendations',
+          url: '/base/breadcrumbs',
+          icon: 'icon-puzzle',
+        },
+        {
+          name: 'Request a new card',
           url: '/base/breadcrumbs',
           icon: 'icon-puzzle',
         },
