@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
 import {
   Badge,
   UncontrolledDropdown,
@@ -7,7 +6,6 @@ import {
   DropdownMenu,
   DropdownToggle,
   Nav,
-  NavItem
 } from "reactstrap";
 import PropTypes from "prop-types";
 
@@ -38,31 +36,6 @@ function DefaultHeader(props) {
       <AppSidebarToggler className="d-md-down-none" display="lg" />
 
       <Nav className="d-md-down-none" navbar>
-        <NavItem className="px-3">
-          <NavLink to="/dashboard" className="nav-link">
-            Home
-          </NavLink>
-        </NavItem>
-        <NavItem className="px-3">
-          <Link to="/users" className="nav-link">
-            About
-          </Link>
-        </NavItem>
-        <NavItem className="px-3">
-          <NavLink to="#" className="nav-link">
-            Membership
-          </NavLink>
-        </NavItem>
-        <NavItem className="px-3">
-          <NavLink to="#" className="nav-link">
-            Apply Now
-          </NavLink>
-        </NavItem>
-        <NavItem className="px-3">
-          <NavLink to="#" className="nav-link">
-            Credit Cards
-          </NavLink>
-        </NavItem>
       </Nav>
       <Nav className="ml-auto" navbar>
         <UncontrolledDropdown nav direction="down">
