@@ -15,33 +15,33 @@ function Classroom() {
       </Jumbotron>
       <ListGroup className="mb-5">
         <ListGroupItem active action tag="a" href="#">
-          <ListGroupItemHeading>Getting Started </ListGroupItemHeading>
+          <ListGroupItemHeading>Using your Membership </ListGroupItemHeading>
           <ListGroupItemText>
             Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
           </ListGroupItemText>
         </ListGroupItem>
         <ListGroupItem action tag="a" href="#">
-          <ListGroupItemHeading>Intro to Powerpoint</ListGroupItemHeading>
+          <ListGroupItemHeading>Credit Card Info</ListGroupItemHeading>
           <ListGroupItemText>
-            Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+            How to apply, reconsideration lines, retention offers, using perks/benefits, etc
           </ListGroupItemText>
         </ListGroupItem>
         <ListGroupItem action tag="a" href="#">
-          <ListGroupItemHeading>Stacking Points</ListGroupItemHeading>
+          <ListGroupItemHeading>Shopping Info</ListGroupItemHeading>
           <ListGroupItemText>
-            Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+            Plastiq, MPX, Rakuten, etc.
           </ListGroupItemText>
         </ListGroupItem>
         <ListGroupItem action tag="a" href="#">
-          <ListGroupItemHeading>Whats in JJ's Wallet</ListGroupItemHeading>
+          <ListGroupItemHeading>Travel booking Info</ListGroupItemHeading>
           <ListGroupItemText>
-            Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+           booking domestic flights, booking hotels, etc
           </ListGroupItemText>
         </ListGroupItem>
         <ListGroupItem action tag="a" href="#">
-          <ListGroupItemHeading>Rental Car Tips</ListGroupItemHeading>
+          <ListGroupItemHeading>Travel Guides</ListGroupItemHeading>
           <ListGroupItemText>
-            Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+            airport/lounge info, city guides
           </ListGroupItemText>
         </ListGroupItem>
       </ListGroup>
