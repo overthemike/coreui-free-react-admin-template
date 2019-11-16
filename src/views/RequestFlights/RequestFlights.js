@@ -53,16 +53,16 @@ function RequestFlights() {
                   </Col>
                   <Col md="10">
                     <FormGroup check className="radio">
-                      <Input className="form-check-input" type="radio" id="radio1" name="radios" value="option1" />
-                      <Label check className="form-check-label" htmlFor="radio1">Roundtrip</Label>
+                      <Input className="form-check-input" type="radio" id="roundTrip" name="radios" value="option1" />
+                      <Label check className="form-check-label" htmlFor="roundTrip">Roundtrip</Label>
                     </FormGroup>
                     <FormGroup check className="radio">
-                      <Input className="form-check-input" type="radio" id="radio2" name="radios" value="option2" />
-                      <Label check className="form-check-label" htmlFor="radio2">One-way</Label>
+                      <Input className="form-check-input" type="radio" id="oneWay" name="radios" value="option2" />
+                      <Label check className="form-check-label" htmlFor="oneWay">One-way</Label>
                     </FormGroup>
                     <FormGroup check className="radio">
-                      <Input className="form-check-input" type="radio" id="radio3" name="radios" value="option3" />
-                      <Label check className="form-check-label" htmlFor="radio3">Multi-city</Label>
+                      <Input className="form-check-input" type="radio" id="multiCity" name="radios" value="option3" />
+                      <Label check className="form-check-label" htmlFor="multiCity">Multi-city</Label>
                     </FormGroup>
                   </Col>
                 </FormGroup>
@@ -103,7 +103,7 @@ function RequestFlights() {
               <Col xs="12" md='6'>
                 <FormGroup row>
                   <Col md="2">
-                    <Label htmlFor="date-input">Departure Date</Label>
+                    <Label htmlFor="depart-input">Departure Date</Label>
                   </Col>
                   <Col xs="12" md="10">
                     <Input type="date" id="depart-input" name="depart-input" placeholder="date" />
@@ -118,12 +118,12 @@ function RequestFlights() {
                   </Col>
                   <Col md="8">
                     <FormGroup check className="radio">
-                      <Input className="form-check-input" type="radio" id="radio1" name="radios" value="option1" />
-                      <Label check className="form-check-label" htmlFor="radio1">Yes</Label>
+                      <Input className="form-check-input" type="radio" id="departYes" name="radios" value="option1" />
+                      <Label check className="form-check-label" htmlFor="departYes">Yes</Label>
                     </FormGroup>
                     <FormGroup check className="radio">
-                      <Input className="form-check-input" type="radio" id="radio2" name="radios" value="option2" />
-                      <Label check className="form-check-label" htmlFor="radio2">No</Label>
+                      <Input className="form-check-input" type="radio" id="departNo" name="radios" value="option2" />
+                      <Label check className="form-check-label" htmlFor="departNo">No</Label>
                     </FormGroup>
                   </Col>
                 </FormGroup>
@@ -133,7 +133,7 @@ function RequestFlights() {
               <Col xs="12" md='6'>
                 <FormGroup row>
                   <Col md="2">
-                    <Label htmlFor="date-input">Return Date</Label>
+                    <Label htmlFor="return-input">Return Date</Label>
                   </Col>
                   <Col xs="12" md="10">
                     <Input type="date" id="return-input" name="return-input" placeholder="date" />
@@ -147,12 +147,12 @@ function RequestFlights() {
                   </Col>
                   <Col md="8">
                     <FormGroup check className="radio">
-                      <Input className="form-check-input" type="radio" id="radio1" name="radios" value="option1" />
-                      <Label check className="form-check-label" htmlFor="radio1">Yes</Label>
+                      <Input className="form-check-input" type="radio" id="returnYes" name="radios" value="option1" />
+                      <Label check className="form-check-label" htmlFor="returnYes">Yes</Label>
                     </FormGroup>
                     <FormGroup check className="radio">
-                      <Input className="form-check-input" type="radio" id="radio2" name="radios" value="option2" />
-                      <Label check className="form-check-label" htmlFor="radio2">No</Label>
+                      <Input className="form-check-input" type="radio" id="returnNo" name="radios" value="option2" />
+                      <Label check className="form-check-label" htmlFor="returnNo">No</Label>
                     </FormGroup>
                   </Col>
                 </FormGroup>
@@ -161,8 +161,8 @@ function RequestFlights() {
             <Row>
               <Col xs="12" md='6'>
                 <FormGroup>
-                    <Label htmlFor="select">Preferred Class</Label>
-                    <Input type="select" name="select" id="select">
+                    <Label htmlFor="preferredClass">Preferred Class</Label>
+                    <Input type="select" name="preferredClass" id="preferredClass">
                       <option value="0">Please select</option>
                       <option value="1">Economy</option>
                       <option value="2">Business/First</option>
@@ -185,8 +185,8 @@ function RequestFlights() {
               </Col>
               <Col xs="12" md='6'>
                 <FormGroup>
-                  <Label htmlFor="passengers">How many total bags will you be checking?</Label>
-                  <Input type="text" id="passengers" required />
+                  <Label htmlFor="bags">How many total bags will you be checking?</Label>
+                  <Input type="text" id="bags" required />
                   <FormText className="help-block">Certain airlines may charge an additional fee for checked bags</FormText>
                 </FormGroup>
               </Col>
@@ -195,10 +195,10 @@ function RequestFlights() {
               <Col>
                 <FormGroup row>
                   <Col md="3">
-                    <Label htmlFor="textarea-input">Notes/Instructions</Label>
+                    <Label htmlFor="notes">Notes/Instructions</Label>
                   </Col>
                   <Col xs="12" md="9">
-                    <Input type="textarea" name="textarea-input" id="textarea-input" rows="3"
+                    <Input type="textarea" name="notes" id="notes" rows="3"
                             placeholder="Please include any information that is applicable to your trip" />
                   </Col>
                 </FormGroup>
