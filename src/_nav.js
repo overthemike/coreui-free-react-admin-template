@@ -9,55 +9,46 @@ export default {
         text: 'NEW',
       },
     },
-    // {
-    //   title: false,
-    //   name: 'Award Wallet',
-    //   wrapper: {            // optional wrapper object
-    //     element: '',        // required valid HTML5 element tag
-    //     attributes: {}        // optional valid JS object with JS API naming ex: { className: "my-class", style: { fontFamily: "Verdana" }, id: "my-id"}
-    //   },
-    //   class: ''             // optional class names space delimited list for title item ex: "text-center"
-    // },
     {
       name: 'Easy Go Wallet',
-      url: '/theme/colors',
+      url: '/dashboard',
       icon: 'icon-wallet',
     },
     {
       name: 'Award Wallet',
-      url: '/theme/typography',
+      url: 'https://awardwallet.com/',
       icon: 'icon-briefcase',
     },
     {
       name: 'My Travel Notebook',
-      url: '/theme/typography',
+      url: 'https://drive.google.com/drive/u/0/shared-with-me',
       icon: 'icon-note',
     },
     {
       name: 'Credit Card Inquiry',
-      url: '/base',
+      url: '/dashboard',
       icon: 'icon-credit-card',
       children: [
         {
           name: 'Recommendations',
-          url: '/base/breadcrumbs',
+          url: '/dashboard',
           icon: 'icon-puzzle',
         },
         {
           name: 'Request a new card',
-          url: '/base/breadcrumbs',
-          icon: 'icon-puzzle',
+          url: '/request-card',
+          icon: 'icon-plus',
         },
       ],
     },
     {
       name: 'Classroom',
-      url: '/buttons',
+      url: '/classroom',
       icon: 'icon-pencil'
     },
     {
-      name: 'Schedule',
-      url: '/charts',
+      name: 'Meet with JJ',
+      url: 'https://calendly.com/easygotraveler/checkin?month=2019-11',
       icon: 'icon-calendar',
     },
     {
@@ -65,20 +56,19 @@ export default {
     },
     {
       name: 'Travel',
-      url: '/icons',
+      url: '/dashboard',
       icon: 'icon-globe',
       children: [
         {
           name: 'Request a Flight',
-          url: 'https://coreui.io/react/',
+          url: '/request-flights',
           icon: 'icon-plane',
           class: 'mt-auto',
           variant: 'info',
-          attributes: { target: '_blank', rel: "noopener" },
         },
         {
           name: 'Request a hotel',
-          url: 'https://coreui.io/react/',
+          url: '/dashboard',
           icon: 'icon-map',
           class: 'mt-auto',
           variant: 'success',
@@ -86,7 +76,7 @@ export default {
         },
         {
           name: 'Request a cruise',
-          url: 'https://coreui.io/react/',
+          url: '/dashboard',
           icon: 'icon-map',
           class: 'mt-auto',
           variant: 'danger',
