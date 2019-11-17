@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import pic from '../../../assets/img/brand/black.png'
 import {
   Button,
   Card,
@@ -72,22 +72,11 @@ function Login() {
               >
                 <CardBody className="text-center">
                   <div>
-                    <h2>Sign up</h2>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
-                    <Link to="/register">
-                      <Button
-                        color="primary"
-                        className="mt-3"
-                        active
-                        tabIndex={-1}
-                      >
-                        Register Now!
-                      </Button>
-                    </Link>
+                    <img
+                      src={pic}
+                      className="img-avatar"
+                      alt="admin@bootstrapmaster.com"
+                    />
                   </div>
                 </CardBody>
               </Card>
