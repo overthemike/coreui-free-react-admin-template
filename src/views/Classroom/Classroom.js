@@ -17,7 +17,7 @@ function Classroom() {
         <ListGroupItem active action tag="a" href="#">
           <ListGroupItemHeading>Using your Membership </ListGroupItemHeading>
           <ListGroupItemText>
-            Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+
           </ListGroupItemText>
         </ListGroupItem>
         <ListGroupItem action tag="a" href="#">
