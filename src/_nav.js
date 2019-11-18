@@ -3,7 +3,7 @@ export default {
     {
       title: true,
       name: 'Learn. Redeem. Wander.',
-      url: '/dashboard',
+      url: '/wallet',
       badge: {
         variant: 'info',
         text: 'NEW',
@@ -11,7 +11,7 @@ export default {
     },
     {
       name: 'Easy Go Wallet',
-      url: '/dashboard',
+      url: '/wallet',
       icon: 'icon-wallet',
     },
     {
@@ -27,13 +27,18 @@ export default {
       attributes: { target: '_blank', rel: "noopener" },
     },
     {
-      name: 'Credit Card Inquiry',
-      url: '/dashboard',
+      name: 'Credit Cards',
+      url: '/wallet',
       icon: 'icon-credit-card',
       children: [
         {
+          name: 'Active Cards',
+          url: '/active-cards',
+          icon: 'icon-check',
+        },
+        {
           name: 'Recommendations',
-          url: '/dashboard',
+          url: '/wallet',
           icon: 'icon-puzzle',
         },
         {
@@ -59,7 +64,7 @@ export default {
     },
     {
       name: 'Travel',
-      url: '/dashboard',
+      url: '/wallet',
       icon: 'icon-globe',
       children: [
         {
@@ -71,7 +76,7 @@ export default {
         },
         {
           name: 'Request a hotel',
-          url: '/dashboard',
+          url: '/wallet',
           icon: 'icon-map',
           class: 'mt-auto',
           variant: 'success',
