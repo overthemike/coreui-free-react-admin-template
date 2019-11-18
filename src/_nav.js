@@ -18,11 +18,13 @@ export default {
       name: 'Award Wallet',
       url: 'https://awardwallet.com/',
       icon: 'icon-briefcase',
+      attributes: { target: '_blank', rel: "noopener" },
     },
     {
       name: 'My Travel Notebook',
       url: 'https://drive.google.com/drive/u/0/shared-with-me',
       icon: 'icon-note',
+      attributes: { target: '_blank', rel: "noopener" },
     },
     {
       name: 'Credit Card Inquiry',
@@ -50,6 +52,7 @@ export default {
       name: 'Meet with JJ',
       url: 'https://calendly.com/easygotraveler/checkin?month=2019-11',
       icon: 'icon-calendar',
+      attributes: { target: '_blank', rel: "noopener" },
     },
     {
       divider: true,
@@ -72,14 +75,6 @@ export default {
           icon: 'icon-map',
           class: 'mt-auto',
           variant: 'success',
-          attributes: { target: '_blank', rel: "noopener" },
-        },
-        {
-          name: 'Request a cruise',
-          url: '/dashboard',
-          icon: 'icon-map',
-          class: 'mt-auto',
-          variant: 'danger',
           attributes: { target: '_blank', rel: "noopener" },
         },
       ],
