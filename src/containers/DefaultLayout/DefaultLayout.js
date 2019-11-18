@@ -66,7 +66,7 @@ function DefaultLayout(props) {
                     />
                   ) : null;
                 })}
-                <Redirect from="/" to="/dashboard" />
+                <Redirect from="/" to="/wallet" />
               </Switch>
             </Suspense>
           </Container>
