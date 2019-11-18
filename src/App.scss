@@ -9,3 +9,9 @@
 @import '~simple-line-icons/css/simple-line-icons.css';
 // Import Main styles for this application
 @import './scss/style.scss';
+
+.wallet-avatar {
+  border-radius: 50%;
+  max-width: 95px;
+  max-height: 95px;
+}
