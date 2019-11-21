@@ -15,6 +15,7 @@ import {
 } from "@coreui/react";
 import logo from "../../assets/img/brand/black.png";
 import sygnet from "../../assets/img/brand/black.png";
+import {useAuth} from '../../hooks'
 
 const propTypes = {
   children: PropTypes.node
@@ -25,6 +26,7 @@ const defaultProps = {};
 function DefaultHeader(props) {
   // eslint-disable-next-line
   const { children, ...attributes } = props;
+  const { signout } = useAuth()
 
   return (
     <React.Fragment>
@@ -87,7 +89,7 @@ function DefaultHeader(props) {
             <DropdownItem>
               <i className="fa fa-shield" /> Lock Account
             </DropdownItem>
-            <DropdownItem onClick={e => this.props.onLogout(e)}>
+            <DropdownItem onClick={signout}>
               <i className="fa fa-lock" /> Logout
             </DropdownItem>
           </DropdownMenu>

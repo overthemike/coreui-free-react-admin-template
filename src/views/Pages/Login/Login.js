@@ -1,5 +1,5 @@
-import React from "react";
-import pic from '../../../assets/img/brand/black.png'
+import React, { useState } from "react"
+import pic from "../../../assets/img/brand/black.png"
 import {
   Button,
   Card,
@@ -13,9 +13,39 @@ import {
   InputGroupAddon,
   InputGroupText,
   Row
-} from "reactstrap";
+} from "reactstrap"
+import { useAuth } from "../../../hooks"
 
-function Login() {
+function Login(props) {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const { signin } = useAuth()
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    console.log(props)
+    try {
+      await signin(username, password)
+      console.log("umm")
+      props.history.push("/")
+    } catch (e) {
+      console.log(e)
+      console.log("BAD LOGIN")
+    }
+  }
+
+  // function handleSubmit(e) {
+  //   e.preventDefault()
+  //   signin(username, password)
+  //     .then(() => {
+  //       console.log("GOOD LOGIN")
+  //       props.history.push("/")
+  //     })
+  //     .catch(e => {
+  //       console.log("BAD LOGIN")
+  //     })
+  // }
+
   return (
     <div className="app flex-row align-items-center">
       <Container>
@@ -24,7 +54,7 @@ function Login() {
             <CardGroup>
               <Card className="p-4">
                 <CardBody>
-                  <Form>
+                  <Form onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <p className="text-muted">Sign In to your account</p>
                     <InputGroup className="mb-3">
@@ -37,6 +67,8 @@ function Login() {
                         type="text"
                         placeholder="Username"
                         autoComplete="username"
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
                       />
                     </InputGroup>
                     <InputGroup className="mb-4">
@@ -49,11 +81,13 @@ function Login() {
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                       />
                     </InputGroup>
                     <Row>
                       <Col xs="6">
-                        <Button color="primary" className="px-4">
+                        <Button type="submit" color="primary" className="px-4">
                           Login
                         </Button>
                       </Col>
@@ -85,7 +119,7 @@ function Login() {
         </Row>
       </Container>
     </div>
-  );
+  )
 }
 
-export default Login;
+export default Login
