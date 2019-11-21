@@ -49,7 +49,7 @@ function RequestCard() {
               <Col xs="12" md='6'>
                 <FormGroup>
                     <Label htmlFor="inquiry">My Inquiry</Label>
-                    <Input type="inquiry" name="inquiry" id="inquiry">
+                    <Input type="select" name="inquiry" id="inquiry">
                       <option value="0">Please select</option>
                       <option value="1">I'm ready for a new card</option>
                       <option value="2">Questions about an existing card</option>
@@ -63,13 +63,15 @@ function RequestCard() {
                     <Label>Is your Easy Go Wallet up to date?</Label>
                   </Col>
                   <Col md="8">
-                    <FormGroup check className="radio">
-                      <Input className="form-check-input" type="radio" id="walletYes" name="radios" value="option1" />
+                    <FormGroup check className="radio" id="upToDate">
+                      <Row>
+                      <Input className="form-check-input" type="radio" id="walletYes" name="radios" value="true" />
                       <Label check className="form-check-label" htmlFor="walletYes">Yes</Label>
-                    </FormGroup>
-                    <FormGroup check className="radio">
-                      <Input className="form-check-input" type="radio" id="walletNo" name="radios" value="option2" />
+                      </Row>
+                      <Row>
+                      <Input className="form-check-input" type="radio" id="walletNo" name="radios" value="false" />
                       <Label check className="form-check-label" htmlFor="walletNo">No</Label>
+                      </Row>
                     </FormGroup>
                   </Col>
                 </FormGroup>
@@ -89,8 +91,8 @@ function RequestCard() {
             </Row>
             </CardBody>
             <CardFooter>
-                <Button className="float-right" type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
-              </CardFooter>
+              <Button className="float-right" type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
+            </CardFooter>
           </Card>
         </Col>
       </>
