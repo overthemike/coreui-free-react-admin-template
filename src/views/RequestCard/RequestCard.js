@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
   Col,
   FormGroup,
@@ -37,16 +36,16 @@ function RequestCard(props) {
           <CardHeader>
             <strong>Member Credit Card Inquiry</strong>
           </CardHeader>
-          <Form onSubmit={handleSubmit}>
           <CardBody>
             Ready for a new credit card? Question about an existing card? Submit your request and we'll analyze your profile and provide options for your next move.
             <hr/>
+            <Form onSubmit={handleSubmit}>
             <Row>
               <Col xs="12" md='6'>
                 <FormGroup>
                     <Label htmlFor="inquiry">My Inquiry</Label>
                     <Input type="select" name="inquiry" id="inquiry" value={inquiry} onChange={e => setInquiry(e.target.value)}>
-                      <option value="0" disabled>Please select</option>
+                      <option value="0" >Please select</option>
                       <option value="I'm ready for a new card">I'm ready for a new card</option>
                       <option value="Questions about an existing card">Questions about an existing card</option>
                       <option value="Something Else(describe below)">Something Else(describe below)</option>
@@ -86,11 +85,9 @@ function RequestCard(props) {
                 </FormGroup>
               </Col>
             </Row>
-            </CardBody>
-            <CardFooter>
               <Button className="float-right" type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
-            </CardFooter>
             </Form>
+            </CardBody>
           </Card>
         </Col>
       </>
