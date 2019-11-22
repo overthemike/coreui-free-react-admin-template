@@ -2,7 +2,7 @@ export default {
   items: [
     {
       title: true,
-      name: 'Learn. Redeem. Wander.',
+      name: 'TravelWealth',
       url: '/wallet',
       badge: {
         variant: 'info',
@@ -17,13 +17,7 @@ export default {
     {
       name: 'Award Wallet',
       url: 'https://awardwallet.com/',
-      icon: 'icon-briefcase',
-      attributes: { target: '_blank', rel: "noopener" },
-    },
-    {
-      name: 'My Travel Notebook',
-      url: 'https://drive.google.com/drive/u/0/shared-with-me',
-      icon: 'icon-note',
+      icon: 'fas fa-chart-bar',
       attributes: { target: '_blank', rel: "noopener" },
     },
     {
@@ -51,7 +45,7 @@ export default {
     {
       name: 'Classroom',
       url: '/classroom',
-      icon: 'icon-pencil'
+      icon: 'fas fa-chalkboard-teacher'
     },
     {
       name: 'Meet with JJ',
@@ -77,12 +71,42 @@ export default {
         {
           name: 'Request a hotel',
           url: '/wallet',
-          icon: 'icon-map',
+          icon: 'fas fa-bed',
           class: 'mt-auto',
           variant: 'success',
           attributes: { target: '_blank', rel: "noopener" },
         },
       ],
+    },
+    {
+      name: 'Refer a Friend',
+      url: 'https://calendly.com/easygotraveler/checkin?month=2019-11',
+      icon: 'fas fa-users',
+      attributes: { target: '_blank', rel: "noopener" },
+    },
+    {
+      name: 'facebook',
+      url: '/request-flights',
+      icon: 'fab fa-facebook-f',
+    },
+    {
+      name: 'instagram',
+      url: '/wallet',
+      icon: 'fab fa-instagram',
+      attributes: { target: '_blank', rel: "noopener" },
+    },
+    {
+      name: 'twitter',
+      url: '/wallet',
+      icon: 'fab fa-twitter',
+      attributes: { target: '_blank', rel: "noopener" },
+    },
+    {
+      name: 'Deal Alert',
+      url: '/wallet',
+      icon: 'fab fa-twitter fas fa-bell',
+      class: 'mt-auto',
+      attributes: { target: '_blank', rel: "noopener", disabled:true },
     },
   ],
 };
