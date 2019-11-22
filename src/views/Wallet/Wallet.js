@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Row,
-  Badge,
-  Col,
-  Card,
-  CardBody,
-  CardHeader,
-  ListGroupItem,
-  ListGroup
-} from "reactstrap";
-import Widget02 from "../Widgets/Widget02";
+import { Row, Col, Card } from "reactstrap";
 import card from "../../assets/img/card.jpg";
 import requestCard from "../../assets/img/requestCard.jpg";
 import plane from "../../assets/img/plane.jpg";
