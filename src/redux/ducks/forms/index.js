@@ -29,29 +29,29 @@ export default (state = initialState, action) => {
 
 // action creators
 function submitForm(inquiry, wallet_updated, notes, dispatch) {
-  return new Promise((resolve, reject) => {
-    axios
-      .post(
-        "/customer-requests/card-inquiry/",
-        {
-          inquiry,
-          wallet_updated,
-          notes,
-          dispatch
-        },
-        { Authorization: "Token " + window.localStorage.getItem("token") }
-      )
-      .then(resp => {
-        dispatch({
-          type: REQUEST_CARD,
-          payload: { inquiry, wallet_updated, notes, dispatch }
-        });
-        resolve();
-      })
-      .catch(e => {
-        reject(e);
+  const accessToken = window.localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = "Token " + accessToken;
+  axios({
+    method: "post",
+    url: "/customer-requests/card-inquiry/",
+    data: {
+      inquiry,
+      wallet_updated,
+      notes,
+      dispatch
+    },
+    headers: { Authorization: "Token " + accessToken }
+  })
+    .then(response => {
+      console.log("I AM HERE", response);
+      return dispatch({
+        type: REQUEST_CARD,
+        payload: { inquiry, wallet_updated, notes, dispatch }
       });
-  });
+    })
+    .catch(function(error) {
+      console.log("ERROR", error);
+    });
 }
 // custom hooks
 export function useForms() {
