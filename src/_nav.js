@@ -10,18 +10,7 @@ export default {
       }
     },
     {
-      name: "Easy Go Wallet",
-      url: "/wallet",
-      icon: "icon-wallet"
-    },
-    {
-      name: "AwardWallet",
-      url: "https://awardwallet.com/",
-      icon: "fas fa-chart-bar",
-      attributes: { target: "_blank", rel: "noopener" }
-    },
-    {
-      name: "Credit Cards",
+      name: "Manage My Wallet",
       url: "/wallet",
       icon: "icon-credit-card",
       children: [
@@ -43,21 +32,7 @@ export default {
       ]
     },
     {
-      name: "Classroom",
-      url: "/classroom",
-      icon: "fas fa-chalkboard-teacher"
-    },
-    {
-      name: "Schedule a Check-In",
-      url: "https://calendly.com/easygotraveler/checkin?month=2019-11",
-      icon: "icon-calendar",
-      attributes: { target: "_blank", rel: "noopener" }
-    },
-    {
-      divider: true
-    },
-    {
-      name: "Travel",
+      name: "Request Travel",
       url: "/wallet",
       icon: "icon-globe",
       children: [
@@ -79,10 +54,9 @@ export default {
       ]
     },
     {
-      name: "Refer a Friend",
-      url: "https://calendly.com/easygotraveler/checkin?month=2019-11",
-      icon: "fas fa-users",
-      attributes: { target: "_blank", rel: "noopener" }
+      name: "Classroom",
+      url: "/classroom",
+      icon: "fas fa-chalkboard-teacher"
     },
     {
       name: "Deal Alert",
@@ -90,6 +64,56 @@ export default {
       icon: "fab fa-twitter fas fa-bell",
       attributes: { target: "_blank", rel: "noopener", disabled: true }
     },
+    {
+      name: "Schedule a Check-In",
+      url: "https://calendly.com/easygotraveler/checkin?month=2019-11",
+      icon: "icon-calendar",
+      attributes: { target: "_blank", rel: "noopener" }
+    },
+    {
+      name: "Refer a Friend",
+      url: "https://calendly.com/easygotraveler/checkin?month=2019-11",
+      icon: "fas fa-users",
+      attributes: { target: "_blank", rel: "noopener" }
+    },
+    {
+      name: "Useful Tools",
+      url: "/wallet",
+      icon: "icon-wrench",
+      children: [
+        {
+          name: "AwardWallet",
+          url: "https://awardwallet.com/",
+          icon: "icon-plane",
+          class: "mt-auto"
+        },
+        {
+          name: "Rakuten",
+          url: "https://rakuten.com",
+          icon: "icon-plane",
+          class: "mt-auto"
+        },
+        {
+          name: "Plastiq",
+          url: "https://plastiq.com",
+          icon: "fas fa-bed",
+          class: "mt-auto",
+          attributes: { target: "_blank", rel: "noopener" }
+        },
+        {
+          name: "Credit Karma",
+          url: "https://creditkarma.com",
+          icon: "fas fa-bed",
+          class: "mt-auto",
+          attributes: { target: "_blank", rel: "noopener" }
+        }
+      ]
+    },
+
+    {
+      divider: true
+    },
+
     {
       name: "facebook",
       url: "/request-flights",
