@@ -51,7 +51,6 @@ function DefaultLayout(props) {
           <AppSidebarMinimizer />
         </AppSidebar>
         <main className="main">
-          <AppBreadcrumb appRoutes={routes} router={router} />
           <Container fluid>
             <Suspense fallback={loading()}>
               <Switch>
