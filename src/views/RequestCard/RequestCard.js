@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Button,
   Card,
@@ -7,12 +7,29 @@ import {
   CardHeader,
   Col,
   FormGroup,
+  Form,
   Input,
   Label,
   Row,
 } from 'reactstrap';
+import {useForms} from '../../hooks'
 
-function RequestCard() {
+function RequestCard(props) {
+  const [inquiry, setInquiry] = useState("")
+  const [wallet_updated, setWallet] = useState("")
+  const [notes, setNotes] = useState("")
+  const { requestCard } = useForms()
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    requestCard(inquiry, wallet_updated, notes)
+      .then(() => {
+        console.log("yoooo")
+      })
+      .catch(e => {
+        console.log("nope")
+      })
+  }
     return (
       <>
       <Col>
@@ -20,40 +37,19 @@ function RequestCard() {
           <CardHeader>
             <strong>Member Credit Card Inquiry</strong>
           </CardHeader>
+          <Form onSubmit={handleSubmit}>
           <CardBody>
             Ready for a new credit card? Question about an existing card? Submit your request and we'll analyze your profile and provide options for your next move.
             <hr/>
             <Row>
               <Col xs="12" md='6'>
                 <FormGroup>
-                  <Label htmlFor="fname">First Name</Label>
-                  <Input type="text" id="fname" placeholder="Enter your first name" required />
-                </FormGroup>
-              </Col>
-              <Col xs="12" md='6'>
-                <FormGroup>
-                  <Label htmlFor="lname">Last Name</Label>
-                  <Input type="text" id="lname" placeholder="Enter your last name" required />
-                </FormGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs="12" md="12">
-                <FormGroup>
-                  <Label htmlFor="email">Email</Label>
-                  <Input type="email" id="email" placeholder="example@example.com" required />
-                </FormGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs="12" md='6'>
-                <FormGroup>
                     <Label htmlFor="inquiry">My Inquiry</Label>
-                    <Input type="select" name="inquiry" id="inquiry">
-                      <option value="0">Please select</option>
-                      <option value="1">I'm ready for a new card</option>
-                      <option value="2">Questions about an existing card</option>
-                      <option value="2">Something Else(describe below)</option>
+                    <Input type="select" name="inquiry" id="inquiry" value={inquiry} onChange={e => setInquiry(e.target.value)}>
+                      <option value="0" disabled>Please select</option>
+                      <option value="I'm ready for a new card">I'm ready for a new card</option>
+                      <option value="Questions about an existing card">Questions about an existing card</option>
+                      <option value="Something Else(describe below)">Something Else(describe below)</option>
                     </Input>
                 </FormGroup>
               </Col>
@@ -63,13 +59,13 @@ function RequestCard() {
                     <Label>Is your Easy Go Wallet up to date?</Label>
                   </Col>
                   <Col md="8">
-                    <FormGroup check className="radio" id="upToDate">
+                    <FormGroup check className="radio" id="wallet_updated" value={wallet_updated} onChange={e => setWallet(e.target.value)}>
                       <Row>
-                      <Input className="form-check-input" type="radio" id="walletYes" name="radios" value="true" />
+                      <Input className="form-check-input" type="radio" id="walletYes" name="radios" value="yes" />
                       <Label check className="form-check-label" htmlFor="walletYes">Yes</Label>
                       </Row>
                       <Row>
-                      <Input className="form-check-input" type="radio" id="walletNo" name="radios" value="false" />
+                      <Input className="form-check-input" type="radio" id="walletNo" name="radios" value="no" />
                       <Label check className="form-check-label" htmlFor="walletNo">No</Label>
                       </Row>
                     </FormGroup>
@@ -84,7 +80,8 @@ function RequestCard() {
                     <Label htmlFor="notes">Notes/Instructions</Label>
                   </Col>
                   <Col xs="12" md="9">
-                    <Input type="textarea" name="notes" id="notes" rows="3" />
+                    <Input type="textarea" name="notes" id="notes" rows="3" value={notes}
+                        onChange={e => setNotes(e.target.value)}/>
                   </Col>
                 </FormGroup>
               </Col>
@@ -93,6 +90,7 @@ function RequestCard() {
             <CardFooter>
               <Button className="float-right" type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
             </CardFooter>
+            </Form>
           </Card>
         </Col>
       </>

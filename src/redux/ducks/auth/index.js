@@ -82,7 +82,6 @@ function login(username, password, dispatch) {
 }
 
 function logout() {
-  console.log("logout")
   axios.defaults.headers.common["Authorization"] = ""
   window.localStorage.removeItem("token")
   return { type: LOGOUT }

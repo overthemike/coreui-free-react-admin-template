@@ -11,7 +11,6 @@ ListGroup,
 } from 'reactstrap';
 import Widget02 from "../Widgets/Widget02"
 
-
 function Wallet() {
   return (
     <div className="animated fadeIn">

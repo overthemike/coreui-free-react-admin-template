@@ -26,25 +26,11 @@ function Login(props) {
     console.log(props)
     try {
       await signin(username, password)
-      console.log("umm")
       props.history.push("/")
     } catch (e) {
       console.log(e)
-      console.log("BAD LOGIN")
     }
   }
-
-  // function handleSubmit(e) {
-  //   e.preventDefault()
-  //   signin(username, password)
-  //     .then(() => {
-  //       console.log("GOOD LOGIN")
-  //       props.history.push("/")
-  //     })
-  //     .catch(e => {
-  //       console.log("BAD LOGIN")
-  //     })
-  // }
 
   return (
     <div className="app flex-row align-items-center">
