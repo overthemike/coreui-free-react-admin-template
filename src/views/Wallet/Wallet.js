@@ -25,87 +25,87 @@ function Wallet() {
       </Row>
       <Row>
         <Col xs="12" sm="6" md="4">
-          <Card className="card card-blog">
-            <div className="card-image">
-              <a href="/#">
-                <img className="card-img" src={card} alt="yep" />
-                <div className="card-caption">Manage Cards</div>
+          <Card className="mainCard mainCard-blog">
+            <div className="mainCard-image">
+              <a href="/manage-wallet">
+                <img className="img" src={card} alt="yep" />
+                <div className="mainCard-caption">Manage Cards</div>
               </a>
             </div>
-            <div className="table">
-              <h6 className="category text-info">heading</h6>
-              <p>category text-info</p>
+            <div className="mainCard-table">
+              <h6 className="mainCard-category text-info">heading</h6>
+              <p>mainCard-category text-info</p>
             </div>
           </Card>
         </Col>
         <Col xs="12" sm="6" md="4">
-          <Card className="card card-blog">
-            <div className="card-image">
+          <Card className="mainCard mainCard-blog">
+            <div className="mainCard-image">
               <a href="/#">
-                <img className="card-img" src={requestCard} alt="yep" />
-                <div className="card-caption">Request a Card</div>
+                <img className="img" src={requestCard} alt="yep" />
+                <div className="mainCard-caption">Request a Card</div>
               </a>
             </div>
-            <div className="table">
-              <h6 className="category text-info">heading</h6>
-              <p>category text-info</p>
+            <div className="mainCard-table">
+              <h6 className="mainCard-category text-info">heading</h6>
+              <p>mainCard-category text-info</p>
             </div>
           </Card>
         </Col>
         <Col xs="12" sm="6" md="4">
-          <Card className="card card-blog">
-            <div className="card-image">
+          <Card className="mainCard mainCard-blog">
+            <div className="mainCard-image">
               <a href="/#">
-                <img className="card-img" src={classRoom} alt="yep" />
-                <div className="card-caption">Classroom</div>
+                <img className="img" src={classRoom} alt="yep" />
+                <div className="mainCard-caption">Classroom</div>
               </a>
             </div>
-            <div className="table">
-              <h6 className="category text-info">heading</h6>
-              <p>category text-info</p>
+            <div className="mainCard-table">
+              <h6 className="mainCard-category text-info">heading</h6>
+              <p>mainCard-category text-info</p>
             </div>
           </Card>
         </Col>
       </Row>
       <Row>
         <Col xs="12" sm="6" md="4">
-          <Card className="card card-blog">
-            <div className="card-image">
+          <Card className="mainCard mainCard-blog">
+            <div className="mainCard-image">
               <a href="/#">
-                <img className="card-img" src={plane} alt="yep" />
-                <div className="card-caption">Request Flight Booking</div>
+                <img className="img" src={plane} alt="yep" />
+                <div className="mainCard-caption">Request Flight Booking</div>
               </a>
             </div>
-            <div className="table">
-              <h6 className="category text-info">heading</h6>
+            <div className="mainCard-table">
+              <h6 className="mainCard-category text-info">heading</h6>
+              <p>mainCard-category text-info</p>
+            </div>
+          </Card>
+        </Col>
+        <Col xs="12" sm="6" md="4">
+          <Card className="mainCard mainCard-blog">
+            <div className="mainCard-image">
+              <a href="/#">
+                <img className="img" src={hotel} alt="yep" />
+                <div className="mainCard-caption">Request Hotel Booking</div>
+              </a>
+            </div>
+            <div className="mainCard-table">
+              <h6 className="mainCard-category text-info">heading</h6>
               <p>category text-info</p>
             </div>
           </Card>
         </Col>
         <Col xs="12" sm="6" md="4">
-          <Card className="card card-blog">
-            <div className="card-image">
+          <Card className="mainCard mainCard-blog">
+            <div className="mainCard-image">
               <a href="/#">
-                <img className="card-img" src={hotel} alt="yep" />
-                <div className="card-caption">Request Hotel Booking</div>
+                <img className="img" src={schedule} alt="yep" />
+                <div className="mainCard-caption">Schedule a Check-In</div>
               </a>
             </div>
-            <div className="table">
-              <h6 className="category text-info">heading</h6>
-              <p>category text-info</p>
-            </div>
-          </Card>
-        </Col>
-        <Col xs="12" sm="6" md="4">
-          <Card className="card card-blog">
-            <div className="card-image">
-              <a href="/#">
-                <img className="card-img" src={schedule} alt="yep" />
-                <div className="card-caption">Schedule a Check-In</div>
-              </a>
-            </div>
-            <div className="table">
-              <h6 className="category text-info">heading</h6>
+            <div className="mainCard-table">
+              <h6 className="mainCard-category text-info">heading</h6>
               <p>category text-info</p>
             </div>
           </Card>

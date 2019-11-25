@@ -11,25 +11,8 @@ export default {
     },
     {
       name: "Manage My Wallet",
-      url: "/wallet",
-      icon: "icon-credit-card",
-      children: [
-        {
-          name: "Active Cards",
-          url: "/active-cards",
-          icon: "icon-check"
-        },
-        {
-          name: "Recommendations",
-          url: "/wallet",
-          icon: "icon-puzzle"
-        },
-        {
-          name: "Request a new card",
-          url: "/request-card",
-          icon: "icon-plus"
-        }
-      ]
+      url: "/manage-wallet",
+      icon: "icon-credit-card"
     },
     {
       name: "Request Travel",

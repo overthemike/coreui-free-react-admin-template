@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 
 // action type definitions
-const REQUEST_CARD = "auth/REQUEST_CARD";
+const GET_CARDS = "wallet/GET_CARDS";
 
 // initial state
 const initialState = {
@@ -15,12 +15,10 @@ const initialState = {
 // reducer (MUST BE DEFAULT EXPORT)
 export default (state = initialState, action) => {
   switch (action.type) {
-    case REQUEST_CARD:
+    case GET_CARDS:
       return {
         ...state,
-        inquiry: action.payload.inquiry,
-        wallet_updated: action.payload.wallet,
-        notes: action.payload.notes
+        data: action.data
       };
     default:
       return state;
@@ -28,40 +26,30 @@ export default (state = initialState, action) => {
 };
 
 // action creators
-function submitForm(inquiry, wallet_updated, notes, dispatch) {
+function getCards() {
   const accessToken = window.localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = "Token " + accessToken;
   axios({
-    method: "post",
-    url: "/customer-requests/card-inquiry/",
-    data: {
-      inquiry,
-      wallet_updated,
-      notes,
-      dispatch
-    },
+    method: "get",
+    url: "/cards/",
     headers: { Authorization: "Token " + accessToken }
   })
     .then(response => {
-      return dispatch({
-        type: REQUEST_CARD,
-        payload: { inquiry, wallet_updated, notes, dispatch }
-      });
+      console.log("I AM HERE", response);
     })
     .catch(function(error) {
       console.log("ERROR", error);
     });
 }
 // custom hooks
-export function useForms() {
+export function useWallet() {
   const dispatch = useDispatch();
   const inquiry = useSelector(appState => appState.formState.inquiry);
   const wallet_updated = useSelector(
     appState => appState.formState.wallet_updated
   );
   const notes = useSelector(appState => appState.formState.notes);
-  const requestCard = (inquiry, wallet_updated, notes) =>
-    submitForm(inquiry, wallet_updated, notes, dispatch);
+  const fetchCards = () => getCards(dispatch);
 
-  return { inquiry, wallet_updated, notes, requestCard };
+  return { inquiry, wallet_updated, notes, fetchCards };
 }
