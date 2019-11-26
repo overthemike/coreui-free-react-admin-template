@@ -50,7 +50,7 @@ function getMyCards() {
     const accessToken = window.localStorage.getItem("token");
     axios.defaults.headers.common["Authorization"] = "Token " + accessToken;
     axios
-      .get("card-accounts/" + userId)
+      .get("card-accounts/?user_id=" + userId)
       .then(resp => {
         dispatch({
           type: GET_MY_CARDS,

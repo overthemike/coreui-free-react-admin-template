@@ -15,9 +15,6 @@ function Wallet() {
       <Row>
         <div className="mx-auto">
           <h1>Welcome, {firstName}</h1>
-          {/* {firstName.map(name => (
-            <div>name</div>
-          ))} */}
         </div>
       </Row>
       <Row>
