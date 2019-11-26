@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Row,
   Table,
@@ -13,20 +13,15 @@ import {
   Col,
   Pagination,
   PaginationItem,
-  PaginationLink,
-  Badge
+  PaginationLink
 } from "reactstrap";
 import RequestCard from "../RequestCard/RequestCard";
 import { useWallet } from "../../hooks";
 
 function ManageWallet(props) {
   const [accordion, setAccordion] = useState([true, false, false]);
-  const { fetchCards } = useWallet();
   const [modal, setModal] = useState(false);
-
-  useEffect(() => {
-    fetchCards();
-  });
+  const { cards } = useWallet();
 
   function toggleAccordion(tab) {
     const prevState = accordion;
@@ -88,48 +83,19 @@ function ManageWallet(props) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Yiorgos Avraamu</td>
-                <td>2012/01/01</td>
-                <td>Member</td>
-                <td>
-                  <Badge color="success">Active</Badge>
-                </td>
-              </tr>
-              <tr>
-                <td>Avram Tarasios</td>
-                <td>2012/02/01</td>
-                <td>Staff</td>
-                <td>
-                  <Badge color="danger">Banned</Badge>
-                </td>
-              </tr>
-              <tr>
-                <td>Quintin Ed</td>
-                <td>2012/02/01</td>
-                <td>Admin</td>
-                <td>
-                  <Badge color="secondary">Inactive</Badge>
-                </td>
-              </tr>
-              <tr>
-                <td>Enéas Kwadwo</td>
-                <td>2012/03/01</td>
-                <td>Member</td>
-                <td>
-                  <Badge color="warning">Pending</Badge>
-                </td>
-              </tr>
-              <tr>
-                <td>Agapetus Tadeáš</td>
-                <td>2012/01/21</td>
-                <td>Staff</td>
-                <td>
-                  <Badge color="success">Active</Badge>
-                </td>
-              </tr>
+              {cards.map(card => (
+                <tr key={card.id}>
+                  <td>{card.name}</td>
+                  <td>{card.type}</td>
+                  <td>
+                    <button className="button muted-button">Edit</button>
+                    <button className="button muted-button">Delete</button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
+
           <Pagination>
             <PaginationItem disabled>
               <PaginationLink previous tag="button">
