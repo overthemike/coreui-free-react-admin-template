@@ -12,14 +12,15 @@ import {
   ModalHeader
 } from "reactstrap";
 import RequestCard from "../RequestCard/RequestCard";
-import { useWallet } from "../../hooks";
+import { useRecCards, useMyCards } from "../../hooks";
 import DataTable from "react-data-table-component";
 
 function ManageWallet(props) {
   const [accordion, setAccordion] = useState([true, false, false]);
   const [pending, setPending] = React.useState(true);
   const [modal, setModal] = useState(false);
-  const { recCards, myCards } = useWallet();
+  const { recCards } = useRecCards();
+  const { myCards } = useMyCards();
   const data = myCards;
   const columns = [
     {
