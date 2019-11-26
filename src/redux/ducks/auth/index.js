@@ -23,6 +23,8 @@ const LOGOUT = "auth/LOGOUT";
 const initialState = {
   isAuthenticated: alreadyAuthed,
   username: "",
+  firstName: "",
+  lastName: "",
   loading: false,
   error: ""
 };
@@ -37,7 +39,9 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         isAuthenticated: true,
-        username: action.payload
+        username: action.payload.username,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName
       };
     case LOGIN_FAILURE:
       return {
@@ -62,11 +66,21 @@ function login(username, password, dispatch) {
       .post("/api-token-auth/", { username, password })
       .then(resp => {
         const token = resp.data.token;
+        const userId = resp.data.user_id;
+        const firstName = resp.data.first_name;
+        const lastName = resp.data.last_name;
         window.localStorage.setItem("token", token);
+        window.localStorage.setItem("userId", userId);
+        window.localStorage.setItem("firstName", firstName);
+        window.localStorage.setItem("lastName", lastName);
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         dispatch({
           type: LOGIN_SUCCESS,
-          payload: username
+          payload: {
+            username,
+            firstName,
+            lastName
+          }
         });
         resolve();
       })
@@ -95,10 +109,23 @@ export function useAuth() {
     appState => appState.authState.isAuthenticated
   );
   const username = useSelector(appState => appState.authState.username);
+  const userId = useSelector(appState => appState.authState.userId);
+  const firstName = useSelector(appState => appState.authState.firstName);
+  const lastName = useSelector(appState => appState.authState.lastName);
   const loading = useSelector(appState => appState.authState.loading);
   const error = useSelector(appState => appState.authState.error);
   const signin = (username, password) => login(username, password, dispatch);
   const signout = () => dispatch(logout());
 
-  return { isAuthenticated, username, loading, error, signin, signout };
+  return {
+    isAuthenticated,
+    username,
+    loading,
+    error,
+    signin,
+    signout,
+    userId,
+    firstName,
+    lastName
+  };
 }

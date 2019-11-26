@@ -8,11 +8,16 @@ import schedule from "../../assets/img/schedule.jpg";
 import classRoom from "../../assets/img/classRoom.jpg";
 
 function Wallet() {
+  const firstName = localStorage.firstName;
+
   return (
     <div className="animated fadeIn">
       <Row>
         <div className="mx-auto">
-          <h1>Welcome, JJ</h1>
+          <h1>Welcome, {firstName}</h1>
+          {/* {firstName.map(name => (
+            <div>name</div>
+          ))} */}
         </div>
       </Row>
       <Row>

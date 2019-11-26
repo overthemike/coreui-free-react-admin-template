@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import pic from "../../../assets/img/brand/black.png"
+import React, { useState } from "react";
+import pic from "../../../assets/img/brand/black.png";
 import {
   Button,
   Card,
@@ -13,22 +13,21 @@ import {
   InputGroupAddon,
   InputGroupText,
   Row
-} from "reactstrap"
-import { useAuth } from "../../../hooks"
+} from "reactstrap";
+import { useAuth } from "../../../hooks";
 
 function Login(props) {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const { signin } = useAuth()
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { signin } = useAuth();
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    console.log(props)
+    e.preventDefault();
     try {
-      await signin(username, password)
-      props.history.push("/")
+      await signin(username, password);
+      props.history.push("/");
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   }
 
@@ -105,7 +104,7 @@ function Login(props) {
         </Row>
       </Container>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
