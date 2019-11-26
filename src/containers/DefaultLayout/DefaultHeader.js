@@ -4,10 +4,11 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  Nav
+  Nav,
+  NavItem
 } from "reactstrap";
 import PropTypes from "prop-types";
-
+import { Link } from "react-router-dom";
 import { AppNavbarBrand, AppSidebarToggler } from "@coreui/react";
 import logo from "../../assets/img/brand/black.png";
 import sygnet from "../../assets/img/brand/black.png";
@@ -33,7 +34,13 @@ function DefaultHeader(props) {
       />
       <AppSidebarToggler className="d-md-down-none" display="lg" />
 
-      <Nav className="d-md-down-none" navbar></Nav>
+      <Nav className="d-md-down-none" navbar>
+        <NavItem className="px-3">
+          <Link to="/" className="nav-link">
+            Wallet
+          </Link>
+        </NavItem>
+      </Nav>
       <Nav className="ml-auto" navbar>
         <UncontrolledDropdown nav direction="down">
           <DropdownToggle nav>

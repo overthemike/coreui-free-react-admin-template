@@ -86,7 +86,7 @@ export default {
         {
           name: "Credit Karma",
           url: "https://creditkarma.com",
-          icon: "fas fa-id-card-alt",
+          icon: "fas fa-chart-line",
           class: "mt-auto",
           attributes: { target: "_blank", rel: "noopener" }
         }

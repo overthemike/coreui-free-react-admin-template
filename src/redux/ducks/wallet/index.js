@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
   }
 };
 // action creators
-function getCards() {
+function getRecCards() {
   return dispatch => {
     const accessToken = window.localStorage.getItem("token");
     axios.defaults.headers.common["Authorization"] = "Token " + accessToken;
@@ -39,10 +39,10 @@ function getCards() {
 }
 export function useWallet() {
   const dispatch = useDispatch();
-  const cards = useSelector(appState => appState.walletState.cards);
+  const recCards = useSelector(appState => appState.walletState.cards);
 
   useEffect(() => {
-    dispatch(getCards());
+    dispatch(getRecCards());
   }, [dispatch]);
-  return { cards };
+  return { recCards };
 }
