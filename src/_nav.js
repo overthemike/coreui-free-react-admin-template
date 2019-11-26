@@ -67,26 +67,26 @@ export default {
         {
           name: "AwardWallet",
           url: "https://awardwallet.com/",
-          icon: "icon-plane",
+          icon: "fas fa-chart-bar",
           class: "mt-auto"
         },
         {
           name: "Rakuten",
           url: "https://rakuten.com",
-          icon: "icon-plane",
+          icon: "fas fa-shopping-cart",
           class: "mt-auto"
         },
         {
           name: "Plastiq",
           url: "https://plastiq.com",
-          icon: "fas fa-bed",
+          icon: "fas fa-money-check",
           class: "mt-auto",
           attributes: { target: "_blank", rel: "noopener" }
         },
         {
           name: "Credit Karma",
           url: "https://creditkarma.com",
-          icon: "fas fa-bed",
+          icon: "fas fa-id-card-alt",
           class: "mt-auto",
           attributes: { target: "_blank", rel: "noopener" }
         }
