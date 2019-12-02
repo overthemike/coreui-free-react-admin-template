@@ -11,7 +11,8 @@ import {
   ModalBody,
   ModalHeader
 } from "reactstrap";
-import RequestCard from "../RequestCard/RequestCard";
+import RequestCard from "../RequestForms/RequestCard";
+import AddCard from "../RequestForms/AddMyCard";
 import { useRecCards, useMyCards } from "../../hooks";
 import DataTable from "react-data-table-component";
 
@@ -19,9 +20,11 @@ function ManageWallet(props) {
   const [accordion, setAccordion] = useState([true, false, false]);
   const [pending, setPending] = React.useState(true);
   const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
   const { recCards } = useRecCards();
-  const { myCards } = useMyCards();
-  const data = myCards;
+  const { MyCards } = useMyCards();
+  console.log(MyCards);
+  const data = MyCards;
   const columns = [
     {
       name: "Name",
@@ -71,6 +74,9 @@ function ManageWallet(props) {
   function toggle() {
     setModal(!modal);
   }
+  function toggle2() {
+    setModal2(!modal2);
+  }
 
   const CustomLoader = () => (
     <div>
@@ -82,6 +88,9 @@ function ManageWallet(props) {
     <>
       <Button onClick={toggle} className="mr-1">
         New Card
+      </Button>
+      <Button onClick={toggle2} className="mr-1">
+        add card
       </Button>
       <div id="accordion">
         <Card className="mb-0">
@@ -142,6 +151,12 @@ function ManageWallet(props) {
         <ModalHeader toggle={toggle}>Member Credit Card Inquiry</ModalHeader>
         <ModalBody>
           <RequestCard />
+        </ModalBody>
+      </Modal>
+      <Modal isOpen={modal2} toggle={toggle2} className={props.className}>
+        <ModalHeader toggle={toggle2}>Add a new card</ModalHeader>
+        <ModalBody>
+          <AddCard />
         </ModalBody>
       </Modal>
     </>

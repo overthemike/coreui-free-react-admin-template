@@ -3,7 +3,9 @@ import React from "react";
 const Wallet = React.lazy(() => import("./views/Wallet/Wallet"));
 const Classroom = React.lazy(() => import("./views/Classroom"));
 const RequestFlights = React.lazy(() => import("./views/RequestFlights"));
-const RequestCard = React.lazy(() => import("./views/RequestCard"));
+const RequestCard = React.lazy(() =>
+  import("./views/RequestForms/RequestCard")
+);
 const ManageWallet = React.lazy(() => import("./views/ManageWallet"));
 const Users = React.lazy(() => import("./views/Users/Users"));
 const User = React.lazy(() => import("./views/Users/User"));

@@ -4,11 +4,13 @@ import { useEffect } from "react";
 // action type definitions
 const GET_MY_CARDS = "wallet/GET_MY_CARDS";
 const ADD_MY_CARD = "wallet/ADD_MY_CARD";
+
+const userId = window.localStorage.getItem("userId");
+
 // initial state
 const initialState = {
-  cards: []
+  cards: [{ type: "", date_opened: "", status: "", user: userId, card: "" }]
 };
-const userId = window.localStorage.getItem("userId");
 
 // reducer (MUST BE DEFAULT EXPORT)
 export default (state = initialState, action) => {
@@ -24,6 +26,7 @@ export default (state = initialState, action) => {
         type: "",
         date_opened: "",
         status: "",
+        card: "",
         user: userId
       };
     default:
@@ -48,36 +51,41 @@ function getMyCards() {
       });
   };
 }
-// function addCard(inquiry, wallet_updated, notes, dispatch) {
-//   const accessToken = window.localStorage.getItem("token");
-//   axios.defaults.headers.common["Authorization"] = "Token " + accessToken;
-//   axios({
-//     method: "post",
-//     url: "/card-accounts/",
-//     data: {
-//       inquiry,
-//       wallet_updated,
-//       notes,
-//       dispatch
-//     },
-//     headers: { Authorization: "Token " + accessToken }
-//   })
-//     .then(response => {
-//       return dispatch({
-//         type: ADD_MY_CARD,
-//         payload: { inquiry, wallet_updated, notes, dispatch }
-//       });
-//     })
-//     .catch(function(error) {
-//       console.log("ERROR", error);
-//     });
-// }
+function addCard(type, date_opened, status, user, card, dispatch) {
+  const accessToken = window.localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = "Token " + accessToken;
+  axios({
+    method: "post",
+    url: "/card-accounts/",
+    data: {
+      type: type,
+      date_opened: date_opened,
+      status: status,
+      user: userId,
+      card: card
+    },
+    headers: { Authorization: "Token " + accessToken }
+  })
+    .then(response => {
+      console.log("response", response);
+      return dispatch({
+        type: ADD_MY_CARD,
+        payload: { type, date_opened, status, user, card }
+      });
+    })
+    .catch(function(error) {
+      console.log("ERROR", error);
+    });
+}
+
 export function useMyCards() {
   const dispatch = useDispatch();
   const MyCards = useSelector(appState => appState.myCardsState.cards);
+  const newCard = (type, date_opened, card, status, user) =>
+    addCard(type, date_opened, status, user, card, dispatch);
 
   useEffect(() => {
     dispatch(getMyCards());
   }, [dispatch]);
-  return { MyCards };
+  return { MyCards, newCard };
 }

@@ -22,7 +22,6 @@ function RequestCard(props) {
           your request and we'll analyze your profile and provide options for
           your next move.
         </p>
-        <hr />
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col xs="12" md="6">
