@@ -9,7 +9,6 @@ function RequestCard(props) {
   const [card, setCard] = useState("");
   const { newCard } = useMyCards();
   const { recCards } = useRecCards();
-  console.log("here", recCards);
 
   function handleSubmit(e) {
     e.preventDefault();

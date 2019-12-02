@@ -29,7 +29,7 @@ function Wallet() {
         <Col xs="12" sm="6" md="4">
           <Card className="mainCard mainCard-blog">
             <div className="mainCard-image">
-              <a href="/manage-wallet">
+              <a href="#/manage-wallet">
                 <img className="img" src={card} alt="yep" />
                 <div className="mainCard-caption">Manage Cards</div>
               </a>
@@ -57,7 +57,7 @@ function Wallet() {
         <Col xs="12" sm="6" md="4">
           <Card className="mainCard mainCard-blog">
             <div className="mainCard-image">
-              <a href="/#">
+              <a href="#/classroom">
                 <img className="img" src={classRoom} alt="yep" />
                 <div className="mainCard-caption">Classroom</div>
               </a>
@@ -73,7 +73,7 @@ function Wallet() {
         <Col xs="12" sm="6" md="4">
           <Card className="mainCard mainCard-blog">
             <div className="mainCard-image">
-              <a href="/#">
+              <a href="#/request-flights">
                 <img className="img" src={plane} alt="yep" />
                 <div className="mainCard-caption">Request Flight Booking</div>
               </a>
@@ -87,7 +87,7 @@ function Wallet() {
         <Col xs="12" sm="6" md="4">
           <Card className="mainCard mainCard-blog">
             <div className="mainCard-image">
-              <a href="/#">
+              <a href="#/request-hotel">
                 <img className="img" src={hotel} alt="yep" />
                 <div className="mainCard-caption">Request Hotel Booking</div>
               </a>

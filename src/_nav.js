@@ -28,11 +28,10 @@ export default {
         },
         {
           name: "Request a hotel",
-          url: "/wallet",
+          url: "/request-hotel",
           icon: "fas fa-bed",
           class: "mt-auto",
-          variant: "success",
-          attributes: { target: "_blank", rel: "noopener" }
+          variant: "success"
         }
       ]
     },

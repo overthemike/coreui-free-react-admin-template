@@ -7,12 +7,10 @@ function RequestCard(props) {
   const [wallet_updated, setWallet] = useState("");
   const [notes, setNotes] = useState("");
   const { requestCard } = useForms();
-  const [modal, setModal] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     requestCard(inquiry, wallet_updated, notes);
-    setModal(!modal);
   }
   return (
     <>
