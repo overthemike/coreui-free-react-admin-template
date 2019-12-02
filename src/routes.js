@@ -8,8 +8,6 @@ const RequestCard = React.lazy(() =>
   import("./views/RequestForms/RequestCard")
 );
 const ManageWallet = React.lazy(() => import("./views/ManageWallet"));
-const Users = React.lazy(() => import("./views/Users/Users"));
-const User = React.lazy(() => import("./views/Users/User"));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -38,9 +36,7 @@ const routes = [
     exact: true,
     name: "Manage Wallet",
     component: ManageWallet
-  },
-  { path: "/users", exact: true, name: "Users", component: Users },
-  { path: "/users/:id", exact: true, name: "User Details", component: User }
+  }
 ];
 
 export default routes;
