@@ -138,7 +138,7 @@ function RequestHotel() {
                     value={guestNames}
                     onChange={e => setguestNames(e.target.value)}
                   >
-                    <Label htmlFor="depart">Guests Per Room </Label>
+                    <Label htmlFor="depart">Guests Names </Label>
                     <Input type="text" id="depart" required />
                   </FormGroup>
                 </Col>
