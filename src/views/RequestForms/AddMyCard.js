@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, FormGroup, Form, Input, Label, Row } from "reactstrap";
-import { useMyCards } from "../../hooks";
+import { useMyCards, useRecCards } from "../../hooks";
 
 function RequestCard(props) {
   const [type, setType] = useState("");
@@ -8,7 +8,8 @@ function RequestCard(props) {
   const [status, setStatus] = useState("");
   const [card, setCard] = useState("");
   const { newCard } = useMyCards();
-  console.log(card);
+  const { recCards } = useRecCards();
+  console.log("here", recCards);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -55,10 +56,11 @@ function RequestCard(props) {
                   value={card}
                   onChange={e => setCard(e.target.value)}
                 >
-                  <option value="0">Please select</option>
-                  <option value="1">I'm ready for a new card</option>
-                  <option value="2">Questions about an existing card</option>
-                  <option value="3">Something Else(describe below)</option>
+                  {recCards.map(card => (
+                    <option key={card.id} value={card.id}>
+                      {card.name}
+                    </option>
+                  ))}
                 </Input>
               </FormGroup>
             </Col>

@@ -17,13 +17,12 @@ import { useRecCards, useMyCards } from "../../hooks";
 import DataTable from "react-data-table-component";
 
 function ManageWallet(props) {
-  const [accordion, setAccordion] = useState([true, false, false]);
+  const [collapse, setCollapse] = useState(false);
   const [pending, setPending] = React.useState(true);
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const { recCards } = useRecCards();
   const { MyCards } = useMyCards();
-  console.log(MyCards);
   const data = MyCards;
   const columns = [
     {
@@ -64,18 +63,15 @@ function ManageWallet(props) {
     return () => clearTimeout(timeout);
   }, []);
 
-  function toggleAccordion(tab) {
-    const prevState = accordion;
-    const state = prevState.map((x, index) => (tab === index ? !x : false));
-
-    setAccordion(state);
-  }
-
   function toggle() {
     setModal(!modal);
   }
   function toggle2() {
     setModal2(!modal2);
+  }
+
+  function toggleAccordion() {
+    setCollapse(!collapse);
   }
 
   const CustomLoader = () => (
@@ -86,58 +82,54 @@ function ManageWallet(props) {
 
   return (
     <>
-      <Button onClick={toggle} className="mr-1">
-        New Card
-      </Button>
-      <Button onClick={toggle2} className="mr-1">
-        add card
-      </Button>
-      <div id="accordion">
-        <Card className="mb-0">
-          <CardHeader id="headingThree">
-            <Button
-              block
-              color="link"
-              className="text-left m-0 p-0"
-              onClick={() => toggleAccordion(2)}
-              aria-expanded={accordion[2]}
-              aria-controls="collapseThree"
-            >
-              <h5 className="m-0 p-0">Recommended Cards</h5>
-            </Button>
-          </CardHeader>
-          <Collapse
-            isOpen={accordion[2]}
-            data-parent="#accordion"
-            id="collapseThree"
-          >
-            <CardBody>
-              <Table responsive striped>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Fee</th>
-                    <th>Use For</th>
-                    <th>Features</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {recCards.map(card => (
-                    <tr key={card.id}>
-                      <td>{card.name}</td>
-                      <td>{card.type}</td>
-                      <td>{card.annual_fee}</td>
-                      <td>{card.use_for}</td>
-                      <td>{card.features}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </CardBody>
-          </Collapse>
-        </Card>
+      <div className="mb-3 mt-3">
+        <Button onClick={toggle} color="primary" className="mr-1">
+          Request New Card
+        </Button>
+        <Button onClick={toggle2} color="primary" className="mr-1">
+          Add Active card
+        </Button>
+        <Button
+          color="primary"
+          onClick={toggleAccordion}
+          className="mr-1"
+          id="toggleCollapse1"
+        >
+          Recommended Cards
+        </Button>
       </div>
+      <Card>
+        <CardHeader>
+          <i className="fa fa-credit-card"></i>
+          <strong>Recommended Cards</strong>
+        </CardHeader>
+        <Collapse isOpen={collapse}>
+          <CardBody>
+            <Table responsive>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Fee</th>
+                  <th>Use For</th>
+                  <th>Features</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recCards.map(card => (
+                  <tr key={card.id}>
+                    <td>{card.name}</td>
+                    <td>{card.type}</td>
+                    <td>{card.annual_fee}</td>
+                    <td>{card.use_for}</td>
+                    <td>{card.features}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </CardBody>
+        </Collapse>
+      </Card>
       <Row></Row>
       <DataTable
         title="My Active Cards"
