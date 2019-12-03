@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Row,
-  Table,
   Card,
   CardBody,
   CardHeader,
@@ -22,6 +21,7 @@ function ManageWallet(props) {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const { recCards } = useRecCards();
+  const data2 = recCards;
   const { MyCards } = useMyCards();
   const data = MyCards;
   const columns = [
@@ -56,6 +56,33 @@ function ManageWallet(props) {
       sortable: true
     }
   ];
+  const columns2 = [
+    {
+      name: "Name",
+      selector: "name",
+      sortable: true
+    },
+    {
+      name: "Type",
+      selector: "type",
+      sortable: true
+    },
+    {
+      name: "Fee",
+      selector: "annual_fee",
+      sortable: true
+    },
+    {
+      name: "Use For",
+      selector: "use_for",
+      sortable: true
+    },
+    {
+      name: "Features",
+      selector: "features",
+      sortable: true
+    }
+  ];
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setPending(false);
@@ -79,7 +106,9 @@ function ManageWallet(props) {
       <i className="fas fa-circle-notch fa-spin fa-5x text-secondary"></i>
     </div>
   );
-
+  const style = {
+    margin: "-68px 0 0 0"
+  };
   return (
     <>
       <div className="mb-3 mt-3">
@@ -105,28 +134,7 @@ function ManageWallet(props) {
         </CardHeader>
         <Collapse isOpen={collapse}>
           <CardBody>
-            <Table responsive>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Fee</th>
-                  <th>Use For</th>
-                  <th>Features</th>
-                </tr>
-              </thead>
-              <tbody>
-                {recCards.map(card => (
-                  <tr key={card.id}>
-                    <td>{card.name}</td>
-                    <td>{card.type}</td>
-                    <td>{card.annual_fee}</td>
-                    <td>{card.use_for}</td>
-                    <td>{card.features}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
+            <DataTable style={style} columns={columns2} data={data2} />
           </CardBody>
         </Collapse>
       </Card>
