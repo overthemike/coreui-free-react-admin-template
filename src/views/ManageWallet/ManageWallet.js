@@ -111,20 +111,20 @@ function ManageWallet(props) {
   };
   return (
     <>
-      <div className="mb-3 mt-3">
-        <Button onClick={toggle} color="primary" className="mr-1">
-          Request New Card
+      <div className="mb-3 mt-3 row ml-1 mr-1">
+        <Button onClick={toggle} color="primary" className="mr-1 col">
+          <i className="fas fa-info fa-3x mb-1"></i> <br /> Request New Card
         </Button>
-        <Button onClick={toggle2} color="primary" className="mr-1">
-          Add Active card
+        <Button onClick={toggle2} color="success" className="mr-1 col">
+          <i className="fas fa-plus fa-3x mb-1"></i> <br /> Add Active card
         </Button>
         <Button
-          color="primary"
+          color="info"
           onClick={toggleAccordion}
-          className="mr-1"
+          className="mr-1 col text-light"
           id="toggleCollapse1"
         >
-          Recommended Cards
+          <i className="fa fa-credit-card fa-3x mb-1"></i> <br /> Recommended
         </Button>
       </div>
       <Card>
@@ -139,22 +139,29 @@ function ManageWallet(props) {
         </Collapse>
       </Card>
       <Row></Row>
-      <DataTable
-        title="My Active Cards"
-        columns={columns}
-        data={data}
-        progressPending={pending}
-        progressComponent={<CustomLoader />}
-      />
-
+      <Card>
+        <CardBody>
+          <DataTable
+            title="My Active Cards"
+            columns={columns}
+            data={data}
+            progressPending={pending}
+            progressComponent={<CustomLoader />}
+          />
+        </CardBody>
+      </Card>
       <Modal isOpen={modal} toggle={toggle} className={props.className}>
-        <ModalHeader toggle={toggle}>Member Credit Card Inquiry</ModalHeader>
+        <ModalHeader toggle={toggle} className="d-flex">
+          <i className="fas fa-info"></i> Member Credit Card Inquiry
+        </ModalHeader>
         <ModalBody>
           <RequestCard />
         </ModalBody>
       </Modal>
       <Modal isOpen={modal2} toggle={toggle2} className={props.className}>
-        <ModalHeader toggle={toggle2}>Add a new card</ModalHeader>
+        <ModalHeader toggle={toggle2} className="d-flex">
+          <i className="fas fa-plus"></i> Add a new card
+        </ModalHeader>
         <ModalBody>
           <AddCard />
         </ModalBody>
