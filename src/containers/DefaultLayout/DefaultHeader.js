@@ -24,6 +24,7 @@ function DefaultHeader(props) {
   // eslint-disable-next-line
   const { children, ...attributes } = props;
   const { signout } = useAuth();
+  const firstName = localStorage.firstName;
 
   return (
     <React.Fragment>
@@ -44,11 +45,7 @@ function DefaultHeader(props) {
       <Nav className="ml-auto" navbar>
         <UncontrolledDropdown nav direction="down">
           <DropdownToggle nav>
-            <img
-              src={"../../assets/img/avatars/5.jpg"}
-              className="img-avatar"
-              alt="admin@bootstrapmaster.com"
-            />
+            <div>{firstName}</div>
           </DropdownToggle>
           <DropdownMenu right>
             <DropdownItem header tag="div" className="text-center">

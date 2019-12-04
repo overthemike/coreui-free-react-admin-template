@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 // action type definitions
 const GET_REC_CARDS = "wallet/GET_REC_CARDS";
-
+const userId = window.localStorage.getItem("userId");
 // initial state
 const initialState = {
   cards: []
@@ -27,7 +27,7 @@ function getRecCards() {
     const accessToken = window.localStorage.getItem("token");
     axios.defaults.headers.common["Authorization"] = "Token " + accessToken;
     axios
-      .get("/cards/")
+      .get("/card-recommendations/?user_id=" + userId)
       .then(resp => {
         dispatch({
           type: GET_REC_CARDS,

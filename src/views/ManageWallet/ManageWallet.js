@@ -59,27 +59,32 @@ function ManageWallet(props) {
   const columns2 = [
     {
       name: "Name",
-      selector: "name",
+      selector: "card.name",
       sortable: true
     },
     {
-      name: "Type",
-      selector: "type",
+      name: "Account Holder",
+      selector: "user.email",
       sortable: true
     },
     {
       name: "Fee",
-      selector: "annual_fee",
+      selector: "card.annual_fee",
       sortable: true
     },
     {
       name: "Use For",
-      selector: "use_for",
+      selector: "card.use_for",
       sortable: true
     },
     {
       name: "Features",
-      selector: "features",
+      selector: "card.features",
+      sortable: true
+    },
+    {
+      name: "Open After",
+      selector: "open_after",
       sortable: true
     }
   ];
