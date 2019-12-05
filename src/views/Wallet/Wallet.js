@@ -101,7 +101,7 @@ function Wallet() {
         <Col xs="12" sm="6" md="4">
           <Card className="mainCard mainCard-blog">
             <div className="mainCard-image">
-              <a href="/#">
+              <a href="https://calendly.com/easygotraveler/checkin?month=2019-11">
                 <img className="img" src={schedule} alt="yep" />
                 <div className="mainCard-caption">Schedule a Check-In</div>
               </a>

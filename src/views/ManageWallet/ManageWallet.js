@@ -64,7 +64,7 @@ function ManageWallet(props) {
     },
     {
       name: "Account Holder",
-      selector: "user.email",
+      selector: "user.first_name",
       sortable: true
     },
     {
