@@ -8,16 +8,16 @@ const REQUEST_FLIGHT = "auth/REQUEST_FLIGHT";
 // initial state
 const initialState = {
   routing: "",
-  flexRouting: "",
-  departCity: "",
+  flex_routing: "",
+  departure_city: "",
   destinations: "",
-  departDate: "",
-  flexDepartDate: "",
-  returnDate: "",
-  flexReturnDate: "",
-  preferred: "",
+  depart_date: "",
+  flex_departure: "",
+  return_date: "",
+  flex_return: "",
+  preferred_class: "",
   passengers: "",
-  passNames: "",
+  passenger_names: "",
   bags: "",
   notes: ""
 };
@@ -29,16 +29,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         routing: action.payload.routing,
-        flexRouting: action.payload.flexRouting,
-        departCity: action.payload.departCity,
+        flex_routing: action.payload.flex_routing,
+        departure_city: action.payload.departure_city,
         destinations: action.payload.destinations,
-        departDate: action.payload.departDate,
-        flexDepartDate: action.payload.flexDepartDate,
-        returnDate: action.payload.returnDate,
-        flexReturnDate: action.payload.flexReturnDate,
-        preferred: action.payload.preferred,
+        depart_date: action.payload.depart_date,
+        flex_departure: action.payload.flex_departure,
+        return_date: action.payload.return_date,
+        flex_return: action.payload.flex_return,
+        preferred_class: action.payload.preferred_class,
         passengers: action.payload.passengers,
-        passNames: action.payload.passNames,
+        passenger_names: action.payload.passenger_names,
         bags: action.payload.bags,
         notes: action.payload.notes
       };
@@ -50,16 +50,16 @@ export default (state = initialState, action) => {
 // action creators
 function submitForm(
   routing,
-  flexRouting,
-  departCity,
+  flex_routing,
+  departure_city,
   destinations,
-  departDate,
-  flexDepartDate,
-  returnDate,
-  flexReturnDate,
-  preferred,
+  depart_date,
+  flex_departure,
+  return_date,
+  flex_return,
+  preferred_class,
   passengers,
-  passNames,
+  passenger_names,
   bags,
   notes,
   dispatch
@@ -68,19 +68,19 @@ function submitForm(
   axios.defaults.headers.common["Authorization"] = "Token " + accessToken;
   axios({
     method: "post",
-    url: "/customer-requests/flight/",
+    url: "/customer-requests/flight-request/",
     data: {
       routing,
-      flexRouting,
-      departCity,
+      flex_routing,
+      departure_city,
       destinations,
-      departDate,
-      flexDepartDate,
-      returnDate,
-      flexReturnDate,
-      preferred,
+      depart_date,
+      flex_departure,
+      return_date,
+      flex_return,
+      preferred_class,
       passengers,
-      passNames,
+      passenger_names,
       bags,
       notes
     },
@@ -91,16 +91,16 @@ function submitForm(
         type: REQUEST_FLIGHT,
         payload: {
           routing,
-          flexRouting,
-          departCity,
+          flex_routing,
+          departure_city,
           destinations,
-          departDate,
-          flexDepartDate,
-          returnDate,
-          flexReturnDate,
-          preferred,
+          depart_date,
+          flex_departure,
+          return_date,
+          flex_return,
+          preferred_class,
           passengers,
-          passNames,
+          passenger_names,
           bags,
           notes,
           dispatch
@@ -114,13 +114,45 @@ function submitForm(
 // custom hooks
 export function useForms() {
   const dispatch = useDispatch();
-  const inquiry = useSelector(appState => appState.formState.inquiry);
-  const wallet_updated = useSelector(
-    appState => appState.formState.wallet_updated
+  const routing = useSelector(appState => appState.formState.routing);
+  const flex_routing = useSelector(appState => appState.formState.flex_routing);
+  const departure_city = useSelector(
+    appState => appState.formState.departure_city
   );
+  const destinations = useSelector(appState => appState.formState.destinations);
+  const depart_date = useSelector(appState => appState.formState.depart_date);
+  const flex_departure = useSelector(
+    appState => appState.formState.flex_departure
+  );
+  const return_date = useSelector(appState => appState.formState.return_date);
+  const flex_return = useSelector(appState => appState.formState.flex_return);
+  const preferred_class = useSelector(
+    appState => appState.formState.preferred_class
+  );
+  const passengers = useSelector(appState => appState.formState.passengers);
+  const passenger_names = useSelector(
+    appState => appState.formState.passenger_names
+  );
+  const bags = useSelector(appState => appState.formState.bags);
   const notes = useSelector(appState => appState.formState.notes);
-  const requestCard = (inquiry, wallet_updated, notes) =>
+
+  const requestFlight = (inquiry, wallet_updated, notes) =>
     submitForm(inquiry, wallet_updated, notes, dispatch);
 
-  return { inquiry, wallet_updated, notes, requestCard };
+  return {
+    routing,
+    flex_routing,
+    departure_city,
+    destinations,
+    depart_date,
+    flex_departure,
+    return_date,
+    flex_return,
+    preferred_class,
+    passengers,
+    passenger_names,
+    bags,
+    notes,
+    requestFlight
+  };
 }

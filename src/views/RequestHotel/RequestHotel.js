@@ -29,9 +29,6 @@ function RequestHotel(props) {
   const [specialRequests, setspecialRequests] = useState("");
   const { requestHotel } = useHotel();
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  // }
   async function handleSubmit(e) {
     e.preventDefault();
     try {

@@ -7,6 +7,7 @@ import {
   CardHeader,
   Col,
   FormGroup,
+  FormFeedback,
   FormText,
   Input,
   Label,
@@ -158,7 +159,12 @@ function RequestFlights() {
                     onChange={e => setdepartCity(e.target.value)}
                   >
                     <Label htmlFor="depart">Departure City</Label>
-                    <Input type="text" id="depart" required />
+                    <Input
+                      type="text"
+                      id="depart"
+                      invalid={departCity.length === 0 ? true : null}
+                    />
+                    <FormFeedback>Required</FormFeedback>
                   </FormGroup>
                 </Col>
                 <Col xs="12" md="6">
@@ -167,7 +173,12 @@ function RequestFlights() {
                     onChange={e => setDestinations(e.target.value)}
                   >
                     <Label htmlFor="destinations">Destination(s)</Label>
-                    <Input type="text" id="destinations" required />
+                    <Input
+                      type="text"
+                      id="destinations"
+                      invalid={destinations.length === 0 ? true : null}
+                    />
+                    <FormFeedback>Required</FormFeedback>
                   </FormGroup>
                 </Col>
               </Row>
@@ -187,7 +198,9 @@ function RequestFlights() {
                         id="depart-input"
                         name="depart-input"
                         placeholder="date"
+                        invalid={departDate.length === 0 ? true : null}
                       />
+                      <FormFeedback>Required</FormFeedback>
                       <FormText className="help-block">
                         Close-in Ticketing Fee: requests submitted less than 90
                         days before departure will incur an additional charge of
