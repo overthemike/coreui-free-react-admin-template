@@ -12,8 +12,9 @@ import {
   Label,
   Row
 } from "reactstrap";
+import { useHotel } from "../../hooks";
 
-function RequestHotel() {
+function RequestHotel(props) {
   const [hotel, setHotel] = useState("");
   const [hotelLocation, sethotelLocation] = useState("");
   const [partner, setPartner] = useState("");
@@ -26,7 +27,33 @@ function RequestHotel() {
   const [specialOccation, setspecialOccation] = useState("");
   const [roomDetails, setroomDetails] = useState("");
   const [specialRequests, setspecialRequests] = useState("");
+  const { requestHotel } = useHotel();
 
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  // }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      await requestHotel(
+        hotel,
+        hotelLocation,
+        partner,
+        roomNums,
+        guestPerRoom,
+        guestNames,
+        checkin,
+        checkout,
+        budget,
+        specialOccation,
+        roomDetails,
+        specialRequests
+      );
+      props.history.push("/");
+    } catch (e) {
+      console.log(e);
+    }
+  }
   return (
     <>
       <Col>
@@ -35,7 +62,7 @@ function RequestHotel() {
             <strong>Request Hotel</strong>
           </CardHeader>
           <CardBody>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Row>
                 <Col xs="12" md="6">
                   <FormGroup

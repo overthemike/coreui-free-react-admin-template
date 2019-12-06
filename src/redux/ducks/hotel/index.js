@@ -8,15 +8,15 @@ const REQUEST_HOTEL = "auth/REQUEST_HOTEL";
 // initial state
 const initialState = {
   hotel: "",
-  hotelLocation: "",
+  hotel_location: "",
   partner: "",
-  roomNums: "",
-  guestPerRoom: "",
-  guestNames: "",
+  rooms: "",
+  guest_per_room: "",
+  guest_names: "",
   checkin: "",
   checkout: "",
-  budget: "",
-  specialOccation: "",
+  budget_per_night: "",
+  special_occasion: "",
   roomDetails: "",
   specialRequests: ""
 };
@@ -28,15 +28,15 @@ export default (state = initialState, action) => {
       return {
         ...state,
         hotel: action.payload.hotel,
-        hotelLocation: action.payload.hotelLocation,
+        hotel_location: action.payload.hotel_location,
         partner: action.payload.partner,
-        roomNums: action.payload.roomNums,
-        guestPerRoom: action.payload.guestPerRoom,
-        guestNames: action.payload.guestNames,
+        rooms: action.payload.rooms,
+        guest_per_room: action.payload.guest_per_room,
+        guest_names: action.payload.guest_names,
         checkin: action.payload.checkin,
         checkout: action.payload.checkout,
-        budget: action.payload.budget,
-        specialOccation: action.payload.specialOccation,
+        budget_per_night: action.payload.budget_per_night,
+        special_occasion: action.payload.special_occasion,
         roomDetails: action.payload.roomDetails,
         specialRequests: action.payload.specialRequests
       };
@@ -48,15 +48,15 @@ export default (state = initialState, action) => {
 // action creators
 function submitForm(
   hotel,
-  hotelLocation,
+  hotel_location,
   partner,
-  roomNums,
-  guestPerRoom,
-  guestNames,
+  rooms,
+  guest_per_room,
+  guest_names,
   checkin,
   checkout,
-  budget,
-  specialOccation,
+  budget_per_night,
+  special_occasion,
   roomDetails,
   specialRequests,
   dispatch
@@ -65,18 +65,18 @@ function submitForm(
   axios.defaults.headers.common["Authorization"] = "Token " + accessToken;
   axios({
     method: "post",
-    url: "/customer-requests/flight/",
+    url: "/customer-requests/hotel-request/",
     data: {
       hotel,
-      hotelLocation,
+      hotel_location,
       partner,
-      roomNums,
-      guestPerRoom,
-      guestNames,
+      rooms,
+      guest_per_room,
+      guest_names,
       checkin,
       checkout,
-      budget,
-      specialOccation,
+      budget_per_night,
+      special_occasion,
       roomDetails,
       specialRequests
     },
@@ -87,15 +87,15 @@ function submitForm(
         type: REQUEST_HOTEL,
         payload: {
           hotel,
-          hotelLocation,
+          hotel_location,
           partner,
-          roomNums,
-          guestPerRoom,
-          guestNames,
+          rooms,
+          guest_per_room,
+          guest_names,
           checkin,
           checkout,
-          budget,
-          specialOccation,
+          budget_per_night,
+          special_occasion,
           roomDetails,
           specialRequests,
           dispatch
@@ -107,15 +107,74 @@ function submitForm(
     });
 }
 // custom hooks
-export function useForms() {
+export function useHotel() {
   const dispatch = useDispatch();
-  const inquiry = useSelector(appState => appState.formState.inquiry);
-  const wallet_updated = useSelector(
-    appState => appState.formState.wallet_updated
+  const hotel = useSelector(appState => appState.formState.hotel);
+  const hotel_location = useSelector(
+    appState => appState.formState.hotel_location
   );
-  const notes = useSelector(appState => appState.formState.notes);
-  const requestCard = (inquiry, wallet_updated, notes) =>
-    submitForm(inquiry, wallet_updated, notes, dispatch);
+  const partner = useSelector(appState => appState.formState.partner);
+  const rooms = useSelector(appState => appState.formState.rooms);
+  const guest_per_room = useSelector(
+    appState => appState.formState.guest_per_room
+  );
+  const guest_names = useSelector(appState => appState.formState.guest_names);
+  const checkin = useSelector(appState => appState.formState.checkin);
+  const checkout = useSelector(appState => appState.formState.checkout);
+  const budget_per_night = useSelector(
+    appState => appState.formState.budget_per_night
+  );
+  const special_occasion = useSelector(
+    appState => appState.formState.special_occasion
+  );
+  const roomDetails = useSelector(appState => appState.formState.roomDetails);
+  const specialRequests = useSelector(
+    appState => appState.formState.specialRequests
+  );
 
-  return { inquiry, wallet_updated, notes, requestCard };
+  const requestHotel = (
+    hotel,
+    hotel_location,
+    partner,
+    rooms,
+    guest_per_room,
+    guest_names,
+    checkin,
+    checkout,
+    budget_per_night,
+    special_occasion,
+    roomDetails,
+    specialRequests
+  ) =>
+    submitForm(
+      hotel,
+      hotel_location,
+      partner,
+      rooms,
+      guest_per_room,
+      guest_names,
+      checkin,
+      checkout,
+      budget_per_night,
+      special_occasion,
+      roomDetails,
+      specialRequests,
+      dispatch
+    );
+
+  return {
+    hotel,
+    hotel_location,
+    partner,
+    rooms,
+    guest_per_room,
+    guest_names,
+    checkin,
+    checkout,
+    budget_per_night,
+    special_occasion,
+    roomDetails,
+    specialRequests,
+    requestHotel
+  };
 }
