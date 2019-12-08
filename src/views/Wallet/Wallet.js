@@ -1,10 +1,8 @@
 import React from "react";
 import { Row, Col, Card } from "reactstrap";
 import card from "../../assets/img/card.jpg";
-import requestCard from "../../assets/img/requestCard.jpg";
 import plane from "../../assets/img/plane.jpg";
 import hotel from "../../assets/img/hotel.jpg";
-import schedule from "../../assets/img/schedule.jpg";
 import classRoom from "../../assets/img/classRoom.jpg";
 
 function Wallet() {
@@ -26,26 +24,13 @@ function Wallet() {
         </div>
       </Row>
       <Row>
+        <Col xs="12" sm="6" md="2"></Col>
         <Col xs="12" sm="6" md="4">
           <Card className="mainCard mainCard-blog">
             <div className="mainCard-image">
               <a href="#/manage-wallet">
                 <img className="img" src={card} alt="yep" />
                 <div className="mainCard-caption">Manage Cards</div>
-              </a>
-            </div>
-            <div className="mainCard-table">
-              <h6 className="mainCard-category text-info">heading</h6>
-              <p>mainCard-category text-info</p>
-            </div>
-          </Card>
-        </Col>
-        <Col xs="12" sm="6" md="4">
-          <Card className="mainCard mainCard-blog">
-            <div className="mainCard-image">
-              <a href="/#">
-                <img className="img" src={requestCard} alt="yep" />
-                <div className="mainCard-caption">Request a Card</div>
               </a>
             </div>
             <div className="mainCard-table">
@@ -68,8 +53,10 @@ function Wallet() {
             </div>
           </Card>
         </Col>
+        <Col xs="12" sm="6" md="1"></Col>
       </Row>
       <Row>
+        <Col xs="12" sm="6" md="2"></Col>
         <Col xs="12" sm="6" md="4">
           <Card className="mainCard mainCard-blog">
             <div className="mainCard-image">
@@ -98,20 +85,7 @@ function Wallet() {
             </div>
           </Card>
         </Col>
-        <Col xs="12" sm="6" md="4">
-          <Card className="mainCard mainCard-blog">
-            <div className="mainCard-image">
-              <a href="https://calendly.com/easygotraveler/checkin?month=2019-11">
-                <img className="img" src={schedule} alt="yep" />
-                <div className="mainCard-caption">Schedule a Check-In</div>
-              </a>
-            </div>
-            <div className="mainCard-table">
-              <h6 className="mainCard-category text-info">heading</h6>
-              <p>category text-info</p>
-            </div>
-          </Card>
-        </Col>
+        <Col xs="12" sm="6" md="1"></Col>
       </Row>
     </div>
   );
