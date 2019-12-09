@@ -25,7 +25,6 @@ function DefaultHeader(props) {
   const { children, ...attributes } = props;
   const { signout, is_staff } = useAuth();
   const firstName = localStorage.firstName;
-  console.log(is_staff);
 
   return (
     <React.Fragment>
@@ -64,7 +63,11 @@ function DefaultHeader(props) {
       <Nav className="ml-auto" navbar>
         <UncontrolledDropdown nav direction="down">
           <DropdownToggle nav>
-            <div>{firstName}</div>
+            {firstName ? (
+              <div>{firstName}</div>
+            ) : (
+              <i className="fas fa-sign-out-alt"></i>
+            )}
           </DropdownToggle>
           <DropdownMenu right>
             <DropdownItem header tag="div" className="text-center">
