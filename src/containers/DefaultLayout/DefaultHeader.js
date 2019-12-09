@@ -23,8 +23,9 @@ const defaultProps = {};
 function DefaultHeader(props) {
   // eslint-disable-next-line
   const { children, ...attributes } = props;
-  const { signout } = useAuth();
+  const { signout, is_staff } = useAuth();
   const firstName = localStorage.firstName;
+  console.log(is_staff);
 
   return (
     <React.Fragment>
@@ -38,9 +39,27 @@ function DefaultHeader(props) {
       <Nav className="d-md-down-none" navbar>
         <NavItem className="px-3">
           <Link to="/" className="nav-link">
-            Wallet
+            Home
           </Link>
         </NavItem>
+        {is_staff ? (
+          <NavItem className="px-3">
+            <Link to="/cards" className="nav-link">
+              Cards
+            </Link>
+          </NavItem>
+        ) : (
+          <NavItem></NavItem>
+        )}
+        {is_staff ? (
+          <NavItem className="px-3">
+            <Link to="/users" className="nav-link">
+              Users
+            </Link>
+          </NavItem>
+        ) : (
+          <NavItem></NavItem>
+        )}
       </Nav>
       <Nav className="ml-auto" navbar>
         <UncontrolledDropdown nav direction="down">
@@ -57,7 +76,6 @@ function DefaultHeader(props) {
           </DropdownMenu>
         </UncontrolledDropdown>
       </Nav>
-      {/*<AppAsideToggler className="d-lg-none" mobile />*/}
     </React.Fragment>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 
 const Wallet = React.lazy(() => import("./views/Wallet/Wallet"));
+const Cards = React.lazy(() => import("./views/Cards/Cards"));
 const Classroom = React.lazy(() => import("./views/Classroom"));
 const RequestFlights = React.lazy(() => import("./views/RequestFlights"));
 const RequestHotel = React.lazy(() => import("./views/RequestHotel"));
@@ -36,6 +37,12 @@ const routes = [
     exact: true,
     name: "Manage Wallet",
     component: ManageWallet
+  },
+  {
+    path: "/cards",
+    exact: true,
+    name: "Cards",
+    component: Cards
   }
 ];
 

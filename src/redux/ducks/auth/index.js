@@ -24,6 +24,7 @@ const initialState = {
   isAuthenticated: alreadyAuthed,
   username: "",
   firstName: "",
+  is_staff: true,
   lastName: "",
   loading: false,
   error: ""
@@ -41,6 +42,7 @@ export default (state = initialState, action) => {
         isAuthenticated: true,
         username: action.payload.username,
         firstName: action.payload.firstName,
+        is_staff: action.payload.is_staff,
         lastName: action.payload.lastName
       };
     case LOGIN_FAILURE:
@@ -69,23 +71,27 @@ function login(username, password, dispatch) {
         const userId = resp.data.user_id;
         const firstName = resp.data.first_name;
         const lastName = resp.data.last_name;
+        const is_staff = resp.data.is_staff;
         window.localStorage.setItem("token", token);
         window.localStorage.setItem("userId", userId);
         window.localStorage.setItem("firstName", firstName);
         window.localStorage.setItem("lastName", lastName);
+        window.localStorage.setItem("is_staff", is_staff);
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         dispatch({
           type: LOGIN_SUCCESS,
           payload: {
             username,
             firstName,
-            lastName
+            lastName,
+            is_staff
           }
         });
         resolve();
       })
       .catch(e => {
         window.localStorage.removeItem("token");
+        console.log(e);
         dispatch({
           type: LOGIN_FAILURE,
           payload: e.message
@@ -112,6 +118,7 @@ export function useAuth() {
   const userId = useSelector(appState => appState.authState.userId);
   const firstName = useSelector(appState => appState.authState.firstName);
   const lastName = useSelector(appState => appState.authState.lastName);
+  const is_staff = useSelector(appState => appState.authState.is_staff);
   const loading = useSelector(appState => appState.authState.loading);
   const error = useSelector(appState => appState.authState.error);
   const signin = (username, password) => login(username, password, dispatch);
@@ -126,6 +133,7 @@ export function useAuth() {
     signout,
     userId,
     firstName,
-    lastName
+    lastName,
+    is_staff
   };
 }
