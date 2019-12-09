@@ -70,6 +70,13 @@ export default {
           class: "mt-auto"
         },
         {
+          name: "Merchant Category",
+          url:
+            "https://awardwallet.com/merchants?awid=101&fbclid=IwAR1MfCiz9EFfzTbD_hFt4hDdGeEwDEMRAuQ-FLgT7ugUN5L3_Y7IR3V1yYY",
+          icon: "fas fa-search",
+          class: "mt-auto"
+        },
+        {
           name: "Rakuten",
           url: "https://rakuten.com",
           icon: "fas fa-shopping-cart",
