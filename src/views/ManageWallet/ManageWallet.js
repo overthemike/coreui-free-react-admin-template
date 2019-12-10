@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import {
+  Col,
+  Input,
+  Form,
+  FormGroup,
+  Label,
   Row,
   Card,
   CardBody,
@@ -10,10 +15,9 @@ import {
   ModalBody,
   ModalHeader
 } from "reactstrap";
-import RequestCard from "../RequestForms/RequestCard";
-import AddCard from "../RequestForms/AddMyCard";
 import { useRecCards, useMyCards } from "../../hooks";
 import DataTable from "react-data-table-component";
+import { useForms } from "../../hooks";
 
 function ManageWallet(props) {
   const [collapse, setCollapse] = useState(false);
@@ -24,6 +28,17 @@ function ManageWallet(props) {
   const data2 = recCards;
   const { MyCards } = useMyCards();
   const data = MyCards;
+  const [inquiry, setInquiry] = useState("");
+  const [wallet_updated, setWallet] = useState("");
+  const [notes, setNotes] = useState("");
+  const { requestCard } = useForms();
+  const [type, setType] = useState("");
+  const [date_opened, setDateOpened] = useState("");
+  const [status, setStatus] = useState("");
+  const [card, setCard] = useState("");
+  const { newCard } = useMyCards();
+  console.log(card);
+
   const columns = [
     {
       name: "Name",
@@ -105,7 +120,16 @@ function ManageWallet(props) {
   function toggleAccordion() {
     setCollapse(!collapse);
   }
-
+  function handleRequestSubmit(e) {
+    e.preventDefault();
+    requestCard(inquiry, wallet_updated, notes);
+    toggle();
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    newCard(type, date_opened, card, status);
+    toggle2();
+  }
   const CustomLoader = () => (
     <div>
       <i className="fas fa-circle-notch fa-spin fa-5x text-secondary"></i>
@@ -160,7 +184,116 @@ function ManageWallet(props) {
           <i className="fas fa-info"></i> Member Credit Card Inquiry
         </ModalHeader>
         <ModalBody>
-          <RequestCard />
+          <Col>
+            <p>
+              Ready for a new credit card? Question about an existing card?
+              Submit your request and we'll analyze your profile and provide
+              options for your next move.
+            </p>
+            <Form onSubmit={handleRequestSubmit}>
+              <Row>
+                <Col xs="12" md="6">
+                  <FormGroup>
+                    <Label htmlFor="inquiry">My Inquiry</Label>
+                    <Input
+                      type="select"
+                      name="inquiry"
+                      id="inquiry"
+                      value={inquiry}
+                      onChange={e => setInquiry(e.target.value)}
+                    >
+                      <option value="0">Please select</option>
+                      <option value="I'm ready for a new card">
+                        I'm ready for a new card
+                      </option>
+                      <option value="Questions about an existing card">
+                        Questions about an existing card
+                      </option>
+                      <option value="Something Else(describe below)">
+                        Something Else(describe below)
+                      </option>
+                    </Input>
+                  </FormGroup>
+                </Col>
+                <Col xs="12" md="6">
+                  <FormGroup row>
+                    <Col md="8">
+                      <Label>Is your Easy Go Wallet up to date?</Label>
+                    </Col>
+                    <Col md="4">
+                      <FormGroup
+                        check
+                        className="radio"
+                        id="wallet_updated"
+                        value={wallet_updated}
+                        onChange={e => setWallet(e.target.value)}
+                      >
+                        <Row>
+                          <Input
+                            className="form-check-input"
+                            type="radio"
+                            id="walletYes"
+                            name="radios"
+                            value="yes"
+                          />
+                          <Label
+                            check
+                            className="form-check-label"
+                            htmlFor="walletYes"
+                          >
+                            Yes
+                          </Label>
+                        </Row>
+                        <Row>
+                          <Input
+                            className="form-check-input"
+                            type="radio"
+                            id="walletNo"
+                            name="radios"
+                            value="no"
+                          />
+                          <Label
+                            check
+                            className="form-check-label"
+                            htmlFor="walletNo"
+                          >
+                            No
+                          </Label>
+                        </Row>
+                      </FormGroup>
+                    </Col>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="notes">Notes/Instructions</Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Input
+                        type="textarea"
+                        name="notes"
+                        id="notes"
+                        rows="3"
+                        value={notes}
+                        onChange={e => setNotes(e.target.value)}
+                      />
+                    </Col>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Button
+                className="float-right"
+                type="submit"
+                size="sm"
+                color="primary"
+              >
+                <i className="fa fa-dot-circle-o"></i> Submit
+              </Button>
+            </Form>
+          </Col>
         </ModalBody>
       </Modal>
       <Modal isOpen={modal2} toggle={toggle2} className={props.className}>
@@ -168,7 +301,118 @@ function ManageWallet(props) {
           <i className="fas fa-plus"></i> Add a new card
         </ModalHeader>
         <ModalBody>
-          <AddCard />
+          <Col>
+            <Form onSubmit={handleSubmit}>
+              <Row>
+                <Col xs="12" md="6">
+                  <FormGroup row>
+                    <Col md="4">
+                      <Label>Status</Label>
+                    </Col>
+                    <Col md="8">
+                      <FormGroup
+                        check
+                        className="radio"
+                        id="status"
+                        value={status}
+                        onChange={e => setStatus(e.target.value)}
+                      >
+                        <Row>
+                          <Input
+                            className="form-check-input"
+                            type="radio"
+                            id="statusYes"
+                            name="radios"
+                            value="active"
+                          />
+                          <Label
+                            check
+                            className="form-check-label"
+                            htmlFor="statusYes"
+                          >
+                            Active
+                          </Label>
+                        </Row>
+                        <Row>
+                          <Input
+                            className="form-check-input"
+                            type="radio"
+                            id="statusNo"
+                            name="radios"
+                            value="inactive"
+                          />
+                          <Label
+                            check
+                            className="form-check-label"
+                            htmlFor="statusNo"
+                          >
+                            Inactive
+                          </Label>
+                        </Row>
+                      </FormGroup>
+                    </Col>
+                  </FormGroup>
+                </Col>
+                <Col xs="12" md="6">
+                  <FormGroup>
+                    <Label htmlFor="date_opened">Date Opened</Label>
+                    <Input
+                      type="text"
+                      id="date_opened"
+                      placeholder="YYYY-MM-DD"
+                      value={date_opened}
+                      onChange={e => setDateOpened(e.target.value)}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs="12" md="6">
+                  <FormGroup>
+                    <Label htmlFor="card">Card</Label>
+                    <Input
+                      type="select"
+                      name="card"
+                      id="card"
+                      value={card}
+                      onChange={e => setCard(e.target.value)}
+                    >
+                      <option>please select</option>
+                      {recCards.map(card => (
+                        <option key={card.card.id} value={card.card.id}>
+                          {card.card.name}
+                        </option>
+                      ))}
+                    </Input>
+                  </FormGroup>
+                </Col>
+                <Col xs="12" md="6">
+                  <FormGroup>
+                    <Label htmlFor="type">Type</Label>
+                    <Input
+                      type="select"
+                      name="type"
+                      id="type"
+                      value={type}
+                      onChange={e => setType(e.target.value)}
+                    >
+                      <option value="0">Please select</option>
+                      <option value="member">Member</option>
+                      <option value="companion">Companion</option>
+                    </Input>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Button
+                className="float-right"
+                type="submit"
+                size="sm"
+                color="primary"
+              >
+                <i className="fa fa-dot-circle-o"></i> Submit
+              </Button>
+            </Form>
+          </Col>
         </ModalBody>
       </Modal>
     </>
