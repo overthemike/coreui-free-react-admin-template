@@ -1,5 +1,19 @@
 import React, { useState } from "react";
-import { Button, Form, Input } from "reactstrap";
+import pic from "../../../assets/img/brand/logo.svg";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardGroup,
+  Col,
+  Container,
+  Form,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Row
+} from "reactstrap";
 import { useAuth } from "../../../hooks";
 
 function Login(props) {
@@ -18,43 +32,77 @@ function Login(props) {
   }
 
   return (
-    <>
-      <div class="login-body"></div>
-      <div class="grad"></div>
-      <div class="header">
-        <div>
-          Travel<span className="text-primary">Wealth</span>
-        </div>
-      </div>
-      <br />
-      <div class="login">
-        <Form onSubmit={handleSubmit}>
-          <Input
-            className="mb-2"
-            type="text"
-            placeholder="Username"
-            autoComplete="username"
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-          />
-          <Input
-            className="mb-2"
-            type="password"
-            placeholder="Password"
-            autoComplete="current-password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-          <Button
-            type="submit"
-            color="primary"
-            className="btn btn-primary btn-lg btn-block"
-          >
-            Login
-          </Button>
-        </Form>
-      </div>
-    </>
+    <div className="app flex-row align-items-center bg-secondary">
+      <Container>
+        <Row className="justify-content-center">
+          <Col md="8">
+            <CardGroup>
+              <Card className="p-4">
+                <CardBody>
+                  <Form onSubmit={handleSubmit}>
+                    <h1>Login</h1>
+                    <p className="text-muted">Sign In to your account</p>
+                    <InputGroup className="mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="icon-user" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        type="text"
+                        placeholder="Username"
+                        autoComplete="username"
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
+                      />
+                    </InputGroup>
+                    <InputGroup className="mb-4">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="icon-lock" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        type="password"
+                        placeholder="Password"
+                        autoComplete="current-password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                      />
+                    </InputGroup>
+                    <Row>
+                      <Col xs="6">
+                        <Button
+                          type="submit"
+                          color="secondary"
+                          className="px-4"
+                        >
+                          Login
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Form>
+                </CardBody>
+              </Card>
+              <Card
+                className="text-white bg-dark py-5 d-md-down-none"
+                style={{ width: "44%" }}
+              >
+                <CardBody className="text-center">
+                  <div>
+                    <img
+                      src={pic}
+                      className="img-avatar"
+                      alt="admin@bootstrapmaster.com"
+                    />
+                  </div>
+                </CardBody>
+              </Card>
+            </CardGroup>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 

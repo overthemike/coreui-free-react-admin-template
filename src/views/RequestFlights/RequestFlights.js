@@ -159,11 +159,7 @@ function RequestFlights() {
                     onChange={e => setdepartCity(e.target.value)}
                   >
                     <Label htmlFor="depart">Departure City</Label>
-                    <Input
-                      type="text"
-                      id="depart"
-                      invalid={departCity.length === 0 ? true : null}
-                    />
+                    <Input type="text" id="depart" />
                     <FormFeedback>Required</FormFeedback>
                   </FormGroup>
                 </Col>
@@ -173,11 +169,7 @@ function RequestFlights() {
                     onChange={e => setDestinations(e.target.value)}
                   >
                     <Label htmlFor="destinations">Destination(s)</Label>
-                    <Input
-                      type="text"
-                      id="destinations"
-                      invalid={destinations.length === 0 ? true : null}
-                    />
+                    <Input type="text" id="destinations" />
                     <FormFeedback>Required</FormFeedback>
                   </FormGroup>
                 </Col>
@@ -198,7 +190,6 @@ function RequestFlights() {
                         id="depart-input"
                         name="depart-input"
                         placeholder="date"
-                        invalid={departDate.length === 0 ? true : null}
                       />
                       <FormFeedback>Required</FormFeedback>
                       <FormText className="help-block">

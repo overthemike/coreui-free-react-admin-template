@@ -213,7 +213,7 @@ function RequestHotel(props) {
                     value={budget}
                     onChange={e => setBudget(e.target.value)}
                   >
-                    <Label htmlFor="depart">Buget Per Night</Label>
+                    <Label htmlFor="depart">Budget Per Night</Label>
                     <Input type="text" id="depart" required />
                   </FormGroup>
                 </Col>

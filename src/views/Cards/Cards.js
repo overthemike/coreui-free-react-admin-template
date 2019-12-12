@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import DataTable from "react-data-table-component";
 import { useAdminCards } from "../../hooks";
 import { Button, Modal, ModalBody, ModalHeader, Input } from "reactstrap";
@@ -6,10 +6,14 @@ import { Button, Modal, ModalBody, ModalHeader, Input } from "reactstrap";
 function Cards(props) {
   const { adminCards } = useAdminCards();
   const [pending, setPending] = React.useState(true);
+  const [singleCard, setSingleCard] = useState("");
+  const handleAction = value => setSingleCard(value);
+  const updateState = useCallback(state => handleRowClick(state));
   const [modal2, setModal2] = useState(false);
+  const [modal, setModal] = useState(false);
   const data2 = adminCards;
   const [filterText, setFilterText] = React.useState("");
-  const columns2 = [
+  const columns2 = useMemo(() => [
     {
       name: "Name",
       selector: "name",
@@ -34,12 +38,22 @@ function Cards(props) {
       name: "Features",
       selector: "features",
       sortable: true
+    },
+    {
+      cell: () => <Button onClick={handleAction}>Action</Button>,
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true
     }
-  ];
+  ]);
   function handleRowClick(row, event) {
     if (`event.type === 'contextmenu'`) {
+      setSingleCard(row);
       toggle2(row);
     }
+  }
+  function handleDelete(row) {
+    console.log("DLEETE", row);
   }
   const CustomLoader = () => (
     <div>
@@ -55,10 +69,11 @@ function Cards(props) {
   }, []);
 
   function toggle2(row) {
-    console.log(row);
     setModal2(!modal2);
   }
-
+  function toggle(row) {
+    setModal(!modal);
+  }
   const FilterComponent = ({ filterText, onFilter, onClear }) => (
     <>
       <Input
@@ -107,7 +122,7 @@ function Cards(props) {
         columns={columns2}
         progressPending={pending}
         progressComponent={<CustomLoader />}
-        onRowClicked={handleRowClick}
+        onRowClicked={updateState}
         highlightOnHover
         persistTableHead
       />
@@ -115,7 +130,10 @@ function Cards(props) {
         <ModalHeader toggle={toggle2} className="d-flex">
           <i className="fas fa-plus"></i> Add a new card
         </ModalHeader>
-        <ModalBody></ModalBody>
+        <ModalBody>
+          {singleCard.name}
+          <Button onClick={handleDelete(singleCard)}>Delete</Button>
+        </ModalBody>
       </Modal>
     </>
   );

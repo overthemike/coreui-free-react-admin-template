@@ -1,6 +1,0 @@
-{
-  "name": "request-card",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./RequestCard.js"
-}
