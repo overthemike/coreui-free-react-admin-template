@@ -42,7 +42,6 @@ export default {
       url: "/wallet",
       icon: "fab fa-twitter fas fa-bell",
       attributes: {
-        className: "bg-secondary",
         target: "_blank",
         rel: "noopener",
         disabled: true
@@ -53,7 +52,6 @@ export default {
       url: "https://calendly.com/easygotraveler/checkin?month=2019-11",
       icon: "icon-calendar",
       attributes: {
-        className: "bg-secondary",
         target: "_blank",
         rel: "noopener"
       }
@@ -63,7 +61,6 @@ export default {
       url: "https://calendly.com/easygotraveler/checkin?month=2019-11",
       icon: "fas fa-users",
       attributes: {
-        className: "bg-secondary",
         target: "_blank",
         rel: "noopener"
       }
@@ -79,7 +76,6 @@ export default {
           icon: "fas fa-chart-bar",
           class: "mt-auto",
           attributes: {
-            className: "bg-secondary",
             target: "_blank",
             rel: "noopener"
           }
@@ -90,7 +86,6 @@ export default {
           icon: "fas fa-shopping-cart",
           class: "mt-auto",
           attributes: {
-            className: "bg-secondary",
             target: "_blank",
             rel: "noopener"
           }
@@ -101,7 +96,6 @@ export default {
           icon: "fas fa-money-check",
           class: "mt-auto",
           attributes: {
-            className: "bg-secondary",
             target: "_blank",
             rel: "noopener"
           }
@@ -112,7 +106,6 @@ export default {
           icon: "fas fa-chart-line",
           class: "mt-auto",
           attributes: {
-            className: "bg-secondary",
             target: "_blank",
             rel: "noopener"
           }
@@ -125,7 +118,6 @@ export default {
       class: "mt-auto",
       icon: "fab fa-facebook-f",
       attributes: {
-        className: "bg-secondary",
         target: "_blank",
         rel: "noopener"
       }
@@ -135,7 +127,6 @@ export default {
       url: "https://instagram.com",
       icon: "fab fa-instagram",
       attributes: {
-        className: "bg-secondary",
         target: "_blank",
         rel: "noopener"
       }
@@ -145,7 +136,6 @@ export default {
       url: "https://twitter.com",
       icon: "fab fa-twitter",
       attributes: {
-        className: "bg-secondary",
         target: "_blank",
         rel: "noopener"
       }
