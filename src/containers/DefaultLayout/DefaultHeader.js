@@ -10,8 +10,8 @@ import {
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { AppNavbarBrand, AppSidebarToggler } from "@coreui/react";
-import logo from "../../assets/img/brand/black.png";
-import sygnet from "../../assets/img/brand/black.png";
+import logo from "../../assets/img/brand/logo.svg";
+import sygnet from "../../assets/img/brand/logo.svg";
 import { useAuth } from "../../hooks";
 
 const propTypes = {
@@ -30,8 +30,13 @@ function DefaultHeader(props) {
     <React.Fragment>
       <AppSidebarToggler className="d-lg-none" display="md" mobile />
       <AppNavbarBrand
-        full={{ src: logo, width: 89, height: 25, alt: "CoreUI Logo" }}
-        minimized={{ src: sygnet, width: 30, height: 30, alt: "CoreUI Logo" }}
+        full={{ src: logo, width: 100, height: 100, alt: "TravelWealth Logo" }}
+        minimized={{
+          src: sygnet,
+          width: 60,
+          height: 60,
+          alt: "TravelWealth Logo"
+        }}
       />
       <AppSidebarToggler className="d-md-down-none" display="lg" />
 

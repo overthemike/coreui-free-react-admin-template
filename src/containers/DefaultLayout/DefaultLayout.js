@@ -33,21 +33,26 @@ function DefaultLayout(props) {
     props.history.push("/login");
   }
   return (
-    <div className="app">
-      <AppHeader fixed>
-        <Suspense fallback={loading()}>
-          <DefaultHeader onLogout={e => signOut(e)} />
+    <div className="app bg-dark">
+      <AppHeader fixed className="bg-secondary">
+        <Suspense fallback={loading()} className="bg-secondary">
+          <DefaultHeader onLogout={e => signOut(e)} className="bg-secondary" />
         </Suspense>
       </AppHeader>
       <div className="app-body">
-        <AppSidebar fixed display="lg">
-          <AppSidebarHeader />
-          <AppSidebarForm />
-          <Suspense>
-            <AppSidebarNav navConfig={navigation} {...props} router={router} />
+        <AppSidebar fixed display="lg" className="bg-secondary">
+          <AppSidebarHeader className="bg-secondary" />
+          <AppSidebarForm className="bg-secondary" />
+          <Suspense className="bg-secondary">
+            <AppSidebarNav
+              navConfig={navigation}
+              {...props}
+              router={router}
+              className="bg-secondary"
+            />
           </Suspense>
-          <AppSidebarFooter />
-          <AppSidebarMinimizer />
+          <AppSidebarFooter className="bg-secondary" />
+          <AppSidebarMinimizer className="bg-secondary" />
         </AppSidebar>
         <main className="main">
           <Container fluid>
@@ -69,15 +74,15 @@ function DefaultLayout(props) {
             </Suspense>
           </Container>
         </main>
-        <AppAside fixed>
+        <AppAside fixed className="bg-secondary">
           <Suspense fallback={loading()}>
             <DefaultAside />
           </Suspense>
         </AppAside>
       </div>
-      <AppFooter>
-        <Suspense fallback={loading()}>
-          <DefaultFooter />
+      <AppFooter className="bg-secondary">
+        <Suspense fallback={loading()} className="bg-secondary">
+          <DefaultFooter className="bg-secondary" />
         </Suspense>
       </AppFooter>
     </div>

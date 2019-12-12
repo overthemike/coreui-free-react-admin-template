@@ -5,8 +5,7 @@ export default {
       name: "TravelWealth",
       url: "/wallet",
       badge: {
-        variant: "info",
-        text: "NEW"
+        variant: "info"
       }
     },
     {
@@ -23,15 +22,13 @@ export default {
           name: "Request a Flight",
           url: "/request-flights",
           icon: "icon-plane",
-          class: "mt-auto",
-          variant: "info"
+          class: "mt-auto"
         },
         {
           name: "Request a hotel",
           url: "/request-hotel",
           icon: "fas fa-bed",
-          class: "mt-auto",
-          variant: "success"
+          class: "mt-auto"
         }
       ]
     },
@@ -44,19 +41,32 @@ export default {
       name: "Deal Alert",
       url: "/wallet",
       icon: "fab fa-twitter fas fa-bell",
-      attributes: { target: "_blank", rel: "noopener", disabled: true }
+      attributes: {
+        className: "bg-secondary",
+        target: "_blank",
+        rel: "noopener",
+        disabled: true
+      }
     },
     {
       name: "Schedule a Check-In",
       url: "https://calendly.com/easygotraveler/checkin?month=2019-11",
       icon: "icon-calendar",
-      attributes: { target: "_blank", rel: "noopener" }
+      attributes: {
+        className: "bg-secondary",
+        target: "_blank",
+        rel: "noopener"
+      }
     },
     {
       name: "Refer a Friend",
       url: "https://calendly.com/easygotraveler/checkin?month=2019-11",
       icon: "fas fa-users",
-      attributes: { target: "_blank", rel: "noopener" }
+      attributes: {
+        className: "bg-secondary",
+        target: "_blank",
+        rel: "noopener"
+      }
     },
     {
       name: "Useful Tools",
@@ -67,59 +77,78 @@ export default {
           name: "AwardWallet",
           url: "https://awardwallet.com/",
           icon: "fas fa-chart-bar",
-          class: "mt-auto"
-        },
-        {
-          name: "Merchant Category",
-          url:
-            "https://awardwallet.com/merchants?awid=101&fbclid=IwAR1MfCiz9EFfzTbD_hFt4hDdGeEwDEMRAuQ-FLgT7ugUN5L3_Y7IR3V1yYY",
-          icon: "fas fa-search",
-          class: "mt-auto"
+          class: "mt-auto",
+          attributes: {
+            className: "bg-secondary",
+            target: "_blank",
+            rel: "noopener"
+          }
         },
         {
           name: "Rakuten",
           url: "https://rakuten.com",
           icon: "fas fa-shopping-cart",
-          class: "mt-auto"
+          class: "mt-auto",
+          attributes: {
+            className: "bg-secondary",
+            target: "_blank",
+            rel: "noopener"
+          }
         },
         {
           name: "Plastiq",
           url: "https://plastiq.com",
           icon: "fas fa-money-check",
           class: "mt-auto",
-          attributes: { target: "_blank", rel: "noopener" }
+          attributes: {
+            className: "bg-secondary",
+            target: "_blank",
+            rel: "noopener"
+          }
         },
         {
           name: "Credit Karma",
           url: "https://creditkarma.com",
           icon: "fas fa-chart-line",
           class: "mt-auto",
-          attributes: { target: "_blank", rel: "noopener" }
+          attributes: {
+            className: "bg-secondary",
+            target: "_blank",
+            rel: "noopener"
+          }
         }
       ]
     },
-
-    {
-      divider: true
-    },
-
     {
       name: "facebook",
-      url: "/request-flights",
+      url: "https://facebook.com",
       class: "mt-auto",
-      icon: "fab fa-facebook-f"
+      icon: "fab fa-facebook-f",
+      attributes: {
+        className: "bg-secondary",
+        target: "_blank",
+        rel: "noopener"
+      }
     },
     {
       name: "instagram",
-      url: "/wallet",
+      url: "https://instagram.com",
       icon: "fab fa-instagram",
-      attributes: { target: "_blank", rel: "noopener" }
+      attributes: {
+        className: "bg-secondary",
+        target: "_blank",
+        rel: "noopener"
+      }
     },
     {
       name: "twitter",
-      url: "/wallet",
+      url: "https://twitter.com",
       icon: "fab fa-twitter",
-      attributes: { target: "_blank", rel: "noopener" }
+      attributes: {
+        className: "bg-secondary",
+        target: "_blank",
+        rel: "noopener"
+      }
     }
   ]
 };
