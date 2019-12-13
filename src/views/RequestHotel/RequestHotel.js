@@ -18,7 +18,14 @@ import { useHotel } from "../../hooks";
 function RequestHotel(props) {
   const [hotel, setHotel] = useState("");
   const [hotelLocation, sethotelLocation] = useState("");
-  const [invalid, setInvalid] = useState(false);
+  const [hotelInvalid, sethotelInvalid] = useState(false);
+  const [hotelLocInvalid, setHotelLocInvalid] = useState(false);
+  const [roomNumsInvalid, setRoomNumsinvalid] = useState(false);
+  const [guestPerRoomInvalid, setGuestPerRoomInvalid] = useState(false);
+  const [guestNamesInvalid, setGuestNamesInvalid] = useState(false);
+  const [checkinInvalid, setCheckinInvalid] = useState(false);
+  const [checkoutInvalid, setCheckoutInvalid] = useState(false);
+  const [budgetInvalid, setBugetInvalid] = useState(false);
   const [partner, setPartner] = useState("");
   const [roomNums, setroomNums] = useState("");
   const [guestPerRoom, setguestPerRoom] = useState("");
@@ -33,16 +40,29 @@ function RequestHotel(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (
-      hotel.length ||
-      hotelLocation.length ||
-      partner.length ||
-      roomNums.length === 0
-    ) {
-      //change class to be invalid
-      //need to shorten this process
-      console.log("cannot be empty");
-      setInvalid(true);
+    if (hotel.length === 0) {
+      sethotelInvalid(true);
+    }
+    if (hotelLocation.length === 0) {
+      setHotelLocInvalid(true);
+    }
+    if (roomNums.length === 0) {
+      setRoomNumsinvalid(true);
+    }
+    if (guestPerRoom.length === 0) {
+      setGuestPerRoomInvalid(true);
+    }
+    if (guestNames.length === 0) {
+      setGuestNamesInvalid(true);
+    }
+    if (checkin.length === 0) {
+      setCheckinInvalid(true);
+    }
+    if (checkout.length === 0) {
+      setCheckoutInvalid(true);
+    }
+    if (budget.length === 0) {
+      setBugetInvalid(true);
     } else {
       try {
         await requestHotel(
@@ -81,9 +101,9 @@ function RequestHotel(props) {
                     onChange={e => setHotel(e.target.value)}
                   >
                     <Label htmlFor="depart">Hotel</Label>
-                    <Input type="text" id="depart" invalid={invalid} />
-                    <FormFeedback invalid={invalid}>
-                      Cannot be Empty
+                    <Input type="text" id="depart" invalid={hotelInvalid} />
+                    <FormFeedback invalid={hotelInvalid}>
+                      Hotel is Required
                     </FormFeedback>
                     <FormText>
                       If you do not have a specific hotel selected, enter your
@@ -97,9 +117,9 @@ function RequestHotel(props) {
                     onChange={e => sethotelLocation(e.target.value)}
                   >
                     <Label htmlFor="depart">Hotel Location</Label>
-                    <Input type="text" id="depart" invalid={invalid} />
-                    <FormFeedback invalid={invalid}>
-                      Cannot be Empty
+                    <Input type="text" id="depart" invalid={hotelLocInvalid} />
+                    <FormFeedback invalid={hotelLocInvalid}>
+                      Hotel Location is Required
                     </FormFeedback>
                   </FormGroup>
                 </Col>
@@ -163,9 +183,9 @@ function RequestHotel(props) {
                     onChange={e => setroomNums(e.target.value)}
                   >
                     <Label htmlFor="depart">Number of rooms </Label>
-                    <Input type="text" id="depart" invalid={invalid} />
-                    <FormFeedback invalid={invalid}>
-                      Cannot be Empty
+                    <Input type="text" id="depart" invalid={roomNumsInvalid} />
+                    <FormFeedback invalid={roomNumsInvalid}>
+                      Number of rooms is Required
                     </FormFeedback>
                   </FormGroup>
                 </Col>
@@ -177,9 +197,13 @@ function RequestHotel(props) {
                     onChange={e => setguestPerRoom(e.target.value)}
                   >
                     <Label htmlFor="depart">Guests Per Room </Label>
-                    <Input type="text" id="depart" invalid={invalid} />
-                    <FormFeedback invalid={invalid}>
-                      Cannot be Empty
+                    <Input
+                      type="text"
+                      id="depart"
+                      invalid={guestPerRoomInvalid}
+                    />
+                    <FormFeedback invalid={guestPerRoomInvalid}>
+                      Guest Per Room is Required
                     </FormFeedback>
                   </FormGroup>
                 </Col>
@@ -189,9 +213,13 @@ function RequestHotel(props) {
                     onChange={e => setguestNames(e.target.value)}
                   >
                     <Label htmlFor="depart">Guests Names </Label>
-                    <Input type="text" id="depart" invalid={invalid} />
-                    <FormFeedback invalid={invalid}>
-                      Cannot be Empty
+                    <Input
+                      type="text"
+                      id="depart"
+                      invalid={guestNamesInvalid}
+                    />
+                    <FormFeedback invalid={guestNamesInvalid}>
+                      Guests Names are Required
                     </FormFeedback>
                   </FormGroup>
                 </Col>
@@ -212,10 +240,10 @@ function RequestHotel(props) {
                         id="checkin"
                         name="checkin"
                         placeholder="date"
-                        invalid={invalid}
+                        invalid={checkinInvalid}
                       />
-                      <FormFeedback invalid={invalid}>
-                        Cannot be Empty
+                      <FormFeedback invalid={checkinInvalid}>
+                        Check-in is Required
                       </FormFeedback>
                     </Col>
                   </FormGroup>
@@ -235,10 +263,10 @@ function RequestHotel(props) {
                         id="checkin"
                         name="checkin"
                         placeholder="date"
-                        invalid={invalid}
+                        invalid={checkoutInvalid}
                       />
-                      <FormFeedback invalid={invalid}>
-                        Cannot be Empty
+                      <FormFeedback invalid={checkoutInvalid}>
+                        Check-out is Required
                       </FormFeedback>
                     </Col>
                   </FormGroup>
@@ -251,9 +279,9 @@ function RequestHotel(props) {
                     onChange={e => setBudget(e.target.value)}
                   >
                     <Label htmlFor="depart">Budget Per Night</Label>
-                    <Input type="text" id="depart" invalid={invalid} />
-                    <FormFeedback invalid={invalid}>
-                      Cannot be Empty
+                    <Input type="text" id="depart" invalid={budgetInvalid} />
+                    <FormFeedback invalid={budgetInvalid}>
+                      Budget is Required
                     </FormFeedback>
                   </FormGroup>
                 </Col>
