@@ -7,8 +7,8 @@ function Cards(props) {
   const { adminCards } = useAdminCards();
   const [pending, setPending] = React.useState(true);
   const [singleCard, setSingleCard] = useState("");
-  const handleAction = value => setSingleCard(value);
-  const updateState = useCallback(state => handleRowClick(state));
+  // const handleAction = value => setSingleCard(value)
+  // const updateState = useCallback(state => handleRowClick(state));
   const [modal2, setModal2] = useState(false);
   const [modal, setModal] = useState(false);
   const data2 = adminCards;
@@ -40,26 +40,53 @@ function Cards(props) {
       sortable: true
     },
     {
-      cell: () => <Button onClick={handleAction}>Action</Button>,
-      ignoreRowClick: true,
+      cell: row => (
+        <ActionComponent row={row} onClick={handleRowClick}>
+          Action
+        </ActionComponent>
+      ),
+      ignoreRowClick: false,
       allowOverflow: true,
       button: true
     }
   ]);
-  function handleRowClick(row, event) {
-    if (`event.type === 'contextmenu'`) {
-      setSingleCard(row);
-      toggle2(row);
-    }
+
+  function handleRowClick(row) {
+    // console.log("CLICK", row);
+    setSingleCard(row);
+    toggle2(row);
   }
+
   function handleDelete(row) {
-    console.log("DLEETE", row);
+    console.log("delete", row);
+    setSingleCard(row);
+
+    toggle(row);
+  }
+  function deleteCard(id) {
+    console.log("DELETE");
   }
   const CustomLoader = () => (
     <div>
       <i className="fas fa-circle-notch fa-spin fa-5x text-secondary"></i>
     </div>
   );
+
+  const ActionComponent = ({ row, onClick }) => {
+    const clickHandler = () => handleRowClick(row);
+    const deleteHandler = () => handleDelete(row);
+
+    return (
+      <>
+        <Button key={row.name} onClick={clickHandler}>
+          Action
+        </Button>
+        <Button key={row.id} onClick={deleteHandler}>
+          Delete
+        </Button>
+      </>
+    );
+  };
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
@@ -122,7 +149,7 @@ function Cards(props) {
         columns={columns2}
         progressPending={pending}
         progressComponent={<CustomLoader />}
-        onRowClicked={updateState}
+        // onRowClicked={updateState}
         highlightOnHover
         persistTableHead
       />
@@ -130,9 +157,20 @@ function Cards(props) {
         <ModalHeader toggle={toggle2} className="d-flex">
           <i className="fas fa-plus"></i> Add a new card
         </ModalHeader>
+        <ModalBody>{singleCard.name}</ModalBody>
+      </Modal>
+      <Modal isOpen={modal} toggle={toggle} className={props.className}>
+        <ModalHeader toggle={toggle} className="d-flex">
+          <i className="fas fa-plus"></i> Delete Card
+        </ModalHeader>
         <ModalBody>
           {singleCard.name}
-          <Button onClick={handleDelete(singleCard)}>Delete</Button>
+          <Button
+            className="btn btn-outline-secondary text-light"
+            onClick={deleteCard(singleCard.id)}
+          >
+            delete
+          </Button>
         </ModalBody>
       </Modal>
     </>
