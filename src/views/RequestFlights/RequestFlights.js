@@ -13,21 +13,76 @@ import {
   Label,
   Row
 } from "reactstrap";
+import { useFlights } from "../../hooks";
 
-function RequestFlights() {
+function RequestFlights(props) {
   const [routing, setRouting] = useState("");
   const [flexRouting, setflexRouting] = useState("");
   const [departCity, setdepartCity] = useState("");
+  const [departCityInvalid, setdepartCityInvalid] = useState(false);
   const [destinations, setDestinations] = useState("");
+  const [destinationsInvalid, setDestinationsInvalid] = useState(false);
   const [departDate, setdepartDate] = useState("");
+  const [departDateInvalid, setdepartDateInvalid] = useState(false);
   const [flexDepartDate, setflexDepartDate] = useState("");
   const [returnDate, setreturnDate] = useState("");
+  const [returnDateInvalid, setreturnDateInvalid] = useState(false);
   const [flexReturnDate, setflexReturnDate] = useState("");
   const [preferred, setPreffered] = useState("");
   const [passengers, setPassengers] = useState("");
+  const [passengersInvalid, setPassengersInvalid] = useState(false);
   const [passNames, setpassNames] = useState("");
+  const [passNamesInvalid, setpassNamesInvalid] = useState(false);
   const [bags, setBags] = useState("");
+  const [bagsInvalid, setBagsInvalid] = useState(false);
   const [notes, setNotes] = useState("");
+  const { requestFlight } = useFlights();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (departCity.length === 0) {
+      setdepartCityInvalid(true);
+    }
+    if (destinations.length === 0) {
+      setDestinationsInvalid(true);
+    }
+    if (departDate.length === 0) {
+      setdepartDateInvalid(true);
+    }
+    if (returnDate.length === 0) {
+      setreturnDateInvalid(true);
+    }
+    if (passengers.length === 0) {
+      setPassengersInvalid(true);
+    }
+    if (passNames.length === 0) {
+      setpassNamesInvalid(true);
+    }
+    if (bags.length === 0) {
+      setBagsInvalid(true);
+    } else {
+      try {
+        await requestFlight(
+          routing,
+          flexRouting,
+          departCity,
+          destinations,
+          departDate,
+          flexDepartDate,
+          returnDate,
+          flexReturnDate,
+          preferred,
+          passengers,
+          passNames,
+          bags,
+          notes
+        );
+        props.history.push("/");
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
 
   return (
     <>
@@ -37,7 +92,7 @@ function RequestFlights() {
             <strong>Request a Flight</strong>
           </CardHeader>
           <CardBody className="bg-light">
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Row>
                 <Col xs="12" md="6">
                   <FormGroup row>
@@ -159,8 +214,14 @@ function RequestFlights() {
                     onChange={e => setdepartCity(e.target.value)}
                   >
                     <Label htmlFor="depart">Departure City</Label>
-                    <Input type="text" id="depart" />
-                    <FormFeedback>Required</FormFeedback>
+                    <Input
+                      type="text"
+                      id="depart"
+                      invalid={departCityInvalid}
+                    />
+                    <FormFeedback invalid={departCityInvalid}>
+                      Departure City is Required
+                    </FormFeedback>
                   </FormGroup>
                 </Col>
                 <Col xs="12" md="6">
@@ -169,8 +230,14 @@ function RequestFlights() {
                     onChange={e => setDestinations(e.target.value)}
                   >
                     <Label htmlFor="destinations">Destination(s)</Label>
-                    <Input type="text" id="destinations" />
-                    <FormFeedback>Required</FormFeedback>
+                    <Input
+                      type="text"
+                      id="destinations"
+                      invalid={destinationsInvalid}
+                    />
+                    <FormFeedback invalid={destinationsInvalid}>
+                      Destination(s) is Required
+                    </FormFeedback>
                   </FormGroup>
                 </Col>
               </Row>
@@ -190,8 +257,11 @@ function RequestFlights() {
                         id="depart-input"
                         name="depart-input"
                         placeholder="date"
+                        invalid={departDateInvalid}
                       />
-                      <FormFeedback>Required</FormFeedback>
+                      <FormFeedback invalid={departDateInvalid}>
+                        Departure Date is Required
+                      </FormFeedback>
                       <FormText className="help-block">
                         Close-in Ticketing Fee: requests submitted less than 90
                         days before departure will incur an additional charge of
@@ -217,7 +287,7 @@ function RequestFlights() {
                             className="form-check-input"
                             type="radio"
                             id="departYes"
-                            name="radios"
+                            name="departYes"
                             value="yes"
                           />
                           <Label
@@ -233,7 +303,7 @@ function RequestFlights() {
                             className="form-check-input"
                             type="radio"
                             id="departNo"
-                            name="radios"
+                            name="departNo"
                             value="no"
                           />
                           <Label
@@ -265,7 +335,11 @@ function RequestFlights() {
                         id="return-input"
                         name="return-input"
                         placeholder="date"
+                        invalid={returnDateInvalid}
                       />
+                      <FormFeedback invalid={returnDateInvalid}>
+                        Return Date is Required
+                      </FormFeedback>
                     </Col>
                   </FormGroup>
                 </Col>
@@ -342,7 +416,14 @@ function RequestFlights() {
                     onChange={e => setPassengers(e.target.value)}
                   >
                     <Label htmlFor="passengers">How Many Passengers?</Label>
-                    <Input type="text" id="passengers" required />
+                    <Input
+                      type="text"
+                      id="passengers"
+                      invalid={passengersInvalid}
+                    />
+                    <FormFeedback invalid={passengersInvalid}>
+                      Passengers is Required
+                    </FormFeedback>
                   </FormGroup>
                 </Col>
               </Row>
@@ -353,7 +434,14 @@ function RequestFlights() {
                     onChange={e => setpassNames(e.target.value)}
                   >
                     <Label htmlFor="passengerNames">Passenger Name(s)</Label>
-                    <Input type="text" id="passengerNames" required />
+                    <Input
+                      type="text"
+                      id="passengerNames"
+                      invalid={passNamesInvalid}
+                    />
+                    <FormFeedback invalid={passNamesInvalid}>
+                      Passenger Name(s) is Required
+                    </FormFeedback>
                   </FormGroup>
                 </Col>
                 <Col xs="12" md="6">
@@ -364,7 +452,10 @@ function RequestFlights() {
                     <Label htmlFor="bags">
                       How many total bags will you be checking?
                     </Label>
-                    <Input type="text" id="bags" required />
+                    <Input type="text" id="bags" invalid={bagsInvalid} />
+                    <FormFeedback invalid={bagsInvalid}>
+                      Bags is Required
+                    </FormFeedback>
                     <FormText className="help-block">
                       Certain airlines may charge an additional fee for checked
                       bags

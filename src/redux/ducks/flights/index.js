@@ -112,32 +112,73 @@ function submitForm(
     });
 }
 // custom hooks
-export function useForms() {
+export function useFlights() {
   const dispatch = useDispatch();
-  const routing = useSelector(appState => appState.formState.routing);
-  const flex_routing = useSelector(appState => appState.formState.flex_routing);
+  const routing = useSelector(appState => appState.myFlightState.routing);
+  const flex_routing = useSelector(
+    appState => appState.myFlightState.flex_routing
+  );
   const departure_city = useSelector(
-    appState => appState.formState.departure_city
+    appState => appState.myFlightState.departure_city
   );
-  const destinations = useSelector(appState => appState.formState.destinations);
-  const depart_date = useSelector(appState => appState.formState.depart_date);
+  const destinations = useSelector(
+    appState => appState.myFlightState.destinations
+  );
+  const depart_date = useSelector(
+    appState => appState.myFlightState.depart_date
+  );
   const flex_departure = useSelector(
-    appState => appState.formState.flex_departure
+    appState => appState.myFlightState.flex_departure
   );
-  const return_date = useSelector(appState => appState.formState.return_date);
-  const flex_return = useSelector(appState => appState.formState.flex_return);
+  const return_date = useSelector(
+    appState => appState.myFlightState.return_date
+  );
+  const flex_return = useSelector(
+    appState => appState.myFlightState.flex_return
+  );
   const preferred_class = useSelector(
-    appState => appState.formState.preferred_class
+    appState => appState.myFlightState.preferred_class
   );
-  const passengers = useSelector(appState => appState.formState.passengers);
+  const passengers = useSelector(appState => appState.myFlightState.passengers);
   const passenger_names = useSelector(
-    appState => appState.formState.passenger_names
+    appState => appState.myFlightState.passenger_names
   );
-  const bags = useSelector(appState => appState.formState.bags);
-  const notes = useSelector(appState => appState.formState.notes);
+  const bags = useSelector(appState => appState.myFlightState.bags);
+  const notes = useSelector(appState => appState.myFlightState.notes);
 
-  const requestFlight = (inquiry, wallet_updated, notes) =>
-    submitForm(inquiry, wallet_updated, notes, dispatch);
+  const requestFlight = (
+    routing,
+    flex_routing,
+    departure_city,
+    destinations,
+    depart_date,
+    flex_departure,
+    return_date,
+    flex_return,
+    preferred_class,
+    passengers,
+    passenger_names,
+    bags,
+    notes,
+    requestFlight
+  ) =>
+    submitForm(
+      routing,
+      flex_routing,
+      departure_city,
+      destinations,
+      depart_date,
+      flex_departure,
+      return_date,
+      flex_return,
+      preferred_class,
+      passengers,
+      passenger_names,
+      bags,
+      notes,
+      requestFlight,
+      dispatch
+    );
 
   return {
     routing,
