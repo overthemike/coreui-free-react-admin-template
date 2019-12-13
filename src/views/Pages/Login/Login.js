@@ -30,17 +30,17 @@ function Login(props) {
   }
 
   return (
-    <div className="app bg-primary d-flex justify-content-center align-items-center">
+    <div className="app bg-dark d-flex justify-content-center align-items-center">
       <img src={pic} alt="travelWealth" className="loginLogo mt-n5" />
       <Col xs="12" md="6">
-        <Card>
+        <Card className="bg-light">
           <CardBody>
             <Form onSubmit={handleSubmit}>
-              <h1 className="text-muted">Login</h1>
-              <p className="text-muted">Sign In to your account</p>
+              <h1 className="text-primary">Login</h1>
+              <p className="text-primary">Sign In to your account</p>
               <InputGroup className="mb-3">
                 <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
+                  <InputGroupText className="bg-light">
                     <i className="icon-user" />
                   </InputGroupText>
                 </InputGroupAddon>
@@ -54,7 +54,7 @@ function Login(props) {
               </InputGroup>
               <InputGroup className="mb-4">
                 <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
+                  <InputGroupText className="bg-light">
                     <i className="icon-lock" />
                   </InputGroupText>
                 </InputGroupAddon>

@@ -150,26 +150,26 @@ function ManageWallet(props) {
         <Button
           color="info"
           onClick={toggleAccordion}
-          className="mr-1 col text-light"
+          className="mr-1 col text-pimary"
           id="toggleCollapse1"
         >
           <i className="fa fa-credit-card fa-3x mb-1"></i> <br /> Recommended
         </Button>
       </div>
       <Card>
-        <CardHeader>
+        <CardHeader className="bg-light text-primary">
           <i className="fa fa-credit-card"></i>
           <strong>Recommended Cards</strong>
         </CardHeader>
         <Collapse isOpen={collapse}>
-          <CardBody>
+          <CardBody className="bg-light">
             <DataTable style={style} columns={columns2} data={data2} />
           </CardBody>
         </Collapse>
       </Card>
       <Row></Row>
       <Card>
-        <CardBody>
+        <CardBody className="bg-light text-primary">
           <DataTable
             title="My Active Cards"
             columns={columns}

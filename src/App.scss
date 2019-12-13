@@ -98,14 +98,44 @@
 -webkit-focus-ring-color {
   color: #3f3c3b;
 }
-.dropdown-menu {
-  border: 1px solid #454241;
-}
-.dropdown-header {
-  border-bottom: 1px solid #454241;
-}
+
 .dropdown-item:hover,
 .dropdown-item:focus {
   color: #f0f0f0;
   background: #3f3c3b;
+}
+.dropdown-item i {
+  color: #f0f0f0;
+}
+//dataTable
+.ksKbuS {
+  color: #f0f0f0 !important;
+}
+.hLrWNh {
+  color: #f0f0f0 !important;
+}
+.JzHiH {
+  color: #f0f0f0 !important;
+}
+.iHDHnc {
+  color: #f0f0f0 !important;
+}
+//modals
+.modal-content {
+  color: #f0f0f0;
+  background: #3f3c3b;
+}
+//forms
+.form-control {
+  color: #f0f0f0;
+  background: #3f3c3b;
+  border: 1px solid hsl(20, 4%, 30%);
+}
+.form-control:focus {
+  color: #f0f0f0;
+  background: #3f3c3b;
+  border: 1px solid hsl(20, 4%, 30%);
+}
+.input-group-text {
+  border: 1px solid hsl(20, 4%, 30%);
 }
