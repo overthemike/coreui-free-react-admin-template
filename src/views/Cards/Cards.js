@@ -79,10 +79,10 @@ function Cards(props) {
     return (
       <>
         <Button key={row.name} onClick={clickHandler}>
-          Action
+          <i class="fas fa-edit"></i>
         </Button>
         <Button key={row.id} onClick={deleteHandler}>
-          Delete
+          <i class="far fa-trash-alt"></i>
         </Button>
       </>
     );
