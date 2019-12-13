@@ -54,11 +54,11 @@ function RequestHotel(props) {
   return (
     <>
       <Col>
-        <Card>
+        <Card className="mt-3">
           <CardHeader>
             <strong>Request Hotel</strong>
           </CardHeader>
-          <CardBody>
+          <CardBody className="bg-light">
             <Form onSubmit={handleSubmit}>
               <Row>
                 <Col xs="12" md="6">

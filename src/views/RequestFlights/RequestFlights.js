@@ -32,11 +32,11 @@ function RequestFlights() {
   return (
     <>
       <Col>
-        <Card>
+        <Card className="mt-3">
           <CardHeader>
             <strong>Request a Flight</strong>
           </CardHeader>
-          <CardBody>
+          <CardBody className="bg-light">
             <Form>
               <Row>
                 <Col xs="12" md="6">
