@@ -34,24 +34,29 @@ function DefaultLayout(props) {
   }
   return (
     <div className="app">
-      <AppHeader fixed>
+      <AppHeader fixed className="bg-light text-primary">
         <Suspense fallback={loading()}>
           <DefaultHeader onLogout={e => signOut(e)} />
         </Suspense>
       </AppHeader>
-      <div className="app-body">
-        <AppSidebar fixed display="lg">
-          <AppSidebarHeader />
-          <AppSidebarForm />
-          <Suspense>
-            <AppSidebarNav navConfig={navigation} {...props} router={router} />
+      <div className="app-body bg-light">
+        <AppSidebar fixed display="lg" className="bg-light">
+          <AppSidebarHeader className="bg-light" />
+          <AppSidebarForm className="bg-light" />
+          <Suspense className="bg-light">
+            <AppSidebarNav
+              navConfig={navigation}
+              {...props}
+              router={router}
+              className="bg-light"
+            />
           </Suspense>
           <AppSidebarFooter />
           <AppSidebarMinimizer />
         </AppSidebar>
-        <main className="main">
+        <main className="main bg-dark">
           <Container fluid>
-            <Suspense fallback={loading()}>
+            <Suspense fallback={loading()} className="bg-light">
               <Switch>
                 {routes.map((route, idx) => {
                   return route.component ? (
@@ -69,15 +74,15 @@ function DefaultLayout(props) {
             </Suspense>
           </Container>
         </main>
-        <AppAside fixed>
-          <Suspense fallback={loading()}>
-            <DefaultAside />
+        <AppAside fixed className="bg-light">
+          <Suspense fallback={loading()} className="bg-light">
+            <DefaultAside className="bg-light" />
           </Suspense>
         </AppAside>
       </div>
-      <AppFooter>
-        <Suspense fallback={loading()}>
-          <DefaultFooter />
+      <AppFooter className="bg-dark">
+        <Suspense fallback={loading()} className="bg-dark">
+          <DefaultFooter className="bg-dark" />
         </Suspense>
       </AppFooter>
     </div>

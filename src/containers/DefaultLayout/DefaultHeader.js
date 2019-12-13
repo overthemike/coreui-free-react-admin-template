@@ -40,7 +40,7 @@ function DefaultHeader(props) {
       />
       <AppSidebarToggler className="d-md-down-none" display="lg" />
 
-      <Nav className="d-md-down-none" navbar>
+      <Nav className="d-md-down-none text-primary" navbar>
         <NavItem className="px-3">
           <Link to="/" className="nav-link">
             Home
@@ -74,11 +74,15 @@ function DefaultHeader(props) {
               <i className="fas fa-sign-out-alt"></i>
             )}
           </DropdownToggle>
-          <DropdownMenu right>
-            <DropdownItem header tag="div" className="text-center">
+          <DropdownMenu right className="bg-light">
+            <DropdownItem
+              header
+              tag="div"
+              className="text-center bg-light text-primary"
+            >
               <strong>Account</strong>
             </DropdownItem>
-            <DropdownItem onClick={signout}>
+            <DropdownItem onClick={signout} className="text-primary">
               <i className="fa fa-lock" /> Logout
             </DropdownItem>
           </DropdownMenu>

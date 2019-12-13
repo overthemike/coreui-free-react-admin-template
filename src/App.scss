@@ -10,59 +10,6 @@
 // Import Main styles for this application
 @import "./scss/style.scss";
 
-.wallet-avatar {
-  border-radius: 50%;
-  max-width: 95px;
-  max-height: 95px;
-}
-.mainCard {
-  display: inline-block;
-  position: relative;
-  margin-bottom: 60px;
-  border-radius: 6px;
-  color: rgba(0, 0, 0, 0.87);
-  background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
-  .mainCard-caption {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    color: #fff;
-    font-size: 1.3em;
-    text-shadow: 0 2px 5px rgba(33, 33, 33, 0.5);
-  }
-  .mainCard-image {
-    height: 60%;
-    position: relative;
-    overflow: hidden;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-top: -30px;
-    border-radius: 6px;
-    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56),
-      0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-  }
-  .img {
-    max-width: 100%;
-    max-height: 211px;
-    height: 100%;
-    border-radius: 6px;
-    pointer-events: none;
-  }
-  .mainCard-blog {
-    margin-top: 30px;
-  }
-  .mainCard-table {
-    padding: 15px 30px;
-  }
-  .mainCard-category {
-    position: relative;
-    line-height: 0;
-    margin: 15px 0;
-  }
-}
-
 #search {
   max-width: 200px;
 }
@@ -77,4 +24,88 @@
 .loginLogo {
   max-width: 500px;
   max-height: 500px;
+}
+.app-footer {
+  border-top: 1px solid #454241;
+}
+.app-header {
+  border-bottom: 1px solid #454241;
+}
+//sidebar
+.sidebar .nav-link:hover {
+  color: #d39b2d;
+  background: #454241;
+}
+.sidebar .nav-item:hover {
+  color: #d39b2d;
+  background: #454241;
+}
+.sidebar .nav-dropdown.open {
+  color: #f0f0f0;
+  background: #454241;
+}
+.sidebar .nav-link.active {
+  color: #f0f0f0;
+  background: #454241;
+}
+.sidebar .nav-link:hover .nav-icon {
+  color: #d39b2d;
+}
+.sidebar .nav-link.active .nav-icon {
+  color: #f0f0f0;
+}
+.sidebar .nav-link .nav-icon {
+  color: #f0f0f0;
+}
+
+@media (min-width: 992px) {
+  .sidebar-minimized .sidebar .nav > .nav-dropdown:hover {
+    color: #d39b2d;
+    background: #454241;
+  }
+  .sidebar-minimized .sidebar .nav > .nav-dropdown > .nav-dropdown-items {
+    color: #f0f0f0;
+    background: #454241;
+  }
+  .sidebar-minimized .sidebar .sidebar-minimizer {
+    color: #f0f0f0;
+    background: #454241;
+  }
+  .sidebar-minimized .sidebar .nav-item:hover > .nav-link {
+    color: #d39b2d;
+    background: #454241;
+  }
+  .sidebar-minimized .sidebar .nav-item:hover > .nav-link nav-icon {
+    color: #d39b2d;
+    background: #454241;
+  }
+  .sidebar-minimized .sidebar .nav-link:hover {
+    color: #d39b2d;
+    background: #454241;
+  }
+}
+//navbar
+.navbar-nav .nav-link {
+  color: #f0f0f0;
+}
+.navbar-nav .nav-link:hover {
+  color: #d39b2d;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #d39b2d;
+}
+-webkit-focus-ring-color {
+  color: #3f3c3b;
+}
+.dropdown-menu {
+  border: 1px solid #454241;
+}
+.dropdown-header {
+  border-bottom: 1px solid #454241;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: #f0f0f0;
+  background: #3f3c3b;
 }
