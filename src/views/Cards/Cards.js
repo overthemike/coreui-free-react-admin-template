@@ -15,6 +15,12 @@ function Cards(props) {
   const [filterText, setFilterText] = React.useState("");
   const columns2 = useMemo(() => [
     {
+      name: "Cards",
+      selector: "image",
+      sortable: false,
+      cell: row => <img className="tableCards" alt={row.name} src={row.image} />
+    },
+    {
       name: "Name",
       selector: "name",
       sortable: true
@@ -78,12 +84,17 @@ function Cards(props) {
 
     return (
       <>
-        <Button key={row.name} onClick={clickHandler}>
-          <i class="fas fa-edit"></i>
-        </Button>
-        <Button key={row.id} onClick={deleteHandler}>
-          <i class="far fa-trash-alt"></i>
-        </Button>
+        <i
+          className="fas fa-edit fa-lg"
+          key={row.name}
+          onClick={clickHandler}
+        ></i>
+
+        <i
+          className="far fa-trash-alt fa-lg"
+          key={row.id}
+          onClick={deleteHandler}
+        ></i>
       </>
     );
   };
