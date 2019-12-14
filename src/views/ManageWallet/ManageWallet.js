@@ -73,7 +73,8 @@ function ManageWallet(props) {
     {
       name: "Free Intl",
       selector: "card.free_intl",
-      sortable: true
+      sortable: true,
+      format: row => `${row.card.free_intl.toString()}`
     },
     {
       name: "Features",
