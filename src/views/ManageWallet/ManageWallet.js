@@ -37,13 +37,22 @@ function ManageWallet(props) {
   const [status, setStatus] = useState("");
   const [card, setCard] = useState("");
   const { newCard } = useMyCards();
-  console.log(card);
 
   const columns = [
     {
+      name: "Cards",
+      selector: "card.image",
+      sortable: true,
+      maxWidth: "50px",
+      cell: row => (
+        <img className="tableCards" alt={row.card.name} src={row.card.image} />
+      )
+    },
+    {
       name: "Name",
       selector: "card.name",
-      sortable: true
+      sortable: true,
+      wrap: true
     },
     {
       name: "Type",
@@ -58,7 +67,8 @@ function ManageWallet(props) {
     {
       name: "Use For",
       selector: "card.use_for",
-      sortable: true
+      sortable: true,
+      wrap: true
     },
     {
       name: "Free Intl",
@@ -68,14 +78,25 @@ function ManageWallet(props) {
     {
       name: "Features",
       selector: "card.features",
-      sortable: true
+      sortable: true,
+      wrap: true
     }
   ];
   const columns2 = [
     {
+      name: "Cards",
+      selector: "card.image",
+      sortable: true,
+      maxWidth: "50px",
+      cell: row => (
+        <img className="tableCards" alt={row.card.name} src={row.card.image} />
+      )
+    },
+    {
       name: "Name",
       selector: "card.name",
-      sortable: true
+      sortable: true,
+      wrap: true
     },
     {
       name: "Account Holder",
@@ -85,17 +106,20 @@ function ManageWallet(props) {
     {
       name: "Fee",
       selector: "card.annual_fee",
-      sortable: true
+      sortable: true,
+      format: row => `${"$" + row.card.annual_fee}`
     },
     {
       name: "Use For",
       selector: "card.use_for",
-      sortable: true
+      sortable: true,
+      wrap: true
     },
     {
       name: "Features",
       selector: "card.features",
-      sortable: true
+      sortable: true,
+      wrap: true
     },
     {
       name: "Open After",
@@ -163,7 +187,7 @@ function ManageWallet(props) {
         </CardHeader>
         <Collapse isOpen={collapse}>
           <CardBody className="bg-light">
-            <DataTable style={style} columns={columns2} data={data2} />
+            <DataTable style={style} columns={columns2} data={data2} stripped />
           </CardBody>
         </Collapse>
       </Card>
@@ -172,6 +196,7 @@ function ManageWallet(props) {
         <CardBody className="bg-light text-primary">
           <DataTable
             title="My Active Cards"
+            stripped
             columns={columns}
             data={data}
             progressPending={pending}
