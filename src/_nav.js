@@ -111,34 +111,6 @@ export default {
           }
         }
       ]
-    },
-    {
-      name: "facebook",
-      url: "https://facebook.com",
-      class: "mt-auto",
-      icon: "fab fa-facebook-f",
-      attributes: {
-        target: "_blank",
-        rel: "noopener"
-      }
-    },
-    {
-      name: "instagram",
-      url: "https://instagram.com",
-      icon: "fab fa-instagram",
-      attributes: {
-        target: "_blank",
-        rel: "noopener"
-      }
-    },
-    {
-      name: "twitter",
-      url: "https://twitter.com",
-      icon: "fab fa-twitter",
-      attributes: {
-        target: "_blank",
-        rel: "noopener"
-      }
     }
   ]
 };

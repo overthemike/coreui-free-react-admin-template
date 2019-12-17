@@ -50,7 +50,10 @@
 }
 .sidebar .nav-dropdown.open {
   color: #f0f0f0;
-  background: #454241;
+  background: #3a3737;
+}
+.sidebar .nav-dropdown.open .nav-link {
+  background: #3a3737;
 }
 .sidebar .nav-link.active {
   color: #f0f0f0;

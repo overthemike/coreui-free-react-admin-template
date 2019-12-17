@@ -40,7 +40,7 @@ function ManageWallet(props) {
 
   const columns = [
     {
-      name: "Cards",
+      name: "",
       selector: "card.image",
       sortable: true,
       maxWidth: "50px",
@@ -49,7 +49,7 @@ function ManageWallet(props) {
       )
     },
     {
-      name: "Name",
+      name: "Cards",
       selector: "card.name",
       sortable: true,
       wrap: true
@@ -77,15 +77,15 @@ function ManageWallet(props) {
       format: row => `${row.card.free_intl.toString()}`
     },
     {
-      name: "Features",
-      selector: "card.features",
+      name: "Annual Fee",
+      selector: "card.annual_fee",
       sortable: true,
       wrap: true
     }
   ];
   const columns2 = [
     {
-      name: "Cards",
+      name: "",
       selector: "card.image",
       sortable: true,
       maxWidth: "50px",
@@ -94,7 +94,7 @@ function ManageWallet(props) {
       )
     },
     {
-      name: "Name",
+      name: "Cards",
       selector: "card.name",
       sortable: true,
       wrap: true
@@ -105,10 +105,9 @@ function ManageWallet(props) {
       sortable: true
     },
     {
-      name: "Fee",
-      selector: "card.annual_fee",
-      sortable: true,
-      format: row => `${"$" + row.card.annual_fee}`
+      name: "Open After",
+      selector: "open_after",
+      sortable: true
     },
     {
       name: "Use For",
@@ -123,9 +122,10 @@ function ManageWallet(props) {
       wrap: true
     },
     {
-      name: "Open After",
-      selector: "open_after",
-      sortable: true
+      name: "Fee",
+      selector: "card.annual_fee",
+      sortable: true,
+      format: row => `${"$" + row.card.annual_fee}`
     }
   ];
   React.useEffect(() => {
@@ -154,10 +154,23 @@ function ManageWallet(props) {
     e.preventDefault();
     newCard(type, date_opened, card, status);
     toggle2();
+    window.location.reload();
   }
   const CustomLoader = () => (
     <div>
       <i className="fas fa-circle-notch fa-spin fa-5x text-secondary"></i>
+    </div>
+  );
+  const ActiveExpanded = ({ data }) => (
+    <div className="mt-3">
+      <p className="text-primary">Annual Notes : {data.card.annual_notes}</p>
+      <p className="text-primary">Features : {data.card.features}</p>
+    </div>
+  );
+  const RecommendExpand = ({ data }) => (
+    <div className="mt-3">
+      <p className="text-primary">Annual Notes : {data.card.annual_notes}</p>
+      <p className="text-primary">Features : {data.card.features}</p>
     </div>
   );
   const style = {
@@ -188,7 +201,14 @@ function ManageWallet(props) {
         </CardHeader>
         <Collapse isOpen={collapse}>
           <CardBody className="bg-light">
-            <DataTable style={style} columns={columns2} data={data2} stripped />
+            <DataTable
+              style={style}
+              columns={columns2}
+              data={data2}
+              stripped
+              expandableRows
+              expandableRowsComponent={<RecommendExpand />}
+            />
           </CardBody>
         </Collapse>
       </Card>
@@ -202,6 +222,8 @@ function ManageWallet(props) {
             data={data}
             progressPending={pending}
             progressComponent={<CustomLoader />}
+            expandableRows
+            expandableRowsComponent={<ActiveExpanded />}
           />
         </CardBody>
       </Card>
