@@ -244,7 +244,7 @@ function ManageWallet(props) {
                 <Col xs="12" md="6">
                   <FormGroup row>
                     <Col md="8">
-                      <Label>Is your Easy Go Wallet up to date?</Label>
+                      <Label>Is your Wallet up to date?</Label>
                     </Col>
                     <Col md="4">
                       <FormGroup

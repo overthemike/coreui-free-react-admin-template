@@ -11,7 +11,7 @@ function Classroom() {
   return (
     <>
       <Jumbotron className="bg-dark">
-        <h1 className="display-3">Easy Go Classroom</h1>
+        <h1 className="display-3">TravelWealth Classroom</h1>
       </Jumbotron>
       <ListGroup className="mb-5">
         <ListGroupItem action tag="a" href="#" className="bg-light">

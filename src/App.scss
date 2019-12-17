@@ -103,8 +103,11 @@
 .navbar-nav .nav-link:focus {
   color: #d39b2d;
 }
--webkit-focus-ring-color {
-  color: #3f3c3b;
+:focus {
+  outline-color: #3f3c3b;
+}
+button:focus {
+  outline-color: #3f3c3b;
 }
 
 .dropdown-item:hover,
