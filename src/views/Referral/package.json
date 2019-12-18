@@ -1,0 +1,6 @@
+{
+  "name": "referral",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Referral.js"
+}

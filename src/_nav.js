@@ -58,12 +58,8 @@ export default {
     },
     {
       name: "Refer a Friend",
-      url: "https://calendly.com/easygotraveler/checkin?month=2019-11",
-      icon: "fas fa-users",
-      attributes: {
-        target: "_blank",
-        rel: "noopener"
-      }
+      url: "/referral",
+      icon: "fas fa-users"
     },
     {
       name: "Useful Tools",

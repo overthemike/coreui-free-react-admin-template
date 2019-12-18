@@ -60,7 +60,7 @@ function ManageWallet(props) {
       sortable: true
     },
     {
-      name: "date Open",
+      name: "Date Open",
       selector: "date_opened",
       sortable: true
     },
@@ -80,7 +80,8 @@ function ManageWallet(props) {
       name: "Annual Fee",
       selector: "card.annual_fee",
       sortable: true,
-      wrap: true
+      wrap: true,
+      format: row => `${"$" + row.card.annual_fee}`
     }
   ];
   const columns2 = [
@@ -116,10 +117,10 @@ function ManageWallet(props) {
       wrap: true
     },
     {
-      name: "Features",
-      selector: "card.features",
+      name: "Free Intl",
+      selector: "card.free_intl",
       sortable: true,
-      wrap: true
+      format: row => `${row.card.free_intl.toString()}`
     },
     {
       name: "Fee",

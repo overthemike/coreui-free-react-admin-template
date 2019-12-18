@@ -7,6 +7,7 @@ const Classroom = React.lazy(() => import("./views/Classroom"));
 const RequestFlights = React.lazy(() => import("./views/RequestFlights"));
 const RequestHotel = React.lazy(() => import("./views/RequestHotel"));
 const ManageWallet = React.lazy(() => import("./views/ManageWallet"));
+const Referral = React.lazy(() => import("./views/Referral"));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -23,6 +24,12 @@ const routes = [
     exact: true,
     name: "Request Hotel",
     component: RequestHotel
+  },
+  {
+    path: "/referral",
+    exact: true,
+    name: "Referral",
+    component: Referral
   },
   {
     path: "/manage-wallet",
