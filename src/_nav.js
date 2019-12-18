@@ -19,15 +19,13 @@ export default {
       icon: "icon-globe",
       children: [
         {
-          name: "Request a Flight",
+          name: " • Request a Flight",
           url: "/request-flights",
-          icon: "icon-plane",
           class: "mt-auto"
         },
         {
-          name: "Request a hotel",
+          name: " • Request a Hotel",
           url: "/request-hotel",
-          icon: "fas fa-bed",
           class: "mt-auto"
         }
       ]
@@ -67,9 +65,8 @@ export default {
       icon: "icon-wrench",
       children: [
         {
-          name: "AwardWallet",
+          name: " • AwardWallet",
           url: "https://awardwallet.com/",
-          icon: "fas fa-chart-bar",
           class: "mt-auto",
           attributes: {
             target: "_blank",
@@ -77,9 +74,8 @@ export default {
           }
         },
         {
-          name: "Rakuten",
+          name: " • Rakuten",
           url: "https://rakuten.com",
-          icon: "fas fa-shopping-cart",
           class: "mt-auto",
           attributes: {
             target: "_blank",
@@ -87,9 +83,8 @@ export default {
           }
         },
         {
-          name: "Plastiq",
+          name: " • Plastiq",
           url: "https://plastiq.com",
-          icon: "fas fa-money-check",
           class: "mt-auto",
           attributes: {
             target: "_blank",
@@ -97,9 +92,8 @@ export default {
           }
         },
         {
-          name: "Credit Karma",
+          name: " • Credit Karma",
           url: "https://creditkarma.com",
-          icon: "fas fa-chart-line",
           class: "mt-auto",
           attributes: {
             target: "_blank",
