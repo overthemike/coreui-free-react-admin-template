@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 // action type definitions
 const ADD_REFERRAL = "wallet/ADD_REFERRAL";
 
@@ -22,17 +22,17 @@ export default (state = initialState, action) => {
   }
 };
 // action creators
-function getRecCards(fName, lName, email, notes) {
+function addReferral(name, email, phone, notes) {
   return dispatch => {
     const accessToken = window.localStorage.getItem("token");
     axios.defaults.headers.common["Authorization"] = "Token " + accessToken;
     axios({
       method: "post",
-      url: "/customer-requests/hotel-request/",
+      url: "/customer-requests/referral/",
       data: {
-        fName,
-        lName,
+        name,
         email,
+        phone,
         notes
       },
       headers: { Authorization: "Token " + accessToken }
@@ -52,10 +52,7 @@ function getRecCards(fName, lName, email, notes) {
 
 export function useReferral() {
   const dispatch = useDispatch();
-  const recCards = useSelector(appState => appState.recCardState.referral);
-
-  useEffect(() => {
-    dispatch(getRecCards());
-  }, [dispatch]);
-  return { recCards };
+  const newReferral = (name, email, phone, notes) =>
+    dispatch(addReferral(name, email, phone, notes));
+  return { newReferral };
 }

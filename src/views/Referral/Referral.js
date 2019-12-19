@@ -23,7 +23,7 @@ function Referral(props) {
   const [phoneInvalid, setPhoneInvalid] = useState(false);
   const [emailInvalid, setemailInvalid] = useState(false);
 
-  const { addReferral } = useReferral();
+  const { newReferral } = useReferral();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -37,7 +37,7 @@ function Referral(props) {
       setemailInvalid(true);
     } else {
       try {
-        await addReferral(name, phone, email, notes);
+        await newReferral(name, email, phone, notes);
         props.history.push("/");
       } catch (e) {
         console.log(e);
