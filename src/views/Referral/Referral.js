@@ -15,28 +15,29 @@ import {
 import { useReferral } from "../../hooks";
 
 function Referral(props) {
-  const [fName, setFname] = useState("");
-  const [lName, setLname] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setemail] = useState("");
   const [notes, setnotes] = useState("");
-  const [fnameInvalid, setfnameInvalid] = useState(false);
-  const [lNameInvalid, setlNameInvalid] = useState(false);
+  const [nameInvalid, setNameInvalid] = useState(false);
+  const [phoneInvalid, setPhoneInvalid] = useState(false);
   const [emailInvalid, setemailInvalid] = useState(false);
+
   const { addReferral } = useReferral();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (fName.length === 0) {
-      setfnameInvalid(true);
+    if (name.length === 0) {
+      setNameInvalid(true);
     }
-    if (lName.length === 0) {
-      setlNameInvalid(true);
+    if (phone.length === 0) {
+      setPhoneInvalid(true);
     }
     if (email.length === 0) {
       setemailInvalid(true);
     } else {
       try {
-        await addReferral(fName, lName, email, notes);
+        await addReferral(name, phone, email, notes);
         props.history.push("/");
       } catch (e) {
         console.log(e);
@@ -55,30 +56,16 @@ function Referral(props) {
               <Row>
                 <Col xs="12" md="6">
                   <FormGroup
-                    value={fName}
-                    onChange={e => setFname(e.target.value)}
+                    value={name}
+                    onChange={e => setName(e.target.value)}
                   >
                     <Label htmlFor="depart">Friend's Name</Label>
-                    <Input type="text" id="depart" invalid={fnameInvalid} />
-                    <FormFeedback invalid={fnameInvalid}>
+                    <Input type="text" id="depart" invalid={nameInvalid} />
+                    <FormFeedback invalid={nameInvalid}>
                       Name is Required
                     </FormFeedback>
                   </FormGroup>
                 </Col>
-                <Col xs="12" md="6">
-                  <FormGroup
-                    value={lName}
-                    onChange={e => setLname(e.target.value)}
-                  >
-                    <Label htmlFor="depart">Friends Email</Label>
-                    <Input type="text" id="depart" invalid={lNameInvalid} />
-                    <FormFeedback invalid={lNameInvalid}>
-                      Email is Required
-                    </FormFeedback>
-                  </FormGroup>
-                </Col>
-              </Row>
-              <Row>
                 <Col xs="12" md="6">
                   <FormGroup
                     value={email}
@@ -88,6 +75,20 @@ function Referral(props) {
                     <Input type="text" id="depart" invalid={emailInvalid} />
                     <FormFeedback invalid={emailInvalid}>
                       Email is Required
+                    </FormFeedback>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs="12" md="6">
+                  <FormGroup
+                    value={phone}
+                    onChange={e => setPhone(e.target.value)}
+                  >
+                    <Label htmlFor="depart">Friends Phone Number</Label>
+                    <Input type="text" id="depart" invalid={phoneInvalid} />
+                    <FormFeedback invalid={phoneInvalid}>
+                      Phone Number is Required
                     </FormFeedback>
                   </FormGroup>
                 </Col>
