@@ -6,6 +6,7 @@ import {
   CardBody,
   Col,
   Form,
+  FormFeedback,
   Input,
   InputGroup,
   InputGroupAddon,
@@ -16,16 +17,28 @@ import { useAuth } from "../../../hooks";
 
 function Login(props) {
   const [username, setUsername] = useState("");
+  const [usernameInvalid, setUsernameInvalid] = useState(false);
   const [password, setPassword] = useState("");
+  const [passwordInvalid, setPasswordInvalid] = useState(false);
   const { signin } = useAuth();
+  const error = useAuth();
+  console.log("ERR", error);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      await signin(username, password);
-      props.history.push("/");
-    } catch (e) {
-      console.log(e);
+    if (username.length === 0) {
+      setUsernameInvalid(true);
+    }
+    if (password.length === 0) {
+      setPasswordInvalid(true);
+    } else {
+      try {
+        await signin(username, password);
+        props.history.push("/");
+      } catch (e) {
+        setPasswordInvalid(true);
+        setUsernameInvalid(true);
+      }
     }
   }
 
@@ -50,7 +63,11 @@ function Login(props) {
                   autoComplete="username"
                   value={username}
                   onChange={e => setUsername(e.target.value)}
+                  invalid={usernameInvalid}
                 />
+                <FormFeedback invalid={usernameInvalid}>
+                  The Username/Password You entered doesn't match our records.
+                </FormFeedback>
               </InputGroup>
               <InputGroup className="mb-4">
                 <InputGroupAddon addonType="prepend">
@@ -64,7 +81,11 @@ function Login(props) {
                   autoComplete="current-password"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
+                  invalid={passwordInvalid}
                 />
+                <FormFeedback invalid={passwordInvalid}>
+                  The Username/Password You entered doesn't match our records.
+                </FormFeedback>
               </InputGroup>
               <Row>
                 <Col xs="6">
@@ -72,11 +93,7 @@ function Login(props) {
                     Login
                   </Button>
                 </Col>
-                <Col xs="6" className="text-right">
-                  <Button color="link" className="px-0">
-                    Forgot password?
-                  </Button>
-                </Col>
+                <Col xs="6" className="text-right"></Col>
               </Row>
             </Form>
           </CardBody>

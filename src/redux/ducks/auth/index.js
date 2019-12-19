@@ -24,7 +24,7 @@ const initialState = {
   isAuthenticated: alreadyAuthed,
   username: "",
   firstName: "",
-  is_staff: true,
+  is_staff: false,
   lastName: "",
   loading: false,
   error: ""
@@ -91,7 +91,6 @@ function login(username, password, dispatch) {
       })
       .catch(e => {
         window.localStorage.removeItem("token");
-        console.log(e);
         dispatch({
           type: LOGIN_FAILURE,
           payload: e.message
