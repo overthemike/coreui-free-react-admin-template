@@ -79,6 +79,7 @@ function Cards(props) {
   const SampleExpandedComponent = ({ data }) => (
     <div className="mt-3">
       <p className="text-primary">Annual Notes : {data.annual_notes}</p>
+      <p className="text-primary">Features : {data.features}</p>
     </div>
   );
   function handleRowClick(row) {
