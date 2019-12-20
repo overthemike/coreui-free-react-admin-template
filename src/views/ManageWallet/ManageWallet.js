@@ -55,9 +55,10 @@ function ManageWallet(props) {
       wrap: true
     },
     {
-      name: "Type",
+      name: "Account Holder",
       selector: "type",
-      sortable: true
+      sortable: true,
+      format: row => `${row.type.charAt(0).toUpperCase() + row.type.slice(1)}`
     },
     {
       name: "Date Open",
@@ -74,7 +75,12 @@ function ManageWallet(props) {
       name: "Free Intl",
       selector: "card.free_intl",
       sortable: true,
-      format: row => `${row.card.free_intl.toString()}`
+      format: row =>
+        `${
+          row.card.free_intl === false
+            ? row.card.free_intl.toString().replace(/false/gi, "No")
+            : row.card.free_intl.toString().replace(/true/gi, "Yes")
+        }`
     },
     {
       name: "Annual Fee",
@@ -120,7 +126,12 @@ function ManageWallet(props) {
       name: "Free Intl",
       selector: "card.free_intl",
       sortable: true,
-      format: row => `${row.card.free_intl.toString()}`
+      format: row =>
+        `${
+          row.card.free_intl === false
+            ? row.card.free_intl.toString().replace(/false/gi, "No")
+            : row.card.free_intl.toString().replace(/true/gi, "Yes")
+        }`
     },
     {
       name: "Fee",
@@ -186,7 +197,8 @@ function ManageWallet(props) {
           className="mr-1 col"
           id="toggleCollapse1"
         >
-          <i className="fa fa-credit-card fa-3x mb-1"></i> <br /> Recommended
+          <i className="fa fa-credit-card fa-3x mb-1"></i> <br /> My Recommended
+          Cards
         </Button>
         <Button
           onClick={toggle2}
