@@ -21,8 +21,6 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const [passwordInvalid, setPasswordInvalid] = useState(false);
   const { signin } = useAuth();
-  const error = useAuth();
-  console.log("ERR", error);
 
   async function handleSubmit(e) {
     e.preventDefault();

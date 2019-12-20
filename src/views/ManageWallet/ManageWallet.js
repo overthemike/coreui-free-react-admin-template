@@ -180,25 +180,29 @@ function ManageWallet(props) {
   return (
     <>
       <div className="mb-3 mt-3 row ml-1 mr-1">
-        <Button onClick={toggle} color="primary" className="mr-1 col">
-          <i className="fas fa-info fa-3x mb-1"></i> <br /> Request New Card
-        </Button>
-        <Button onClick={toggle2} color="success" className="mr-1 col">
-          <i className="fas fa-plus fa-3x mb-1"></i> <br /> Add Active card
-        </Button>
         <Button
-          color="info"
+          color="secondary"
           onClick={toggleAccordion}
-          className="mr-1 col text-pimary"
+          className="mr-1 col"
           id="toggleCollapse1"
         >
           <i className="fa fa-credit-card fa-3x mb-1"></i> <br /> Recommended
         </Button>
+        <Button
+          onClick={toggle2}
+          color="success"
+          className="mr-1 col text-dark"
+        >
+          <i className="fas fa-plus fa-3x mb-1"></i> <br /> Add Active Card
+        </Button>
+        <Button onClick={toggle} color="primary" className="mr-1 col">
+          <i className="fas fa-info fa-3x mb-1"></i> <br /> Card Inquiry
+        </Button>
       </div>
       <Card>
-        <CardHeader className="bg-light text-primary">
+        <CardHeader className="bg-light text-primary d-flex align-items-center">
           <i className="fa fa-credit-card"></i>
-          <strong>Recommended Cards</strong>
+          <div className="rec-cards">My Recommended Cards</div>
         </CardHeader>
         <Collapse isOpen={collapse}>
           <CardBody className="bg-light">
@@ -464,6 +468,28 @@ function ManageWallet(props) {
           </Col>
         </ModalBody>
       </Modal>
+      <Row>
+        <Col>
+          <Card className="bg-light text-primary">
+            <CardHeader className="d-flex justify-content-between">
+              <div>5/24 Member</div>
+
+              <i className="fas fa-user"></i>
+            </CardHeader>
+            <CardBody>5</CardBody>
+          </Card>
+        </Col>
+        <Col>
+          <Card className="bg-light text-primary">
+            <CardHeader className="d-flex justify-content-between">
+              <div>5/24 Companion</div>
+
+              <i className="fas fa-user-friends"></i>
+            </CardHeader>
+            <CardBody>2</CardBody>
+          </Card>
+        </Col>
+      </Row>
     </>
   );
 }
