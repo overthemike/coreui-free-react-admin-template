@@ -25,7 +25,7 @@ const DefaultHeader = React.lazy(() => import("./DefaultHeader"));
 
 function DefaultLayout(props) {
   function loading() {
-    return <div className="animated fadeIn pt-1 text-center">Loading...</div>;
+    return <></>;
   }
 
   function signOut(e) {

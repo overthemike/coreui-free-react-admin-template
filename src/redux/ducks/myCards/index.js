@@ -11,6 +11,12 @@ const userId = window.localStorage.getItem("userId");
 const initialState = {
   cards: [
     {
+      card: {
+        free_intl: false,
+        annual_fee: "",
+        name: "",
+        annual_notes: ""
+      },
       type: "",
       date_opened: "",
       status: "",
@@ -21,8 +27,7 @@ const initialState = {
           companion_524: [],
           companion_first_name: ""
         }
-      },
-      card: ""
+      }
     }
   ]
 };
