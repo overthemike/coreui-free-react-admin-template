@@ -11,12 +11,12 @@ export default {
     {
       name: "Manage My Wallet",
       url: "/manage-wallet",
-      icon: "icon-credit-card"
+      icon: "far fa-credit-card"
     },
     {
       name: "Request Travel",
       url: "/wallet",
-      icon: "icon-globe",
+      icon: "fas fa-globe-americas",
       children: [
         {
           name: " • Request a Flight",
@@ -38,7 +38,7 @@ export default {
     {
       name: "Deal Alert",
       url: "/wallet",
-      icon: "fab fa-twitter fas fa-bell",
+      icon: "fas fa-bell",
       attributes: {
         target: "_blank",
         rel: "noopener",
@@ -48,7 +48,7 @@ export default {
     {
       name: "Schedule a Check-In",
       url: "https://calendly.com/easygotraveler/checkin?month=2019-11",
-      icon: "icon-calendar",
+      icon: "far fa-calendar-alt",
       attributes: {
         target: "_blank",
         rel: "noopener"
@@ -62,7 +62,7 @@ export default {
     {
       name: "Useful Tools",
       url: "/wallet",
-      icon: "icon-wrench",
+      icon: "fas fa-wrench",
       children: [
         {
           name: " • AwardWallet",

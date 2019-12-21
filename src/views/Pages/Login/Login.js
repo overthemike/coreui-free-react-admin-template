@@ -52,7 +52,7 @@ function Login(props) {
               <InputGroup className="mb-3">
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText className="bg-light">
-                    <i className="icon-user" />
+                    <i className="fas fa-user"></i>
                   </InputGroupText>
                 </InputGroupAddon>
                 <Input
@@ -70,7 +70,7 @@ function Login(props) {
               <InputGroup className="mb-4">
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText className="bg-light">
-                    <i className="icon-lock" />
+                    <i className="fas fa-lock"></i>
                   </InputGroupText>
                 </InputGroupAddon>
                 <Input
