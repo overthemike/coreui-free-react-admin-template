@@ -404,7 +404,6 @@ function Cards(props) {
   // }, [filterText]);
   return (
     <>
-      <Button className="float-right mt-3">Add Card</Button>
       <DataTable
         data={data2}
         pagination

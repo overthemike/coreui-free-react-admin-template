@@ -484,21 +484,35 @@ function ManageWallet(props) {
         <Col>
           <Card className="bg-light text-primary">
             <CardHeader className="d-flex justify-content-between">
-              <div>5/24 Member</div>
+              <div>5/24 {data[0].user.first_name}</div>
 
               <i className="fas fa-user"></i>
             </CardHeader>
-            <CardBody>5</CardBody>
+            <CardBody>
+              {data[0].user.first_name}'s Card Count:
+              <span> {data[0].user.accountprofile.member_524.length}</span>
+            </CardBody>
           </Card>
         </Col>
         <Col>
           <Card className="bg-light text-primary">
             <CardHeader className="d-flex justify-content-between">
-              <div>5/24 Companion</div>
+              <div>
+                5/24
+                {data[0].user.accountprofile.companion_first_name
+                  ? data[0].user.accountprofile.companion_first_name
+                  : " Companion"}
+              </div>
 
               <i className="fas fa-user-friends"></i>
             </CardHeader>
-            <CardBody>2</CardBody>
+            <CardBody>
+              {data[0].user.accountprofile.companion_first_name
+                ? data[0].user.accountprofile.companion_first_name + "'s "
+                : "Companion's "}
+              Card Count:
+              <span> {data[0].user.accountprofile.companion_524.length}</span>
+            </CardBody>
           </Card>
         </Col>
       </Row>

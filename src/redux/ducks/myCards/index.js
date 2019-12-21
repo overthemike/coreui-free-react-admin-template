@@ -9,7 +9,22 @@ const userId = window.localStorage.getItem("userId");
 
 // initial state
 const initialState = {
-  cards: [{ type: "", date_opened: "", status: "", user: userId, card: "" }]
+  cards: [
+    {
+      type: "",
+      date_opened: "",
+      status: "",
+      user: {
+        id: userId,
+        accountprofile: {
+          member_524: [],
+          companion_524: [],
+          companion_first_name: ""
+        }
+      },
+      card: ""
+    }
+  ]
 };
 
 // reducer (MUST BE DEFAULT EXPORT)
@@ -67,7 +82,6 @@ function addCard(type, date_opened, status, user, card, dispatch) {
     headers: { Authorization: "Token " + accessToken }
   })
     .then(response => {
-      console.log("response", response);
       return dispatch({
         type: ADD_MY_CARD,
         payload: { type, date_opened, status, user, card }
