@@ -198,20 +198,20 @@ function Cards(props) {
           <Form onSubmit={editHandler}>
             <Row>
               <Col xs="12" md="6">
-                <Label htmlFor="depart">Name</Label>
+                <Label htmlFor="name">Name</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="name"
                   value={name}
                   label="name"
                   onChange={e => setName(e.target.value)}
                 />
               </Col>
               <Col xs="12" md="6">
-                <Label htmlFor="depart">Use For</Label>
+                <Label htmlFor="useFor">Use For</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="useFor"
                   value={useFor}
                   onChange={e => setUseFor(e.target.value)}
                 />
@@ -219,19 +219,19 @@ function Cards(props) {
             </Row>
             <Row>
               <Col>
-                <Label htmlFor="depart">Annual Fee</Label>
+                <Label htmlFor="annualFee">Annual Fee</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="annualFee"
                   value={annualFee}
                   onChange={e => setAnnualFee(e.target.value)}
                 />
               </Col>
               <Col>
-                <Label htmlFor="depart">Type</Label>
+                <Label htmlFor="type">Type</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="type"
                   value={type}
                   onChange={e => setType(e.target.value)}
                 />
@@ -239,19 +239,19 @@ function Cards(props) {
             </Row>
             <Row>
               <Col>
-                <Label htmlFor="depart">App Link</Label>
+                <Label htmlFor="link">App Link</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="link"
                   value={appLink}
                   onChange={e => setAppLink(e.target.value)}
                 />
               </Col>
               <Col>
-                <Label htmlFor="depart">Approval 524</Label>
+                <Label htmlFor="approval">Approval 524</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="approval"
                   value={approval524}
                   onChange={e => setApproval524(e.target.value)}
                 />
@@ -259,10 +259,10 @@ function Cards(props) {
             </Row>
             <Row>
               <Col>
-                <Label htmlFor="depart">Bonus Deadline</Label>
+                <Label htmlFor="bonus">Bonus Deadline</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="bonus"
                   value={bonusDeadline}
                   onChange={e => setBonusDeadline(e.target.value)}
                 />
@@ -270,19 +270,19 @@ function Cards(props) {
             </Row>
             <Row>
               <Col>
-                <Label htmlFor="depart">Counts 524</Label>
+                <Label htmlFor="counts">Counts 524</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="counts"
                   value={counts524}
                   onChange={e => setCounts524(e.target.value)}
                 />
               </Col>
               <Col>
-                <Label htmlFor="depart">features</Label>
+                <Label htmlFor="features">features</Label>
                 <Input
                   type="textarea"
-                  id="depart"
+                  id="features"
                   value={features}
                   onChange={e => setFeatures(e.target.value)}
                 />
@@ -290,19 +290,19 @@ function Cards(props) {
             </Row>
             <Row>
               <Col>
-                <Label htmlFor="depart">First Year Free</Label>
+                <Label htmlFor="firstFree">First Year Free</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="firstFree"
                   value={firstYearFree}
                   onChange={e => setFirstYearFree(e.target.value)}
                 />
               </Col>
               <Col>
-                <Label htmlFor="depart">Free Intl</Label>
+                <Label htmlFor="freeintl">Free Intl</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="freeintl"
                   value={freeIntl}
                   onChange={e => setFreeIntl(e.target.value)}
                 />
@@ -310,10 +310,10 @@ function Cards(props) {
             </Row>
             <Row>
               <Col>
-                <Label htmlFor="depart">Image</Label>
+                <Label htmlFor="image">Image</Label>
                 <Input
                   type="textarea"
-                  id="depart"
+                  id="image"
                   value={image}
                   onChange={e => setImage(e.target.value)}
                 />
@@ -321,28 +321,28 @@ function Cards(props) {
             </Row>
             <Row>
               <Col>
-                <Label htmlFor="depart">Recon Line</Label>
+                <Label htmlFor="recon">Recon Line</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="recon"
                   value={reconLine}
                   onChange={e => setReconLine(e.target.value)}
                 />
               </Col>
               <Col>
-                <Label htmlFor="depart">Rewards</Label>
+                <Label htmlFor="rewards">Rewards</Label>
                 <Input
                   type="text"
-                  id="depart"
+                  id="rewards"
                   value={rewards}
                   onChange={e => setRewards(e.target.value)}
                 />
               </Col>
             </Row>
-            <Label htmlFor="depart">Annual Notes</Label>
+            <Label htmlFor="annualNotes">Annual Notes</Label>
             <Input
               type="textarea"
-              id="depart"
+              id="annualNotes"
               value={annualNotes}
               onChange={e => setAnnualNotes(e.target.value)}
             />

@@ -59,8 +59,8 @@ function Referral(props) {
                     value={name}
                     onChange={e => setName(e.target.value)}
                   >
-                    <Label htmlFor="depart">Friend's Name</Label>
-                    <Input type="text" id="depart" invalid={nameInvalid} />
+                    <Label htmlFor="name">Friend's Name</Label>
+                    <Input type="text" id="name" invalid={nameInvalid} />
                     <FormFeedback invalid={nameInvalid}>
                       Name is Required
                     </FormFeedback>
@@ -71,8 +71,8 @@ function Referral(props) {
                     value={email}
                     onChange={e => setemail(e.target.value)}
                   >
-                    <Label htmlFor="depart">Friends Email</Label>
-                    <Input type="text" id="depart" invalid={emailInvalid} />
+                    <Label htmlFor="email">Friends Email</Label>
+                    <Input type="text" id="email" invalid={emailInvalid} />
                     <FormFeedback invalid={emailInvalid}>
                       Email is Required
                     </FormFeedback>
@@ -85,8 +85,8 @@ function Referral(props) {
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
                   >
-                    <Label htmlFor="depart">Friends Phone Number</Label>
-                    <Input type="text" id="depart" invalid={phoneInvalid} />
+                    <Label htmlFor="phone">Friends Phone Number</Label>
+                    <Input type="text" id="phone" invalid={phoneInvalid} />
                     <FormFeedback invalid={phoneInvalid}>
                       Phone Number is Required
                     </FormFeedback>
@@ -97,8 +97,8 @@ function Referral(props) {
                     value={notes}
                     onChange={e => setnotes(e.target.value)}
                   >
-                    <Label htmlFor="depart">Notes</Label>
-                    <Input type="textarea" id="depart" />
+                    <Label htmlFor="notes">Notes</Label>
+                    <Input type="textarea" id="notes" />
                   </FormGroup>
                 </Col>
               </Row>

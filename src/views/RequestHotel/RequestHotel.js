@@ -100,8 +100,8 @@ function RequestHotel(props) {
                     value={hotel}
                     onChange={e => setHotel(e.target.value)}
                   >
-                    <Label htmlFor="depart">Hotel</Label>
-                    <Input type="text" id="depart" invalid={hotelInvalid} />
+                    <Label htmlFor="hotel">Hotel</Label>
+                    <Input type="text" id="hotel" invalid={hotelInvalid} />
                     <FormFeedback invalid={hotelInvalid}>
                       Hotel is Required
                     </FormFeedback>
@@ -116,8 +116,12 @@ function RequestHotel(props) {
                     value={hotelLocation}
                     onChange={e => sethotelLocation(e.target.value)}
                   >
-                    <Label htmlFor="depart">Hotel Location</Label>
-                    <Input type="text" id="depart" invalid={hotelLocInvalid} />
+                    <Label htmlFor="location">Hotel Location</Label>
+                    <Input
+                      type="text"
+                      id="location"
+                      invalid={hotelLocInvalid}
+                    />
                     <FormFeedback invalid={hotelLocInvalid}>
                       Hotel Location is Required
                     </FormFeedback>
@@ -182,8 +186,12 @@ function RequestHotel(props) {
                     value={roomNums}
                     onChange={e => setroomNums(e.target.value)}
                   >
-                    <Label htmlFor="depart">Number of rooms </Label>
-                    <Input type="text" id="depart" invalid={roomNumsInvalid} />
+                    <Label htmlFor="roomNums">Number of rooms </Label>
+                    <Input
+                      type="text"
+                      id="roomNums"
+                      invalid={roomNumsInvalid}
+                    />
                     <FormFeedback invalid={roomNumsInvalid}>
                       Number of rooms is Required
                     </FormFeedback>
@@ -196,10 +204,10 @@ function RequestHotel(props) {
                     value={guestPerRoom}
                     onChange={e => setguestPerRoom(e.target.value)}
                   >
-                    <Label htmlFor="depart">Guests Per Room </Label>
+                    <Label htmlFor="guestPer">Guests Per Room </Label>
                     <Input
                       type="text"
-                      id="depart"
+                      id="guestPer"
                       invalid={guestPerRoomInvalid}
                     />
                     <FormFeedback invalid={guestPerRoomInvalid}>
@@ -212,10 +220,10 @@ function RequestHotel(props) {
                     value={guestNames}
                     onChange={e => setguestNames(e.target.value)}
                   >
-                    <Label htmlFor="depart">Guests Names </Label>
+                    <Label htmlFor="guestNames">Guests Names </Label>
                     <Input
                       type="text"
-                      id="depart"
+                      id="guestNames"
                       invalid={guestNamesInvalid}
                     />
                     <FormFeedback invalid={guestNamesInvalid}>
@@ -255,13 +263,13 @@ function RequestHotel(props) {
                     onChange={e => setCheckout(e.target.value)}
                   >
                     <Col md="2">
-                      <Label htmlFor="checkin">Check-out</Label>
+                      <Label htmlFor="checkout">Check-out</Label>
                     </Col>
                     <Col xs="12" md="10">
                       <Input
                         type="date"
-                        id="checkin"
-                        name="checkin"
+                        id="checkout"
+                        name="checkout"
                         placeholder="date"
                         invalid={checkoutInvalid}
                       />
@@ -278,8 +286,8 @@ function RequestHotel(props) {
                     value={budget}
                     onChange={e => setBudget(e.target.value)}
                   >
-                    <Label htmlFor="depart">Budget Per Night</Label>
-                    <Input type="text" id="depart" invalid={budgetInvalid} />
+                    <Label htmlFor="budget">Budget Per Night</Label>
+                    <Input type="text" id="budget" invalid={budgetInvalid} />
                     <FormFeedback invalid={budgetInvalid}>
                       Budget is Required
                     </FormFeedback>
@@ -296,7 +304,7 @@ function RequestHotel(props) {
                       <FormGroup
                         check
                         className="radio"
-                        id="partner"
+                        id="specialOccation"
                         value={specialOccation}
                         onChange={e => setspecialOccation(e.target.value)}
                       >
@@ -304,14 +312,14 @@ function RequestHotel(props) {
                           <Input
                             className="form-check-input"
                             type="radio"
-                            id="walletYes"
+                            id="specialYes"
                             name="radios"
                             value="yes"
                           />
                           <Label
                             check
                             className="form-check-label"
-                            htmlFor="walletYes"
+                            htmlFor="specialYes"
                           >
                             Yes
                           </Label>
@@ -320,14 +328,14 @@ function RequestHotel(props) {
                           <Input
                             className="form-check-input"
                             type="radio"
-                            id="walletNo"
+                            id="specialNo"
                             name="radios"
                             value="no"
                           />
                           <Label
                             check
                             className="form-check-label"
-                            htmlFor="walletNo"
+                            htmlFor="specialNo"
                           >
                             No
                           </Label>
@@ -341,13 +349,13 @@ function RequestHotel(props) {
                 <Col xs="12" md="6">
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="notes">Room Details</Label>
+                      <Label htmlFor="details">Room Details</Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input
                         type="textarea"
-                        name="notes"
-                        id="notes"
+                        name="details"
+                        id="details"
                         rows="3"
                         value={roomDetails}
                         onChange={e => setroomDetails(e.target.value)}
@@ -364,13 +372,13 @@ function RequestHotel(props) {
                 <Col xs="12" md="6">
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="notes">Special Requests</Label>
+                      <Label htmlFor="requests">Special Requests</Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input
                         type="textarea"
-                        name="notes"
-                        id="notes"
+                        name="requests"
+                        id="requests"
                         rows="3"
                         value={specialRequests}
                         onChange={e => setspecialRequests(e.target.value)}
