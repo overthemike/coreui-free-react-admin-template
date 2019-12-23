@@ -24,7 +24,7 @@ const initialState = {
   isAuthenticated: alreadyAuthed,
   username: "",
   firstName: "",
-  is_staff: true,
+  is_staff: false,
   lastName: "",
   loading: false,
   error: ""
