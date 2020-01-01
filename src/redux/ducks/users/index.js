@@ -7,7 +7,15 @@ const ADD_USERS = "wallet/ADD_USERS";
 
 // initial state
 const initialState = {
-  users: [{ id: "", email: "", first_name: "", last_name: "" }]
+  users: [
+    {
+      id: "",
+      email: "",
+      first_name: "",
+      last_name: "",
+      accountprofile: { joined: "", member_524: [] }
+    }
+  ]
 };
 
 // reducer (MUST BE DEFAULT EXPORT)

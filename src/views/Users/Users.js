@@ -13,7 +13,7 @@ function Users(props) {
   const { users } = useUsers();
   const data = users;
   const [pending, setPending] = React.useState(true);
-
+  console.log(users);
   const CustomLoader = () => (
     <div>
       <i className="fas fa-circle-notch fa-spin fa-5x text-secondary"></i>
@@ -42,6 +42,17 @@ function Users(props) {
       name: "Email",
       selector: "email",
       sortable: true
+    },
+    {
+      name: "5/24",
+      selector: "accountprofile.member_524",
+      sortable: true,
+      format: row => `${row.accountprofile.member_524.length}`
+    },
+    {
+      name: "Joined",
+      selector: "accountprofile.joined",
+      sortable: true
     }
   ];
   return (
@@ -50,6 +61,7 @@ function Users(props) {
         title="Users"
         columns={columns}
         data={data}
+        pagination
         progressPending={pending}
         progressComponent={<CustomLoader />}
       />
