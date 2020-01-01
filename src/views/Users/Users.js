@@ -1,19 +1,12 @@
 import React from "react";
-// import {
-//   ListGroup,
-//   ListGroupItem,
-//   ListGroupItemHeading,
-//   ListGroupItemText,
-//   Jumbotron
-// } from "reactstrap";
 import DataTable from "react-data-table-component";
 import { useUsers } from "../../hooks";
+import moment from "moment";
 
 function Users(props) {
   const { users } = useUsers();
   const data = users;
   const [pending, setPending] = React.useState(true);
-  console.log(users);
   const CustomLoader = () => (
     <div>
       <i className="fas fa-circle-notch fa-spin fa-5x text-secondary"></i>
@@ -52,7 +45,8 @@ function Users(props) {
     {
       name: "Joined",
       selector: "accountprofile.joined",
-      sortable: true
+      sortable: true,
+      format: row => `${moment(row.accountprofile.joined).format("lll")}`
     }
   ];
   return (
