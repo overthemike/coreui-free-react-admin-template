@@ -80,11 +80,6 @@ function DefaultLayout(props) {
           </Suspense>
         </AppAside>
       </div>
-      <AppFooter className="bg-dark">
-        <Suspense fallback={loading()} className="bg-dark">
-          <DefaultFooter className="bg-dark" />
-        </Suspense>
-      </AppFooter>
     </div>
   );
 }

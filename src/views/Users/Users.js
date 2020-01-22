@@ -6,6 +6,7 @@ import moment from "moment";
 function Users(props) {
   const { users } = useUsers();
   const data = users;
+
   const [pending, setPending] = React.useState(true);
   const CustomLoader = () => (
     <div>

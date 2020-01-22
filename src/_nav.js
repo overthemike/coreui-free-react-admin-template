@@ -22,11 +22,6 @@ export default {
           name: " • Request a Flight",
           url: "/request-flights",
           class: "mt-auto"
-        },
-        {
-          name: " • Request a Hotel",
-          url: "/request-hotel",
-          class: "mt-auto"
         }
       ]
     },
@@ -34,16 +29,6 @@ export default {
       name: "Classroom",
       url: "/classroom",
       icon: "fas fa-chalkboard-teacher"
-    },
-    {
-      name: "Deal Alert",
-      url: "/wallet",
-      icon: "fas fa-bell",
-      attributes: {
-        target: "_blank",
-        rel: "noopener",
-        disabled: true
-      }
     },
     {
       name: "Schedule a Check-In",

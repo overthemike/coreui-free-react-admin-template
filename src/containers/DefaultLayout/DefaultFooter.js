@@ -14,7 +14,7 @@ function DefaultFooter(props) {
   return (
     <React.Fragment>
       <span>
-        <a href="https://Travelwealth.com">TravelWealth</a> &copy; 2019
+        <a href="https://Travelwealth.com">TravelWealth</a>
       </span>
     </React.Fragment>
   );
