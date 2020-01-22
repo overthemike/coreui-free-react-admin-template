@@ -40,7 +40,7 @@ function Registration(props) {
       setConfPasswordInvalid(true);
     } else {
       try {
-        await signin(username, password);
+        // await signin(username, password);
         props.history.push("/");
       } catch (e) {
         setPasswordInvalid(true);
