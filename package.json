@@ -38,6 +38,7 @@
     "reactstrap": "^8.0.1",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
+    "stripe": "^8.4.1",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {

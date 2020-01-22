@@ -11,6 +11,7 @@ const DefaultLayout = React.lazy(() => import("./containers/DefaultLayout"));
 
 // Pages
 const Login = React.lazy(() => import("./views/Pages/Login"));
+const Registration = React.lazy(() => import("./views/Pages/Registration"));
 const Page404 = React.lazy(() => import("./views/Pages/Page404"));
 const Page500 = React.lazy(() => import("./views/Pages/Page500"));
 
@@ -38,6 +39,12 @@ function App() {
             path="/login"
             name="Login Page"
             render={props => <Login {...props} />}
+          />
+          <Route
+            exact
+            path="/register"
+            name="Registration Page"
+            render={props => <Registration {...props} />}
           />
           <Route
             exact
