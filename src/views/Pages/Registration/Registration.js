@@ -14,7 +14,8 @@ import {
   Row
 } from "reactstrap";
 import { useAuth } from "../../../hooks";
-// import Stripe from "stripe";
+import { Elements, StripeProvider } from "react-stripe-elements";
+import CheckoutForm from "../../../../src/CheckoutForm";
 
 function Registration(props) {
   const [username, setUsername] = useState("");
@@ -24,9 +25,6 @@ function Registration(props) {
   const [confPassword, setConfPassword] = useState("");
   const [confPasswordInvalid, setConfPasswordInvalid] = useState(false);
   const { signin } = useAuth();
-  // var stripe = Stripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
-  // var elements = stripe.elements();
-  // var cardElement = elements.create("card");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -50,14 +48,17 @@ function Registration(props) {
   }
 
   return (
-    <div className="app bg-dark d-flex justify-content-center align-items-center">
-      <img src={pic} alt="travelWealth" className="loginLogo mt-n5" />
-      <Col xs="12" md="6">
-        <Card className="bg-light">
+    <div className="app bg-dark">
+      <img src={pic} alt="travelWealth" className="loginLogo mt-n5 mx-auto" />
+      <div className="d-flex flex-row">
+        <Card className="w-100 bg-light">
           <CardBody>
             <Form onSubmit={handleSubmit}>
               <h1 className="text-primary">Registration</h1>
               <p className="text-primary">Sign up</p>
+              <p className="text-primary">
+                Already A Member? <a href="/login">Sign In</a>
+              </p>
               <InputGroup className="mb-3">
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText className="bg-light">
@@ -123,19 +124,20 @@ function Registration(props) {
             </Form>
           </CardBody>
         </Card>
-      </Col>
-      {/* <form action="/charge" method="post" id="payment-form">
-        <div class="form-row">
-          <label for="card-element">Credit or debit card</label>
-          <div id="card-element">
-            <cardElement />
-          </div>
-
-          <div id="card-errors" role="alert"></div>
-        </div>
-
-        <button>Submit Payment</button>
-      </form> */}
+        <Card className="w-100 bg-light">
+          <CardBody>
+            <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+              <div className="example">
+                <h1>Payment</h1>
+                <h4>Please Submit your payment for $50 to get started</h4>
+                <Elements>
+                  <CheckoutForm />
+                </Elements>
+              </div>
+            </StripeProvider>
+          </CardBody>
+        </Card>
+      </div>
     </div>
   );
 }
