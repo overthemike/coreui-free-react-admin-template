@@ -5,7 +5,6 @@ import { Button } from "reactstrap";
 import pic from "../../../assets/img/brand/logo.svg";
 
 function Login(props) {
-  console.log(props);
   const [showLogin, setShowLogin] = useState(true);
 
   function handleChange() {
@@ -19,8 +18,12 @@ function Login(props) {
       <div className="app bg-dark d-flex justify-content-center align-items-center">
         <img src={pic} alt="travelWealth" className="loginLogo mt-n5" />
         <div className="d-flex mb-2">
-          <Button onClick={handleChange}>Sign In</Button>
-          <Button onClick={handleNew}>Sign Up</Button>
+          <Button className="btn-pill" onClick={handleChange}>
+            Sign In
+          </Button>
+          <Button className="btn-pill ml-1" onClick={handleNew}>
+            Sign Up
+          </Button>
         </div>
         {showLogin ? <LoginForm props={props} /> : <Registration />}
       </div>

@@ -7,3 +7,4 @@ export { useFlights } from "../redux/ducks/flights";
 export { useAdminCards } from "../redux/ducks/cards";
 export { useUsers } from "../redux/ducks/users";
 export { useReferral } from "../redux/ducks/referral";
+export { useRegister } from "../redux/ducks/register";

@@ -350,7 +350,7 @@ function ManageWallet(props) {
                 </Col>
               </Row>
               <Button
-                className="float-right"
+                className="float-right btn-pill"
                 type="submit"
                 size="sm"
                 color="primary"
@@ -469,7 +469,7 @@ function ManageWallet(props) {
                 </Col>
               </Row>
               <Button
-                className="float-right"
+                className="float-right btn-pill"
                 type="submit"
                 size="sm"
                 color="primary"

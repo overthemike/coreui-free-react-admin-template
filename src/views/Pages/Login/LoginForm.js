@@ -46,7 +46,7 @@ function LoginForm(props) {
           <Form onSubmit={handleSubmit}>
             <h1 className="text-primary">Login</h1>
             <p className="text-primary">Sign In to your account</p>
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-5">
               <InputGroupAddon addonType="prepend">
                 <InputGroupText className="bg-light">
                   <i className="fas fa-user"></i>
@@ -64,7 +64,7 @@ function LoginForm(props) {
                 The Username/Password You entered doesn't match our records.
               </FormFeedback>
             </InputGroup>
-            <InputGroup className="mb-4">
+            <InputGroup className="mb-5">
               <InputGroupAddon addonType="prepend">
                 <InputGroupText className="bg-light">
                   <i className="fas fa-lock"></i>
@@ -83,12 +83,17 @@ function LoginForm(props) {
               </FormFeedback>
             </InputGroup>
             <Row>
+              <Col xs="6" className="text-right"></Col>
+
               <Col xs="6">
-                <Button type="submit" color="primary" className="px-4">
+                <Button
+                  type="submit"
+                  color="primary"
+                  className="px-4 btn-pill float-right"
+                >
                   Login
                 </Button>
               </Col>
-              <Col xs="6" className="text-right"></Col>
             </Row>
           </Form>
         </CardBody>

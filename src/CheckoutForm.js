@@ -12,13 +12,13 @@ class CheckoutForm extends Component {
     if (this.props.stripe) {
       let token = await this.props.stripe.createToken();
       console.log(token);
-      // let response = await axios({
-      //   url: "/charge",
-      //   method: "post",
-      //   headers: { "Content-Type": "text/plain" },
-      //   body: token.id
-      // });
-      // console.log(response);
+      let response = await axios({
+        url: "/account-registration/",
+        method: "patch",
+        headers: { "Content-Type": "text/plain" },
+        stripe_token: token.id
+      });
+      console.log(response);
     }
 
     // if (response.ok) this.setState({ complete: true });
