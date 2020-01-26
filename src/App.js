@@ -25,7 +25,7 @@ const CheckAuth = props => {
       render={props => <DefaultLayout {...props} />}
     />
   ) : (
-    <Redirect to="/register" />
+    <Redirect to="/login" />
   );
 };
 

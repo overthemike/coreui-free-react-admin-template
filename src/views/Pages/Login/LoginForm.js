@@ -13,16 +13,12 @@ import {
   Row
 } from "reactstrap";
 import { useAuth } from "../../../hooks";
-import { Elements, StripeProvider } from "react-stripe-elements";
-import CheckoutForm from "../../../../src/CheckoutForm";
 
-function Registration(props) {
+function LoginForm(props) {
   const [username, setUsername] = useState("");
   const [usernameInvalid, setUsernameInvalid] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordInvalid, setPasswordInvalid] = useState(false);
-  const [confPassword, setConfPassword] = useState("");
-  const [confPasswordInvalid, setConfPasswordInvalid] = useState(false);
   const { signin } = useAuth();
 
   async function handleSubmit(e) {
@@ -32,29 +28,24 @@ function Registration(props) {
     }
     if (password.length === 0) {
       setPasswordInvalid(true);
-    }
-    if (password !== confPassword) {
-      setConfPasswordInvalid(true);
     } else {
       try {
-        // await signin(username, password);
-        props.history.push("/");
+        await signin(username, password);
+        props.props.history.push("/wallet");
       } catch (e) {
         setPasswordInvalid(true);
         setUsernameInvalid(true);
       }
     }
   }
+
   return (
-    // <div className="app bg-dark">
-    //   <img src={pic} alt="travelWealth" className="loginLogo mt-n5 mx-auto" />
-    //   <div className="d-flex flex-row">
     <>
       <Card className="w-75 bg-light loginCard">
         <CardBody>
           <Form onSubmit={handleSubmit}>
-            <h1 className="text-primary">Registration</h1>
-            <p className="text-primary">Sign up</p>
+            <h1 className="text-primary">Login</h1>
+            <p className="text-primary">Sign In to your account</p>
             <InputGroup className="mb-3">
               <InputGroupAddon addonType="prepend">
                 <InputGroupText className="bg-light">
@@ -70,7 +61,7 @@ function Registration(props) {
                 invalid={usernameInvalid}
               />
               <FormFeedback invalid={usernameInvalid}>
-                The Username/Password You entered can't be empty.
+                The Username/Password You entered doesn't match our records.
               </FormFeedback>
             </InputGroup>
             <InputGroup className="mb-4">
@@ -88,31 +79,13 @@ function Registration(props) {
                 invalid={passwordInvalid}
               />
               <FormFeedback invalid={passwordInvalid}>
-                The Username/Password You entered can't be empty.
-              </FormFeedback>
-            </InputGroup>
-            <InputGroup className="mb-4">
-              <InputGroupAddon addonType="prepend">
-                <InputGroupText className="bg-light">
-                  <i className="fas fa-lock"></i>
-                </InputGroupText>
-              </InputGroupAddon>
-              <Input
-                type="password"
-                placeholder="Confirm Password"
-                autoComplete="current-password"
-                value={confPassword}
-                onChange={e => setConfPassword(e.target.value)}
-                invalid={confPasswordInvalid}
-              />
-              <FormFeedback invalid={confPasswordInvalid}>
-                The Password You entered doesn't match.
+                The Username/Password You entered doesn't match our records.
               </FormFeedback>
             </InputGroup>
             <Row>
               <Col xs="6">
                 <Button type="submit" color="primary" className="px-4">
-                  Registration
+                  Login
                 </Button>
               </Col>
               <Col xs="6" className="text-right"></Col>
@@ -120,21 +93,8 @@ function Registration(props) {
           </Form>
         </CardBody>
       </Card>
-      {/* <Card className="w-100 bg-light">
-        <CardBody>
-          <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
-            <div className="example">
-              <h1>Payment</h1>
-              <h4>Please Submit your payment for $50 to get started</h4>
-              <Elements>
-                <CheckoutForm />
-              </Elements>
-            </div>
-          </StripeProvider>
-        </CardBody>
-      </Card> */}
     </>
   );
 }
 
-export default Registration;
+export default LoginForm;
