@@ -28,6 +28,7 @@ function Registration(props) {
   const [confPassword, setConfPassword] = useState("");
   const [confPasswordInvalid, setConfPasswordInvalid] = useState(false);
   const [showStripe, setShowStripe] = useState(true);
+  const [stripe] = useState("");
   const { register } = useRegister();
 
   async function handleSubmit(e) {
@@ -41,14 +42,21 @@ function Registration(props) {
     if (lastname.length === 0) {
       setlastnameInvalid(true);
     }
-    if (password.length === 0) {
+    if (password.length < 6) {
       setPasswordInvalid(true);
     }
-    if (password !== confPassword) {
+    if (password !== confPassword && password.length < 6) {
       setConfPasswordInvalid(true);
     } else {
       try {
-        await register(email, firstname, lastname, password, confPassword);
+        await register(
+          stripe,
+          email,
+          firstname,
+          lastname,
+          password,
+          confPassword
+        );
         console.log("HERE?");
         setShowStripe(false);
       } catch (e) {
@@ -130,7 +138,7 @@ function Registration(props) {
                 </InputGroupAddon>
                 <Input
                   type="password"
-                  placeholder="Password"
+                  placeholder="Password must be at least 6 characters"
                   autoComplete="current-password"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
