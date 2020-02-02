@@ -14,9 +14,14 @@ class CheckoutForm extends Component {
       console.log(token);
       let response = await axios({
         url: "/account-registration/",
-        method: "patch",
-        headers: { "Content-Type": "text/plain" },
-        stripe_token: token.id
+        method: "post",
+        data: {
+          stripe_token: token.id,
+          email: this.props.email,
+          first_name: this.props.firstname,
+          last_name: this.props.lastname,
+          password: this.props.password
+        }
       });
       console.log(response);
     }

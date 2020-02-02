@@ -12,10 +12,10 @@ import {
   InputGroupText,
   Row
 } from "reactstrap";
-import { useRegister } from "../../../hooks";
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "../../../../src/CheckoutForm";
 
+console.log("HEYYYYY", process.env.STRIPE_KEY);
 function Registration(props) {
   const [email, setemail] = useState("");
   const [emailInvalid, setemailInvalid] = useState(false);
@@ -28,8 +28,6 @@ function Registration(props) {
   const [confPassword, setConfPassword] = useState("");
   const [confPasswordInvalid, setConfPasswordInvalid] = useState(false);
   const [showStripe, setShowStripe] = useState(true);
-  const [stripe] = useState("");
-  const { register } = useRegister();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -48,22 +46,7 @@ function Registration(props) {
     if (password !== confPassword && password.length < 6) {
       setConfPasswordInvalid(true);
     } else {
-      try {
-        await register(
-          stripe,
-          email,
-          firstname,
-          lastname,
-          password,
-          confPassword
-        );
-        console.log("HERE?");
-        setShowStripe(false);
-      } catch (e) {
-        console.log("erroooor", e);
-        // setPasswordInvalid(true);
-        // setemailInvalid(true);
-      }
+      setShowStripe(false);
     }
   }
   return (
@@ -185,12 +168,17 @@ function Registration(props) {
       ) : (
         <Card className="w-75 bg-light loginCard">
           <CardBody>
-            <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+            <StripeProvider apiKey={process.env.STRIPE_KEY}>
               <div className="example">
                 <h1>Payment</h1>
                 <h4>Please Submit your payment for $50 to get started</h4>
                 <Elements>
-                  <CheckoutForm />
+                  <CheckoutForm
+                    email={email}
+                    firstname={firstname}
+                    lastname={lastname}
+                    password={password}
+                  />
                 </Elements>
               </div>
             </StripeProvider>
