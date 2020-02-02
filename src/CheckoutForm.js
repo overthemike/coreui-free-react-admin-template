@@ -11,19 +11,20 @@ class CheckoutForm extends Component {
   async submit(ev) {
     if (this.props.stripe) {
       let token = await this.props.stripe.createToken();
-      console.log(token);
       let response = await axios({
         url: "/account-registration/",
         method: "post",
         data: {
-          stripe_token: token.id,
+          stripe_token: token.token.id,
           email: this.props.email,
           first_name: this.props.firstname,
           last_name: this.props.lastname,
           password: this.props.password
         }
       });
-      console.log(response);
+      if (response.status === 200) {
+        window.location.reload();
+      }
     }
 
     // if (response.ok) this.setState({ complete: true });

@@ -15,7 +15,6 @@ import {
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "../../../../src/CheckoutForm";
 
-console.log("HEYYYYY", process.env.STRIPE_KEY);
 function Registration(props) {
   const [email, setemail] = useState("");
   const [emailInvalid, setemailInvalid] = useState(false);
@@ -168,7 +167,7 @@ function Registration(props) {
       ) : (
         <Card className="w-75 bg-light loginCard">
           <CardBody>
-            <StripeProvider apiKey={process.env.STRIPE_KEY}>
+            <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
               <div className="example">
                 <h1>Payment</h1>
                 <h4>Please Submit your payment for $50 to get started</h4>
