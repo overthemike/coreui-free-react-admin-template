@@ -200,13 +200,19 @@ function ManageWallet(props) {
           <i className="fa fa-credit-card fa-3x mb-1"></i> <br /> My Recommended
           Cards
         </Button>
-        <Button
-          onClick={toggle2}
-          color="success"
-          className="mr-1 col text-dark"
-        >
-          <i className="fas fa-plus fa-3x mb-1"></i> <br /> Add Active Card
-        </Button>
+        {recCards.length > 0 ? (
+          <Button
+            onClick={toggle2}
+            color="success"
+            className="mr-1 col text-dark"
+          >
+            <i className="fas fa-plus fa-3x mb-1"></i> <br /> Add Recommended
+            Card
+          </Button>
+        ) : (
+          ""
+        )}
+
         <Button onClick={toggle} color="primary" className="mr-1 col">
           <i className="fas fa-info fa-3x mb-1"></i> <br /> Card Inquiry
         </Button>
