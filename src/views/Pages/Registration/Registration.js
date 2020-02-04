@@ -64,7 +64,7 @@ function Registration(props) {
                 </InputGroupAddon>
                 <Input
                   type="text"
-                  placeholder="email"
+                  placeholder="Email"
                   autoComplete="email"
                   value={email}
                   onChange={e => setemail(e.target.value)}
@@ -83,7 +83,7 @@ function Registration(props) {
                   </InputGroupAddon>
                   <Input
                     type="text"
-                    placeholder="firstname"
+                    placeholder="First Name"
                     autoComplete="firstname"
                     value={firstname}
                     onChange={e => setfirstname(e.target.value)}
@@ -101,7 +101,7 @@ function Registration(props) {
                   </InputGroupAddon>
                   <Input
                     type="text"
-                    placeholder="lastname"
+                    placeholder="Last Name"
                     autoComplete="lastname"
                     value={lastname}
                     onChange={e => setlastname(e.target.value)}
