@@ -10,7 +10,8 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
-  Row
+  Row,
+  Label
 } from "reactstrap";
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "../../../../src/CheckoutForm";
@@ -151,6 +152,20 @@ function Registration(props) {
                     The Password You entered doesn't match.
                   </FormFeedback>
                 </InputGroup>
+                <Row>
+                  <Col xs="6" lg="8" className="text-right"></Col>
+                  <Col xs="6" lg="4">
+                    <InputGroup check className="pl-5 mb-3">
+                      <Label check className="pl-3">
+                        <Input type="checkbox" required />
+                        <a href="https://www.travelwealth.com/terms">
+                          Agree to the Membership Terms of Service
+                        </a>
+                      </Label>
+                    </InputGroup>
+                  </Col>
+                </Row>
+
                 <Row>
                   <Col xs="6" className="text-right"></Col>
 
