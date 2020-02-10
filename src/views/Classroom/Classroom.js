@@ -5,8 +5,12 @@ import {
   Card,
   CardBody,
   CardHeader,
-  Collapse
+  Collapse,
+  ListGroup,
+  ListGroupItem
 } from "reactstrap";
+import moment from "moment";
+import pic from "../../assets/img/brand/logo.svg";
 
 import { useClassroom } from "../../hooks";
 
@@ -43,8 +47,9 @@ function Classroom() {
 
   return (
     <>
-      <Jumbotron className="bg-dark">
+      <Jumbotron className="bg-dark d-flex">
         <h1 className="display-3">TravelWealth Classroom</h1>
+        <img src={pic} alt="travelWealth" className="classLogo" />
       </Jumbotron>
       <CardBody>
         <div id="accordion">
@@ -53,12 +58,16 @@ function Classroom() {
               <Button
                 block
                 color="link"
-                className="text-left m-0 p-0"
+                className="d-flex justify-content-between m-0 p-0"
                 onClick={() => toggleAccordion(0)}
                 aria-expanded={accordion[0]}
                 aria-controls="collapseOne"
               >
-                <h4 className="m-0 p-0">Credit Card Information</h4>
+                <h4 className="m-0 p-0">
+                  <i className="far fa-credit-card text-secondary mr-2"></i>
+                  Credit Card Information
+                </h4>
+                <i className="fas fa-chevron-right text-secondary"></i>
               </Button>
             </CardHeader>
             <Collapse
@@ -68,23 +77,30 @@ function Classroom() {
               aria-labelledby="headingOne"
             >
               <CardBody>
-                {creditInfo
-                  ? creditInfo.map(function(obj) {
-                      return (
-                        <div
-                          className="d-flex justify-content-around"
-                          key={obj.id + 21}
-                        >
-                          <div key={obj.id + 1}>{obj.title}</div>
-                          <div key={obj.id + 2}>{obj.date}</div>
-                          <div key={obj.id + 3}>{obj.desc}</div>
-                          <a href={obj.resource} key={obj.id + 4}>
-                            Click here to view
-                          </a>
-                        </div>
-                      );
-                    })
-                  : "There are no posts just yet, check back soon!"}
+                <ListGroup className="bg-light">
+                  {creditInfo
+                    ? creditInfo.map(function(obj) {
+                        return (
+                          <ListGroupItem
+                            className="d-flex justify-content-around align-items-center bg-light"
+                            key={obj.id + 21}
+                          >
+                            <div key={obj.id + 1}>{obj.title}</div>
+                            <div key={obj.id + 2}>
+                              {moment(obj.date, "YYYYMMDD").fromNow()}
+                            </div>
+                            <a
+                              className="btn btn-outline-secondary"
+                              href={obj.resource}
+                              key={obj.id + 4}
+                            >
+                              Click here to view
+                            </a>
+                          </ListGroupItem>
+                        );
+                      })
+                    : "There are no posts just yet, check back soon!"}
+                </ListGroup>
               </CardBody>
             </Collapse>
           </Card>
@@ -93,12 +109,16 @@ function Classroom() {
               <Button
                 block
                 color="link"
-                className="text-left m-0 p-0"
+                className="d-flex justify-content-between m-0 p-0"
                 onClick={() => toggleAccordion(1)}
                 aria-expanded={accordion[1]}
                 aria-controls="collapseTwo"
               >
-                <h4 className="m-0 p-0">Shopping Information</h4>
+                <h4 className="m-0 p-0">
+                  <i className="fas fa-shopping-bag text-secondary mr-2"></i>
+                  Shopping Information
+                </h4>
+                <i className="fas fa-chevron-right text-secondary"></i>
               </Button>
             </CardHeader>
             <Collapse
@@ -107,23 +127,30 @@ function Classroom() {
               id="collapseTwo"
             >
               <CardBody>
-                {shoppingInfo
-                  ? shoppingInfo.map(function(obj) {
-                      return (
-                        <div
-                          className="d-flex justify-content-around"
-                          key={obj.id + 21}
-                        >
-                          <div key={obj.id + 1}>{obj.title}</div>
-                          <div key={obj.id + 2}>{obj.date}</div>
-                          <div key={obj.id + 3}>{obj.desc}</div>
-                          <a href={obj.resource} key={obj.id + 4}>
-                            Click here to view
-                          </a>
-                        </div>
-                      );
-                    })
-                  : "There are no posts just yet, check back soon!"}
+                <ListGroup className="bg-light">
+                  {shoppingInfo
+                    ? shoppingInfo.map(function(obj) {
+                        return (
+                          <ListGroupItem
+                            className="d-flex justify-content-around align-items-center bg-light"
+                            key={obj.id + 21}
+                          >
+                            <div key={obj.id + 1}>{obj.title}</div>
+                            <div key={obj.id + 2}>
+                              {moment(obj.date, "YYYYMMDD").fromNow()}
+                            </div>
+                            <a
+                              className="btn btn-outline-secondary"
+                              href={obj.resource}
+                              key={obj.id + 4}
+                            >
+                              Click here to view
+                            </a>
+                          </ListGroupItem>
+                        );
+                      })
+                    : "There are no posts just yet, check back soon!"}
+                </ListGroup>
               </CardBody>
             </Collapse>
           </Card>
@@ -132,12 +159,16 @@ function Classroom() {
               <Button
                 block
                 color="link"
-                className="text-left m-0 p-0"
+                className="d-flex justify-content-between m-0 p-0"
                 onClick={() => toggleAccordion(2)}
                 aria-expanded={accordion[2]}
                 aria-controls="collapseThree"
               >
-                <h4 className="m-0 p-0">Travel Booking Information</h4>
+                <h4 className="m-0 p-0">
+                  <i className="fas fa-plane text-secondary mr-2"></i>Travel
+                  Booking Information
+                </h4>
+                <i className="fas fa-chevron-right text-secondary"></i>
               </Button>
             </CardHeader>
             <Collapse
@@ -146,23 +177,30 @@ function Classroom() {
               id="collapseThree"
             >
               <CardBody>
-                {travelBookingInfo
-                  ? travelBookingInfo.map(function(obj) {
-                      return (
-                        <div
-                          className="d-flex justify-content-around"
-                          key={obj.id + 21}
-                        >
-                          <div key={obj.id + 1}>{obj.title}</div>
-                          <div key={obj.id + 2}>{obj.date}</div>
-                          <div key={obj.id + 3}>{obj.desc}</div>
-                          <a href={obj.resource} key={obj.id + 4}>
-                            Click here to view
-                          </a>
-                        </div>
-                      );
-                    })
-                  : "There are no posts just yet, check back soon!"}
+                <ListGroup className="bg-light">
+                  {travelBookingInfo
+                    ? travelBookingInfo.map(function(obj) {
+                        return (
+                          <ListGroupItem
+                            className="d-flex justify-content-around align-items-center bg-light"
+                            key={obj.id + 21}
+                          >
+                            <div key={obj.id + 1}>{obj.title}</div>
+                            <div key={obj.id + 2}>
+                              {moment(obj.date, "YYYYMMDD").fromNow()}
+                            </div>
+                            <a
+                              className="btn btn-outline-secondary"
+                              href={obj.resource}
+                              key={obj.id + 4}
+                            >
+                              Click here to view
+                            </a>
+                          </ListGroupItem>
+                        );
+                      })
+                    : "There are no posts just yet, check back soon!"}
+                </ListGroup>
               </CardBody>
             </Collapse>
           </Card>
@@ -171,12 +209,16 @@ function Classroom() {
               <Button
                 block
                 color="link"
-                className="text-left m-0 p-0"
+                className="d-flex justify-content-between m-0 p-0"
                 onClick={() => toggleAccordion(3)}
                 aria-expanded={accordion[3]}
                 aria-controls="collapseFour"
               >
-                <h4 className="m-0 p-0">Travel Guides</h4>
+                <h4 className="m-0 p-0">
+                  <i className="fas fa-book-open text-secondary mr-2"></i>Travel
+                  Guides
+                </h4>
+                <i className="fas fa-chevron-right text-secondary"></i>
               </Button>
             </CardHeader>
             <Collapse
@@ -185,23 +227,30 @@ function Classroom() {
               id="collapseFour"
             >
               <CardBody>
-                {travelGuides
-                  ? travelGuides.map(function(obj) {
-                      return (
-                        <div
-                          className="d-flex justify-content-around"
-                          key={obj.id + 21}
-                        >
-                          <div key={obj.id + 1}>{obj.title}</div>
-                          <div key={obj.id + 2}>{obj.date}</div>
-                          <div key={obj.id + 3}>{obj.desc}</div>
-                          <a href={obj.resource} key={obj.id + 4}>
-                            Click here to view
-                          </a>
-                        </div>
-                      );
-                    })
-                  : "There are no posts just yet, check back soon!"}
+                <ListGroup className="bg-light">
+                  {travelGuides
+                    ? travelGuides.map(function(obj) {
+                        return (
+                          <ListGroupItem
+                            className="d-flex justify-content-around align-items-center bg-light"
+                            key={obj.id + 21}
+                          >
+                            <div key={obj.id + 1}>{obj.title}</div>
+                            <div key={obj.id + 2}>
+                              {moment(obj.date, "YYYYMMDD").fromNow()}
+                            </div>
+                            <a
+                              className="btn btn-outline-secondary"
+                              href={obj.resource}
+                              key={obj.id + 4}
+                            >
+                              Click here to view
+                            </a>
+                          </ListGroupItem>
+                        );
+                      })
+                    : "There are no posts just yet, check back soon!"}
+                </ListGroup>
               </CardBody>
             </Collapse>
           </Card>
