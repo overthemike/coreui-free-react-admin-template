@@ -77,15 +77,14 @@ function Classroom() {
               aria-labelledby="headingOne"
             >
               <CardBody>
-                <ListGroup className="bg-light">
-                  {creditInfo
-                    ? creditInfo.map(function(obj) {
-                        return (
-                          <ListGroupItem
-                            className="d-flex justify-content-around align-items-center bg-light"
-                            key={obj.id + 21}
-                          >
-                            <div key={obj.id + 1}>{obj.title}</div>
+                {creditInfo
+                  ? creditInfo.map(function(obj) {
+                      return (
+                        <div
+                          className="d-flex justify-content-around align-items-center bg-light"
+                          key={obj.id + 21}
+                        >
+                          {/* <div key={obj.id + 1}>{obj.title}</div>
                             <div key={obj.id + 2}>
                               {moment(obj.date, "YYYYMMDD").fromNow()}
                             </div>
@@ -95,12 +94,19 @@ function Classroom() {
                               key={obj.id + 4}
                             >
                               Click here to view
-                            </a>
-                          </ListGroupItem>
-                        );
-                      })
-                    : "There are no posts just yet, check back soon!"}
-                </ListGroup>
+                            </a> */}
+                          <object
+                            width="1000"
+                            height="500"
+                            type="application/pdf"
+                            data={obj.resource}
+                          >
+                            <p>{obj.title}</p>
+                          </object>
+                        </div>
+                      );
+                    })
+                  : "There are no posts just yet, check back soon!"}
               </CardBody>
             </Collapse>
           </Card>

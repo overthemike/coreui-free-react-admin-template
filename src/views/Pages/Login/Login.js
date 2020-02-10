@@ -59,7 +59,7 @@ function LoginForm(props) {
                 <Input
                   type="text"
                   placeholder="Username"
-                  autoComplete="username"
+                  autoComplete="email"
                   value={username}
                   onChange={e => setUsername(e.target.value)}
                   invalid={usernameInvalid}
