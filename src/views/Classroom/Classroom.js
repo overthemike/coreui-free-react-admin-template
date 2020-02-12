@@ -38,13 +38,16 @@ function Classroom() {
       })
     : "";
   const [accordion, setAccordion] = useState([true, false, false, false]);
+  const [pdf, setPdf] = useState(true);
   function toggleAccordion(tab) {
     const prevState = accordion;
     const state = prevState.map((x, index) => (tab === index ? !x : false));
 
     setAccordion(state);
   }
-
+  function handlePdf(pdf) {
+    setPdf(!pdf);
+  }
   return (
     <>
       <Jumbotron className="bg-dark d-flex">
@@ -80,30 +83,52 @@ function Classroom() {
                 {creditInfo
                   ? creditInfo.map(function(obj) {
                       return (
-                        <div
+                        <ListGroupItem
                           className="d-flex justify-content-around align-items-center bg-light"
                           key={obj.id + 21}
                         >
-                          {/* <div key={obj.id + 1}>{obj.title}</div>
-                            <div key={obj.id + 2}>
-                              {moment(obj.date, "YYYYMMDD").fromNow()}
-                            </div>
-                            <a
-                              className="btn btn-outline-secondary"
-                              href={obj.resource}
-                              key={obj.id + 4}
-                            >
-                              Click here to view
-                            </a> */}
-                          <object
-                            width="1000"
-                            height="500"
-                            type="application/pdf"
-                            data={obj.resource}
-                          >
-                            <p>{obj.title}</p>
-                          </object>
-                        </div>
+                          {pdf ? (
+                            <>
+                              <div key={obj.id + 1}>{obj.title}</div>
+                              <div key={obj.id + 2}>
+                                {moment(obj.date, "YYYYMMDD").fromNow()}
+                              </div>
+                              <Button
+                                outline
+                                size="lg"
+                                color="secondary"
+                                key={obj.id + 3}
+                                onClick={() => handlePdf(obj.resource)}
+                              >
+                                Click here to view
+                              </Button>
+                            </>
+                          ) : (
+                            <>
+                              <Button
+                                outline
+                                size="lg"
+                                color="secondary"
+                                key={obj.id + 4}
+                                onClick={() => setPdf(!pdf)}
+                              >
+                                <i
+                                  className="fas fa-angle-left"
+                                  key={obj.id + 5}
+                                ></i>
+                              </Button>
+                              <object
+                                key={obj.id + 6}
+                                width="1000"
+                                height="500"
+                                type="application/pdf"
+                                data={obj.resource}
+                              >
+                                <p key={obj.id + 7}>{obj.title}</p>
+                              </object>
+                            </>
+                          )}
+                        </ListGroupItem>
                       );
                     })
                   : "There are no posts just yet, check back soon!"}
@@ -137,22 +162,54 @@ function Classroom() {
                   {shoppingInfo
                     ? shoppingInfo.map(function(obj) {
                         return (
-                          <ListGroupItem
-                            className="d-flex justify-content-around align-items-center bg-light"
-                            key={obj.id + 21}
-                          >
-                            <div key={obj.id + 1}>{obj.title}</div>
-                            <div key={obj.id + 2}>
-                              {moment(obj.date, "YYYYMMDD").fromNow()}
-                            </div>
-                            <a
-                              className="btn btn-outline-secondary"
-                              href={obj.resource}
-                              key={obj.id + 4}
+                          <>
+                            <ListGroupItem
+                              className="d-flex justify-content-around align-items-center bg-light"
+                              key={obj.id + 21}
                             >
-                              Click here to view
-                            </a>
-                          </ListGroupItem>
+                              {pdf ? (
+                                <>
+                                  <div key={obj.id + 1}>{obj.title}</div>
+                                  <div key={obj.id + 2}>
+                                    {moment(obj.date, "YYYYMMDD").fromNow()}
+                                  </div>
+                                  <Button
+                                    outline
+                                    size="lg"
+                                    color="secondary"
+                                    key={obj.id + 3}
+                                    onClick={() => handlePdf(obj.resource)}
+                                  >
+                                    Click here to view
+                                  </Button>
+                                </>
+                              ) : (
+                                <>
+                                  <Button
+                                    outline
+                                    size="lg"
+                                    color="secondary"
+                                    key={obj.id + 4}
+                                    onClick={() => setPdf(!pdf)}
+                                  >
+                                    <i
+                                      className="fas fa-angle-left"
+                                      key={obj.id + 5}
+                                    ></i>
+                                  </Button>
+                                  <object
+                                    key={obj.id + 6}
+                                    width="1000"
+                                    height="500"
+                                    type="application/pdf"
+                                    data={obj.resource}
+                                  >
+                                    <p key={obj.id + 7}>{obj.title}</p>
+                                  </object>
+                                </>
+                              )}
+                            </ListGroupItem>
+                          </>
                         );
                       })
                     : "There are no posts just yet, check back soon!"}
@@ -191,17 +248,47 @@ function Classroom() {
                             className="d-flex justify-content-around align-items-center bg-light"
                             key={obj.id + 21}
                           >
-                            <div key={obj.id + 1}>{obj.title}</div>
-                            <div key={obj.id + 2}>
-                              {moment(obj.date, "YYYYMMDD").fromNow()}
-                            </div>
-                            <a
-                              className="btn btn-outline-secondary"
-                              href={obj.resource}
-                              key={obj.id + 4}
-                            >
-                              Click here to view
-                            </a>
+                            {pdf ? (
+                              <>
+                                <div key={obj.id + 1}>{obj.title}</div>
+                                <div key={obj.id + 2}>
+                                  {moment(obj.date, "YYYYMMDD").fromNow()}
+                                </div>
+                                <Button
+                                  outline
+                                  size="lg"
+                                  color="secondary"
+                                  key={obj.id + 3}
+                                  onClick={() => handlePdf(obj.resource)}
+                                >
+                                  Click here to view
+                                </Button>
+                              </>
+                            ) : (
+                              <>
+                                <Button
+                                  outline
+                                  size="lg"
+                                  color="secondary"
+                                  key={obj.id + 4}
+                                  onClick={() => setPdf(!pdf)}
+                                >
+                                  <i
+                                    className="fas fa-angle-left"
+                                    key={obj.id + 5}
+                                  ></i>
+                                </Button>
+                                <object
+                                  key={obj.id + 6}
+                                  width="1000"
+                                  height="500"
+                                  type="application/pdf"
+                                  data={obj.resource}
+                                >
+                                  <p key={obj.id + 7}>{obj.title}</p>
+                                </object>
+                              </>
+                            )}
                           </ListGroupItem>
                         );
                       })
@@ -241,17 +328,47 @@ function Classroom() {
                             className="d-flex justify-content-around align-items-center bg-light"
                             key={obj.id + 21}
                           >
-                            <div key={obj.id + 1}>{obj.title}</div>
-                            <div key={obj.id + 2}>
-                              {moment(obj.date, "YYYYMMDD").fromNow()}
-                            </div>
-                            <a
-                              className="btn btn-outline-secondary"
-                              href={obj.resource}
-                              key={obj.id + 4}
-                            >
-                              Click here to view
-                            </a>
+                            {pdf ? (
+                              <>
+                                <div key={obj.id + 1}>{obj.title}</div>
+                                <div key={obj.id + 2}>
+                                  {moment(obj.date, "YYYYMMDD").fromNow()}
+                                </div>
+                                <Button
+                                  outline
+                                  size="lg"
+                                  color="secondary"
+                                  key={obj.id + 3}
+                                  onClick={() => handlePdf(obj.resource)}
+                                >
+                                  Click here to view
+                                </Button>
+                              </>
+                            ) : (
+                              <>
+                                <Button
+                                  outline
+                                  size="lg"
+                                  color="secondary"
+                                  key={obj.id + 4}
+                                  onClick={() => setPdf(!pdf)}
+                                >
+                                  <i
+                                    className="fas fa-angle-left"
+                                    key={obj.id + 5}
+                                  ></i>
+                                </Button>
+                                <object
+                                  key={obj.id + 6}
+                                  width="1000"
+                                  height="500"
+                                  type="application/pdf"
+                                  data={obj.resource}
+                                >
+                                  <p key={obj.id + 7}>{obj.title}</p>
+                                </object>
+                              </>
+                            )}
                           </ListGroupItem>
                         );
                       })
