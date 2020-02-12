@@ -18,8 +18,13 @@ import {
 import { useRecCards, useMyCards } from "../../hooks";
 import DataTable from "react-data-table-component";
 import { useForms } from "../../hooks";
+import Select from "react-select";
+import { useAdminCards } from "../../hooks";
 
+//FIX ME sweet jesus this file is out of control.
 function ManageWallet(props) {
+  const { adminCards } = useAdminCards();
+  console.log("ADMIN", adminCards);
   const [collapse, setCollapse] = useState(false);
   const [pending, setPending] = React.useState(true);
   const [modal, setModal] = useState(false);
@@ -36,8 +41,16 @@ function ManageWallet(props) {
   const [date_opened, setDateOpened] = useState("");
   const [status, setStatus] = useState("");
   const [card, setCard] = useState("");
+  const [showInput, setShowInput] = useState(false);
   const { newCard } = useMyCards();
-
+  const scaryAnimals = [
+    { label: "Alligators", value: 1 },
+    { label: "Crocodiles", value: 2 },
+    { label: "Sharks", value: 3 },
+    { label: "Small crocodiles", value: 4 },
+    { label: "Smallest crocodiles", value: 5 },
+    { label: "Snakes", value: 6 }
+  ];
   const columns = [
     {
       name: "",
@@ -153,7 +166,9 @@ function ManageWallet(props) {
   function toggle2() {
     setModal2(!modal2);
   }
-
+  function handleShow() {
+    setShowInput(!showInput);
+  }
   function toggleAccordion() {
     setCollapse(!collapse);
   }
@@ -472,6 +487,13 @@ function ManageWallet(props) {
                       <option value="companion">Companion</option>
                     </Input>
                   </FormGroup>
+                  <FormGroup check>
+                    <Label check>
+                      <Input type="checkbox" onClick={() => handleShow()} />
+                      Check me out
+                    </Label>
+                  </FormGroup>
+                  {showInput ? <Select options={scaryAnimals} /> : ""}
                 </Col>
               </Row>
               <Button
