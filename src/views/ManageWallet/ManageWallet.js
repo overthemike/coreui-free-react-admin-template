@@ -25,6 +25,7 @@ import { useAdminCards } from "../../hooks";
 function ManageWallet(props) {
   const { adminCards } = useAdminCards();
   console.log("ADMIN", adminCards);
+
   const [collapse, setCollapse] = useState(false);
   const [pending, setPending] = React.useState(true);
   const [modal, setModal] = useState(false);
@@ -43,14 +44,11 @@ function ManageWallet(props) {
   const [card, setCard] = useState("");
   const [showInput, setShowInput] = useState(false);
   const { newCard } = useMyCards();
-  const scaryAnimals = [
-    { label: "Alligators", value: 1 },
-    { label: "Crocodiles", value: 2 },
-    { label: "Sharks", value: 3 },
-    { label: "Small crocodiles", value: 4 },
-    { label: "Smallest crocodiles", value: 5 },
-    { label: "Snakes", value: 6 }
-  ];
+  const scaryAnimals = adminCards.map(opt => ({
+    label: opt.name,
+    value: opt.id
+  }));
+
   const columns = [
     {
       name: "",
@@ -493,7 +491,15 @@ function ManageWallet(props) {
                       Check me out
                     </Label>
                   </FormGroup>
-                  {showInput ? <Select options={scaryAnimals} /> : ""}
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  {showInput ? (
+                    <Select className="text-dark" options={scaryAnimals} />
+                  ) : (
+                    ""
+                  )}
                 </Col>
               </Row>
               <Button
