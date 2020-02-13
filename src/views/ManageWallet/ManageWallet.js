@@ -24,8 +24,6 @@ import { useAdminCards } from "../../hooks";
 //FIX ME sweet jesus this file is out of control.
 function ManageWallet(props) {
   const { adminCards } = useAdminCards();
-  console.log("ADMIN", adminCards);
-
   const [collapse, setCollapse] = useState(false);
   const [pending, setPending] = React.useState(true);
   const [modal, setModal] = useState(false);
@@ -44,7 +42,7 @@ function ManageWallet(props) {
   const [card, setCard] = useState("");
   const [showInput, setShowInput] = useState(false);
   const { newCard } = useMyCards();
-  const scaryAnimals = adminCards.map(opt => ({
+  const allCardsList = adminCards.map(opt => ({
     label: opt.name,
     value: opt.id
   }));
@@ -213,19 +211,13 @@ function ManageWallet(props) {
           <i className="fa fa-credit-card fa-3x mb-1"></i> <br /> My Recommended
           Cards
         </Button>
-        {recCards.length > 0 ? (
-          <Button
-            onClick={toggle2}
-            color="success"
-            className="mr-1 col text-dark"
-          >
-            <i className="fas fa-plus fa-3x mb-1"></i> <br /> Add Recommended
-            Card
-          </Button>
-        ) : (
-          ""
-        )}
-
+        <Button
+          onClick={toggle2}
+          color="success"
+          className="mr-1 col text-dark"
+        >
+          <i className="fas fa-plus fa-3x mb-1"></i> <br /> Add Active Card
+        </Button>
         <Button onClick={toggle} color="primary" className="mr-1 col">
           <i className="fas fa-info fa-3x mb-1"></i> <br /> Card Inquiry
         </Button>
@@ -453,8 +445,9 @@ function ManageWallet(props) {
               <Row>
                 <Col xs="12" md="6">
                   <FormGroup>
-                    <Label htmlFor="card">Card</Label>
+                    <Label htmlFor="card">Recommended Cards</Label>
                     <Input
+                      disabled={showInput ? true : false}
                       type="select"
                       name="card"
                       id="card"
@@ -488,15 +481,19 @@ function ManageWallet(props) {
                   <FormGroup check>
                     <Label check>
                       <Input type="checkbox" onClick={() => handleShow()} />
-                      Check me out
+                      Add new active card?
                     </Label>
                   </FormGroup>
                 </Col>
               </Row>
-              <Row>
+              <Row className="mt-2 mb-2">
                 <Col>
                   {showInput ? (
-                    <Select className="text-dark" options={scaryAnimals} />
+                    <Select
+                      className="text-dark"
+                      options={allCardsList}
+                      onChange={opt => setCard(opt.value)}
+                    />
                   ) : (
                     ""
                   )}
