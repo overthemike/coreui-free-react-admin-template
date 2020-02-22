@@ -8,6 +8,7 @@ const RequestFlights = React.lazy(() => import("./views/RequestFlights"));
 const RequestHotel = React.lazy(() => import("./views/RequestHotel"));
 const ManageWallet = React.lazy(() => import("./views/ManageWallet"));
 const Referral = React.lazy(() => import("./views/Referral"));
+const ResetPassword = React.lazy(() => import("./views/ResetPassword"));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -30,6 +31,12 @@ const routes = [
     exact: true,
     name: "Referral",
     component: Referral
+  },
+  {
+    path: "/resetPassword",
+    exact: true,
+    name: "Reset Password",
+    component: ResetPassword
   },
   {
     path: "/manage-wallet",

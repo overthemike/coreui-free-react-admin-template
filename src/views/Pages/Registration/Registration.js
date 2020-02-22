@@ -187,8 +187,11 @@ function Registration(props) {
             <CardBody>
               <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
                 <div className="example">
-                  <h1>Payment</h1>
-                  <h4>Please Submit your payment for $50 to get started</h4>
+                  <h1 className="mb-2">Payment</h1>
+                  <h4 className="mb-2">
+                    Please submit your $50 Activation Fee to create your
+                    TravelWealth account
+                  </h4>
                   <Elements>
                     <CheckoutForm
                       email={email}

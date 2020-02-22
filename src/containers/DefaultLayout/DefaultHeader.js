@@ -82,6 +82,11 @@ function DefaultHeader(props) {
             >
               <strong>Account</strong>
             </DropdownItem>
+            <DropdownItem className="text-primary">
+              <Link to="/resetPassword" className="nav-link">
+                <i className="fas fa-user-lock"></i> Reset Password
+              </Link>
+            </DropdownItem>
             <DropdownItem onClick={signout} className="text-primary">
               <i className="fa fa-lock" /> Logout
             </DropdownItem>

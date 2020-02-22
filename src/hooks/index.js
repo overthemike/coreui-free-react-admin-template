@@ -9,3 +9,4 @@ export { useUsers } from "../redux/ducks/users";
 export { useReferral } from "../redux/ducks/referral";
 export { useRegister } from "../redux/ducks/register";
 export { useClassroom } from "../redux/ducks/classroom";
+export { useResetPassword } from "../redux/ducks/resetPassword";

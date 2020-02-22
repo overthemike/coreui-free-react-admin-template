@@ -454,7 +454,7 @@ function ManageWallet(props) {
                       value={card}
                       onChange={e => setCard(e.target.value)}
                     >
-                      <option>please select</option>
+                      <option>Please select</option>
                       {recCards.map(card => (
                         <option key={card.card.id} value={card.card.id}>
                           {card.card.name}
