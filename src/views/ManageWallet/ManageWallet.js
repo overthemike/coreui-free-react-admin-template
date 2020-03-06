@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Col,
   Input,
@@ -25,7 +25,7 @@ import { useAdminCards } from "../../hooks";
 function ManageWallet(props) {
   const { adminCards } = useAdminCards();
   const [collapse, setCollapse] = useState(false);
-  const [pending, setPending] = React.useState(true);
+  const [pending, setPending] = useState(true);
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const { recCards } = useRecCards();
@@ -149,7 +149,7 @@ function ManageWallet(props) {
       format: row => `${"$" + row.card.annual_fee}`
     }
   ];
-  React.useEffect(() => {
+  useEffect(() => {
     const timeout = setTimeout(() => {
       setPending(false);
     }, 2000);
@@ -475,7 +475,12 @@ function ManageWallet(props) {
                     >
                       <option value="0">Please select</option>
                       <option value="member">Member</option>
+                      <option value="member_business">Business Member</option>
+
                       <option value="companion">Companion</option>
+                      <option value="companion_business">
+                        Business Companion
+                      </option>
                     </Input>
                   </FormGroup>
                   <FormGroup check>

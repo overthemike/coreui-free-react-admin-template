@@ -229,7 +229,7 @@ function Classroom() {
               >
                 <h4 className="m-0 p-0">
                   <i className="fas fa-plane text-secondary mr-2"></i>Travel
-                  Booking Information
+                  Information
                 </h4>
                 <i className="fas fa-chevron-right text-secondary"></i>
               </Button>
@@ -308,8 +308,8 @@ function Classroom() {
                 aria-controls="collapseFour"
               >
                 <h4 className="m-0 p-0">
-                  <i className="fas fa-book-open text-secondary mr-2"></i>Travel
-                  Guides
+                  <i className="fas fa-book-open text-secondary mr-2"></i>
+                  Additional Information
                 </h4>
                 <i className="fas fa-chevron-right text-secondary"></i>
               </Button>
@@ -322,11 +322,11 @@ function Classroom() {
               <CardBody>
                 <ListGroup className="bg-light">
                   {travelGuides
-                    ? travelGuides.map(function(obj) {
+                    ? travelGuides.map(function(obj, idx) {
                         return (
                           <ListGroupItem
                             className="d-flex justify-content-around align-items-center bg-light"
-                            key={obj.id + 21}
+                            key={obj.id + idx}
                           >
                             {pdf ? (
                               <>
@@ -338,7 +338,7 @@ function Classroom() {
                                   outline
                                   size="lg"
                                   color="secondary"
-                                  key={obj.id + 3}
+                                  key={obj.id + idx}
                                   onClick={() => handlePdf(obj.resource)}
                                 >
                                   Click here to view
@@ -355,7 +355,7 @@ function Classroom() {
                                 >
                                   <i
                                     className="fas fa-angle-left"
-                                    key={obj.id + 5}
+                                    key={obj.id + idx}
                                   ></i>
                                 </Button>
                                 <object
@@ -365,7 +365,7 @@ function Classroom() {
                                   type="application/pdf"
                                   data={obj.resource}
                                 >
-                                  <p key={obj.id + 7}>{obj.title}</p>
+                                  <p key={obj.id + idx}>{obj.title}</p>
                                 </object>
                               </>
                             )}
