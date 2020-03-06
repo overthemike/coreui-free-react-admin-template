@@ -10,19 +10,27 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
-  Row
+  Row,
+  Modal,
+  ModalHeader
 } from "reactstrap";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../../hooks";
 import pic from "../../../assets/img/brand/logo.svg";
+import axios from "axios";
 
-function LoginForm(props) {
+//{"name": "Mickey", "email": "mickey@disney.com", "phone": "1234567058"}
+function ResetPassword(props) {
   const [username, setUsername] = useState("");
   const [usernameInvalid, setUsernameInvalid] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordInvalid, setPasswordInvalid] = useState(false);
-  const { signin } = useAuth();
+  const [phone, setPhone] = useState("");
+  const [phoneInvalid, setPhoneInvalid] = useState(false);
+  const [modal, setModal] = useState(false);
 
+  const toggle = () => setModal(!modal);
+  function goHome() {
+    props.history.push("/");
+  }
   async function handleSubmit(e) {
     e.preventDefault();
     if (username.length === 0) {
@@ -30,10 +38,23 @@ function LoginForm(props) {
     }
     if (password.length === 0) {
       setPasswordInvalid(true);
+    }
+    if (phone.length === 0) {
+      setPhoneInvalid(true);
     } else {
       try {
-        await signin(username, password);
-        props.history.push("/wallet");
+        let response = await axios({
+          url: "/api/customer-requests/change_password/",
+          method: "post",
+          data: {
+            name: username,
+            email: password,
+            phone: phone
+          }
+        });
+        if (response.status === 201) {
+          toggle();
+        }
       } catch (e) {
         console.log("ERROIm hR", e);
         setPasswordInvalid(true);
@@ -45,15 +66,16 @@ function LoginForm(props) {
   return (
     <>
       <div className="app bg-dark d-flex justify-content-center align-items-center">
-        <img src={pic} alt="travelWealth" className="loginLogo mt-n5" />
+        <img
+          src={pic}
+          alt="travelWealth"
+          className="loginLogo mt-n5"
+          onClick={goHome}
+        />
         <Card className="w-75 bg-light">
           <CardBody>
             <Form onSubmit={handleSubmit}>
-              <h1 className="text-primary">Login</h1>
-              <div className="d-flex justify-content-between">
-                <p className="text-primary">Sign In to your account</p>
-                <Link to="/resetPassword">Forgot Password?</Link>
-              </div>
+              <h1 className="text-primary">Reset Password</h1>
               <InputGroup className="mb-5">
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText className="bg-light">
@@ -62,7 +84,7 @@ function LoginForm(props) {
                 </InputGroupAddon>
                 <Input
                   type="text"
-                  placeholder="Username"
+                  placeholder="Name"
                   autoComplete="email"
                   value={username}
                   onChange={e => setUsername(e.target.value)}
@@ -79,15 +101,33 @@ function LoginForm(props) {
                   </InputGroupText>
                 </InputGroupAddon>
                 <Input
-                  type="password"
-                  placeholder="Password"
-                  autoComplete="current-password"
+                  type="text"
+                  placeholder="Email"
+                  autoComplete="email"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   invalid={passwordInvalid}
                 />
                 <FormFeedback invalid={passwordInvalid}>
                   The Username/Password You entered doesn't match our records.
+                </FormFeedback>
+              </InputGroup>
+              <InputGroup className="mb-5">
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText className="bg-light">
+                    <i className="fas fa-phone"></i>
+                  </InputGroupText>
+                </InputGroupAddon>
+                <Input
+                  type="text"
+                  placeholder="Phone Number"
+                  autoComplete="phone"
+                  value={phone}
+                  onChange={e => setPhone(e.target.value)}
+                  invalid={phoneInvalid}
+                />
+                <FormFeedback invalid={phoneInvalid}>
+                  A Phone Number is Required
                 </FormFeedback>
               </InputGroup>
               <Row>
@@ -99,7 +139,7 @@ function LoginForm(props) {
                     color="primary"
                     className="px-4 btn-pill float-right"
                   >
-                    Login
+                    Reset
                   </Button>
                 </Col>
               </Row>
@@ -107,8 +147,13 @@ function LoginForm(props) {
           </CardBody>
         </Card>
       </div>
+      <Modal isOpen={modal} toggle={toggle} centered>
+        <ModalHeader toggle={toggle}>
+          Success! Your Request Has been Submitted.
+        </ModalHeader>
+      </Modal>
     </>
   );
 }
 
-export default LoginForm;
+export default ResetPassword;
