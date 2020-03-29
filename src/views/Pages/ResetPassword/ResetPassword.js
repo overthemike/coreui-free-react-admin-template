@@ -12,7 +12,8 @@ import {
   InputGroupText,
   Row,
   Modal,
-  ModalHeader
+  ModalHeader,
+  ModalBody
 } from "reactstrap"
 import pic from "../../../assets/img/brand/logo.svg"
 import axios from "axios"
@@ -24,6 +25,7 @@ function ResetPassword(props) {
   const [email, setEmail] = useState("")
   const [emailInvalid, setEmailInvalid] = useState(false)
   const [modal, setModal] = useState(false)
+  const [modalText, setModalText] = useState("")
 
   const toggle = () => setModal(!modal)
 
@@ -34,6 +36,13 @@ function ResetPassword(props) {
       axios
         .post("/api/password-reset/reset_password/", { email })
         .then(resp => {
+          setModalText(
+            "If you have an account, you should be receiving an email with a link to reset your password shortly."
+          )
+          toggle()
+        })
+        .catch(e => {
+          setModalText("Uh oh! There was an issue. Please try again later.")
           toggle()
         })
     } else {
@@ -83,10 +92,8 @@ function ResetPassword(props) {
         </Card>
       </div>
       <Modal isOpen={modal} toggle={toggle} centered>
-        <ModalHeader toggle={toggle}>
-          If you have an account, you should be receiving an email with a link
-          to reset your password shortly.
-        </ModalHeader>
+        <ModalHeader toggle={toggle}>Password Reset</ModalHeader>
+        <ModalBody>{modalText}</ModalBody>
       </Modal>
     </>
   )

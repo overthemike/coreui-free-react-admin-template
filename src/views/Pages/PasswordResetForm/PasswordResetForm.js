@@ -12,7 +12,8 @@ import {
   InputGroupText,
   Row,
   Modal,
-  ModalHeader
+  ModalHeader,
+  ModalBody
 } from "reactstrap"
 import pic from "../../../assets/img/brand/logo.svg"
 import axios from "axios"
@@ -32,6 +33,7 @@ function ResetPassword(props) {
   const [confPassword, setConfPassword] = useState("")
   const [confPasswordInvalid, setConfPasswordInvalid] = useState(false)
   const [modal, setModal] = useState(false)
+  const [modalText, setModalText] = useState("")
 
   const toggle = () => setModal(!modal)
 
@@ -58,6 +60,11 @@ function ResetPassword(props) {
           password
         })
         .then(resp => {
+          setModalText("Success! Your password has been reset.")
+          toggle()
+        })
+        .catch(e => {
+          setModalText("Uh Oh! There was an issue. Please try again later.")
           toggle()
         })
     }
@@ -126,9 +133,10 @@ function ResetPassword(props) {
         </Card>
       </div>
       <Modal isOpen={modal} toggle={toggle} centered>
-        <ModalHeader toggle={toggle}>
-          Success! Your password has been reset.
-        </ModalHeader>
+        <ModalHeader toggle={toggle}>{modalText}</ModalHeader>
+        <ModalBody>
+          <Link to="/login">Back to Login</Link>
+        </ModalBody>
       </Modal>
     </>
   )
