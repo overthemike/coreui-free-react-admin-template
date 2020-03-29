@@ -64,7 +64,7 @@ function ManageWallet(props) {
     },
     {
       name: "Account Holder",
-      selector: "type",
+      selector: "user.first_name",
       sortable: true,
       format: row => `${row.type.charAt(0).toUpperCase() + row.type.slice(1)}`
     },
@@ -180,7 +180,9 @@ function ManageWallet(props) {
   )
   const RecommendExpand = ({ data }) => (
     <div className="mt-3">
-      <p className="text-primary">Annual Notes : {data.card.annual_notes}</p>
+      <p className="text-primary">
+        Application Link : {data.card.app_link || "N/A"}
+      </p>
       <p className="text-primary">Features : {data.card.features}</p>
     </div>
   )
