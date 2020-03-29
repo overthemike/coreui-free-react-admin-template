@@ -1,78 +1,66 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Badge, Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap";
+import DataTable from "react-data-table-component";
+import { useUsers } from "../../hooks";
+import moment from "moment";
 
-import usersData from "./UsersData";
+function Users(props) {
+  const { users } = useUsers();
+  const data = users;
 
-function UserRow(props) {
-  const user = props.user;
-  const userLink = `/users/${user.id}`;
-
-  const getBadge = status => {
-    return status === "Active"
-      ? "success"
-      : status === "Inactive"
-      ? "secondary"
-      : status === "Pending"
-      ? "warning"
-      : status === "Banned"
-      ? "danger"
-      : "primary";
-  };
-
-  return (
-    <tr key={user.id.toString()}>
-      <th scope="row">
-        <Link to={userLink}>{user.id}</Link>
-      </th>
-      <td>
-        <Link to={userLink}>{user.name}</Link>
-      </td>
-      <td>{user.registered}</td>
-      <td>{user.role}</td>
-      <td>
-        <Link to={userLink}>
-          <Badge color={getBadge(user.status)}>{user.status}</Badge>
-        </Link>
-      </td>
-    </tr>
-  );
-}
-
-function Users() {
-  const userList = usersData.filter(user => user.id < 10);
-
-  return (
-    <div className="animated fadeIn">
-      <Row>
-        <Col xl={6}>
-          <Card>
-            <CardHeader>
-              <i className="fa fa-align-justify" /> Users{" "}
-              <small className="text-muted">example</small>
-            </CardHeader>
-            <CardBody>
-              <Table responsive hover>
-                <thead>
-                  <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">name</th>
-                    <th scope="col">registered</th>
-                    <th scope="col">role</th>
-                    <th scope="col">status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {userList.map((user, index) => (
-                    <UserRow key={index} user={user} />
-                  ))}
-                </tbody>
-              </Table>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+  const [pending, setPending] = React.useState(true);
+  const CustomLoader = () => (
+    <div>
+      <i className="fas fa-circle-notch fa-spin fa-5x text-secondary"></i>
     </div>
+  );
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setPending(false);
+    }, 2000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const columns = [
+    {
+      name: "First Name",
+      selector: "first_name",
+      sortable: true
+    },
+    {
+      name: "Last Name",
+      selector: "last_name",
+      sortable: true
+    },
+    {
+      name: "Email",
+      selector: "email",
+      sortable: true
+    },
+    {
+      name: "5/24",
+      selector: "accountprofile.member_524",
+      sortable: true,
+      format: row => `${row.accountprofile.member_524.length}`
+    },
+    {
+      name: "Joined",
+      selector: "accountprofile.joined",
+      sortable: true,
+      format: row => `${moment(row.accountprofile.joined).format("lll")}`
+    }
+  ];
+  return (
+    <>
+      <DataTable
+        title="Users"
+        columns={columns}
+        data={data}
+        pagination
+        progressPending={pending}
+        progressComponent={<CustomLoader />}
+      />
+    </>
   );
 }
 

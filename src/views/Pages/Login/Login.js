@@ -1,102 +1,114 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import {
   Button,
   Card,
   CardBody,
-  CardGroup,
   Col,
-  Container,
   Form,
+  FormFeedback,
   Input,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   Row
 } from "reactstrap";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../../hooks";
+import pic from "../../../assets/img/brand/logo.svg";
 
-function Login() {
+function LoginForm(props) {
+  const [username, setUsername] = useState("");
+  const [usernameInvalid, setUsernameInvalid] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordInvalid, setPasswordInvalid] = useState(false);
+  const { signin } = useAuth();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (username.length === 0) {
+      setUsernameInvalid(true);
+    }
+    if (password.length === 0) {
+      setPasswordInvalid(true);
+    } else {
+      try {
+        await signin(username, password);
+        props.history.push("/wallet");
+      } catch (e) {
+        console.log("ERROIm hR", e);
+        setPasswordInvalid(true);
+        setUsernameInvalid(true);
+      }
+    }
+  }
+
   return (
-    <div className="app flex-row align-items-center">
-      <Container>
-        <Row className="justify-content-center">
-          <Col md="8">
-            <CardGroup>
-              <Card className="p-4">
-                <CardBody>
-                  <Form>
-                    <h1>Login</h1>
-                    <p className="text-muted">Sign In to your account</p>
-                    <InputGroup className="mb-3">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="icon-user" />
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        type="text"
-                        placeholder="Username"
-                        autoComplete="username"
-                      />
-                    </InputGroup>
-                    <InputGroup className="mb-4">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="icon-lock" />
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        type="password"
-                        placeholder="Password"
-                        autoComplete="current-password"
-                      />
-                    </InputGroup>
-                    <Row>
-                      <Col xs="6">
-                        <Button color="primary" className="px-4">
-                          Login
-                        </Button>
-                      </Col>
-                      <Col xs="6" className="text-right">
-                        <Button color="link" className="px-0">
-                          Forgot password?
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Form>
-                </CardBody>
-              </Card>
-              <Card
-                className="text-white bg-primary py-5 d-md-down-none"
-                style={{ width: "44%" }}
-              >
-                <CardBody className="text-center">
-                  <div>
-                    <h2>Sign up</h2>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
-                    <Link to="/register">
-                      <Button
-                        color="primary"
-                        className="mt-3"
-                        active
-                        tabIndex={-1}
-                      >
-                        Register Now!
-                      </Button>
-                    </Link>
-                  </div>
-                </CardBody>
-              </Card>
-            </CardGroup>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <>
+      <div className="app bg-dark d-flex justify-content-center align-items-center">
+        <img src={pic} alt="travelWealth" className="loginLogo mt-n5" />
+        <Card className="w-75 bg-light">
+          <CardBody>
+            <Form onSubmit={handleSubmit}>
+              <h1 className="text-primary">Login</h1>
+              <div className="d-flex justify-content-between">
+                <p className="text-primary">Sign In to your account</p>
+                <Link to="/resetPassword">Forgot Password?</Link>
+              </div>
+              <InputGroup className="mb-5">
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText className="bg-light">
+                    <i className="fas fa-user"></i>
+                  </InputGroupText>
+                </InputGroupAddon>
+                <Input
+                  type="text"
+                  placeholder="Username"
+                  autoComplete="email"
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                  invalid={usernameInvalid}
+                />
+                <FormFeedback invalid={usernameInvalid}>
+                  The Username/Password You entered doesn't match our records.
+                </FormFeedback>
+              </InputGroup>
+              <InputGroup className="mb-5">
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText className="bg-light">
+                    <i className="fas fa-lock"></i>
+                  </InputGroupText>
+                </InputGroupAddon>
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  invalid={passwordInvalid}
+                />
+                <FormFeedback invalid={passwordInvalid}>
+                  The Username/Password You entered doesn't match our records.
+                </FormFeedback>
+              </InputGroup>
+              <Row>
+                <Col xs="6" className="text-right"></Col>
+
+                <Col xs="6">
+                  <Button
+                    type="submit"
+                    color="primary"
+                    className="px-4 btn-pill float-right"
+                  >
+                    Login
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </CardBody>
+        </Card>
+      </div>
+    </>
   );
 }
 
-export default Login;
+export default LoginForm;

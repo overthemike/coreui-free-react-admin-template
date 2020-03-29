@@ -5,14 +5,12 @@ import { Container } from "reactstrap";
 
 import {
   AppAside,
-  AppFooter,
   AppHeader,
   AppSidebar,
   AppSidebarFooter,
   AppSidebarForm,
   AppSidebarHeader,
   AppSidebarMinimizer,
-  AppBreadcrumb2 as AppBreadcrumb,
   AppSidebarNav2 as AppSidebarNav
 } from "@coreui/react";
 // sidebar nav config
@@ -21,12 +19,11 @@ import navigation from "../../_nav";
 import routes from "../../routes";
 
 const DefaultAside = React.lazy(() => import("./DefaultAside"));
-const DefaultFooter = React.lazy(() => import("./DefaultFooter"));
 const DefaultHeader = React.lazy(() => import("./DefaultHeader"));
 
 function DefaultLayout(props) {
   function loading() {
-    return <div className="animated fadeIn pt-1 text-center">Loading...</div>;
+    return <></>;
   }
 
   function signOut(e) {
@@ -35,25 +32,29 @@ function DefaultLayout(props) {
   }
   return (
     <div className="app">
-      <AppHeader fixed>
+      <AppHeader fixed className="bg-light text-primary">
         <Suspense fallback={loading()}>
           <DefaultHeader onLogout={e => signOut(e)} />
         </Suspense>
       </AppHeader>
-      <div className="app-body">
-        <AppSidebar fixed display="lg">
-          <AppSidebarHeader />
-          <AppSidebarForm />
-          <Suspense>
-            <AppSidebarNav navConfig={navigation} {...props} router={router} />
+      <div className="app-body bg-light">
+        <AppSidebar fixed display="lg" className="bg-light">
+          <AppSidebarHeader className="bg-light" />
+          <AppSidebarForm className="bg-light" />
+          <Suspense className="bg-light">
+            <AppSidebarNav
+              navConfig={navigation}
+              {...props}
+              router={router}
+              className="bg-light"
+            />
           </Suspense>
           <AppSidebarFooter />
           <AppSidebarMinimizer />
         </AppSidebar>
-        <main className="main">
-          <AppBreadcrumb appRoutes={routes} router={router} />
+        <main className="main bg-dark">
           <Container fluid>
-            <Suspense fallback={loading()}>
+            <Suspense fallback={loading()} className="bg-light">
               <Switch>
                 {routes.map((route, idx) => {
                   return route.component ? (
@@ -66,22 +67,17 @@ function DefaultLayout(props) {
                     />
                   ) : null;
                 })}
-                <Redirect from="/" to="/dashboard" />
+                <Redirect from="/" to="/wallet" />
               </Switch>
             </Suspense>
           </Container>
         </main>
-        <AppAside fixed>
-          <Suspense fallback={loading()}>
-            <DefaultAside />
+        <AppAside fixed className="bg-light">
+          <Suspense fallback={loading()} className="bg-light">
+            <DefaultAside className="bg-light" />
           </Suspense>
         </AppAside>
       </div>
-      <AppFooter>
-        <Suspense fallback={loading()}>
-          <DefaultFooter />
-        </Suspense>
-      </AppFooter>
     </div>
   );
 }
