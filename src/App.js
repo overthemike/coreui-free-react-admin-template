@@ -13,7 +13,9 @@ const DefaultLayout = React.lazy(() => import("./containers/DefaultLayout"))
 const Login = React.lazy(() => import("./views/Pages/Login"))
 const ResetPassword = React.lazy(() => import("./views/Pages/ResetPassword"))
 const Registration = React.lazy(() => import("./views/Pages/Registration"))
-// const PasswordResetForm = React.lazy(() => import("./views/Pages/PasswordResetForm"))
+const PasswordResetForm = React.lazy(() =>
+  import("./views/Pages/PasswordResetForm")
+)
 const Page404 = React.lazy(() => import("./views/Pages/Page404"))
 const Page500 = React.lazy(() => import("./views/Pages/Page500"))
 
@@ -47,6 +49,12 @@ function App() {
             path="/resetPassword"
             name="Reset Password"
             render={props => <ResetPassword {...props} />}
+          />
+          <Route
+            exact
+            path="/reset/:token"
+            name="Password Reset Form"
+            render={props => <PasswordResetForm {...props} />}
           />
           <Route
             exact

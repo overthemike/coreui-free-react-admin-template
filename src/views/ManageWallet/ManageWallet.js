@@ -24,7 +24,7 @@ import { useAdminCards } from "../../hooks"
 //FIX ME sweet jesus this file is out of control.
 function ManageWallet(props) {
   const { adminCards } = useAdminCards()
-  const [collapse, setCollapse] = useState(false)
+  const [collapse, setCollapse] = useState(true)
   const [pending, setPending] = useState(true)
   const [modal, setModal] = useState(false)
   const [modal2, setModal2] = useState(false)
@@ -129,17 +129,6 @@ function ManageWallet(props) {
       selector: "card.use_for",
       sortable: true,
       wrap: true
-    },
-    {
-      name: "Free Intl",
-      selector: "card.free_intl",
-      sortable: true,
-      format: row =>
-        `${
-          row.card.free_intl === false
-            ? row.card.free_intl.toString().replace(/false/gi, "No")
-            : row.card.free_intl.toString().replace(/true/gi, "Yes")
-        }`
     },
     {
       name: "Fee",
@@ -466,17 +455,10 @@ function ManageWallet(props) {
         <Col>
           <Card className="bg-light text-primary">
             {data && data[0] ? (
-              <>
-                <CardHeader className="d-flex justify-content-between">
-                  <div>5/24 {data[0].user.first_name}</div>
-
-                  <i className="fas fa-user"></i>
-                </CardHeader>
-                <CardBody>
-                  {data[0].user.first_name}'s Card Count:
-                  <span> {data[0].user.accountprofile.member_524.length}</span>
-                </CardBody>
-              </>
+              <CardBody>
+                5/24 {data[0].user.first_name}'s Card Count:
+                <span> {data[0].user.accountprofile.member_524.length}</span>
+              </CardBody>
             ) : (
               ""
             )}
@@ -485,28 +467,12 @@ function ManageWallet(props) {
         <Col>
           <Card className="bg-light text-primary">
             {data && data[0] ? (
-              <>
-                <CardHeader className="d-flex justify-content-between">
-                  <div>
-                    5/24
-                    {data[0].user.accountprofile.companion_first_name
-                      ? data[0].user.accountprofile.companion_first_name
-                      : " Companion"}
-                  </div>
-
-                  <i className="fas fa-user-friends"></i>
-                </CardHeader>
-                <CardBody>
-                  {data[0].user.accountprofile.companion_first_name
-                    ? data[0].user.accountprofile.companion_first_name + "'s "
-                    : "Companion's "}
-                  Card Count:
-                  <span>
-                    {" "}
-                    {data[0].user.accountprofile.companion_524.length}
-                  </span>
-                </CardBody>{" "}
-              </>
+              <CardBody>
+                <span>
+                  5/24 Companion's Card Count:{" "}
+                  {data[0].user.accountprofile.companion_524.length}
+                </span>
+              </CardBody>
             ) : (
               ""
             )}
